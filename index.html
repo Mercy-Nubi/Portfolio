@@ -211,7 +211,8 @@ body.cv-lock{overflow:hidden}
 @keyframes pageIn{to{opacity:1;transform:none}}
 .intro.skip{display:none}
 .skip-in .side > *, .skip-in main > section{animation:none!important;opacity:1!important;transform:none!important}
-@media (prefers-reduced-motion:reduce){.intro{display:none}.page-in .side > *,.page-in main > section{animation:none;opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.intro-name .l{transform:none;opacity:0;animation-name:introFade}.intro{animation-name:introFadeOut}.page-in .side > *,.page-in main > section{transform:none}}
+@keyframes introFadeOut{to{opacity:0;visibility:hidden}}
 .resume-link{display:inline-flex;align-items:center;gap:8px;margin-top:28px;font:600 15px var(--body);color:var(--ink);text-decoration:none;border-bottom:1px solid var(--red);padding-bottom:3px}
 .resume-link span{transition:transform .2s}
 .resume-link:hover{color:var(--red)} .resume-link:hover span{transform:translateX(4px)}
@@ -329,7 +330,6 @@ footer{font:12px var(--mono);color:var(--muted);border-top:1px solid var(--line)
     <div class="intro-bar"><i></i></div>
   </div>
 </div>
-<script>try{if(sessionStorage.getItem('introSeen')){document.documentElement.classList.add('skip-in');document.write('<style>#intro{display:none}</style>')}else{sessionStorage.setItem('introSeen','1')}}catch(e){}</script>
 
 
 <div class="wrap">
@@ -346,7 +346,6 @@ footer{font:12px var(--mono);color:var(--muted);border-top:1px solid var(--line)
       <li><a href="#side-projects">Side projects</a></li>
       <li><a href="#process">How I work</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="#cv" data-cv>CV</a></li>
     </ul></nav>
   </aside>
 
@@ -576,7 +575,7 @@ addEventListener('keydown', e => { if(e.key === 'Escape' && cvView.classList.con
 addEventListener('popstate', () => location.hash === '#cv' ? openCV(false) : (cvView.classList.remove('open'), document.body.classList.remove('cv-lock')));
 if(location.hash === '#cv') openCV(false);
 
-const intro=document.getElementById('intro'); if(intro){ intro.addEventListener('animationend',e=>{ if(e.animationName==='introOut') intro.remove(); }); intro.addEventListener('click',()=>{intro.remove();document.documentElement.classList.add('skip-in');}); }
+const intro=document.getElementById('intro'); if(intro){ intro.addEventListener('animationend',e=>{ if(e.animationName==='introOut'||e.animationName==='introFadeOut') intro.remove(); }); intro.addEventListener('click',()=>{intro.remove();document.documentElement.classList.add('skip-in');}); }
 </script>
 
 </body>
