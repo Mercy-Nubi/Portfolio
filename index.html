@@ -178,6 +178,19 @@ button:hover{background:var(--red);color:#fff}
 .cv-alt{font:500 13px var(--mono);color:var(--ink);text-decoration:none;border-bottom:1px solid var(--red);padding-bottom:2px}
 .cv-alt:hover{color:var(--red)}
 @media (max-width:900px){.cv-btn{margin-top:0}}
+.cv-view{position:fixed;inset:0;z-index:100;display:none;flex-direction:column;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.cv-view.open{display:flex;animation:cvIn .25s ease}
+@keyframes cvIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.cv-top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px max(16px,calc((100vw - 900px)/2));border-bottom:1px solid var(--line);background:var(--bg)}
+.cv-top strong{font:700 1.1rem var(--display);letter-spacing:-.01em}
+.cv-actions{display:flex;gap:8px;align-items:center}
+.cv-dl{display:inline-flex;align-items:center;gap:8px;font:500 13px var(--mono);text-decoration:none;background:var(--ink);color:var(--bg);border-radius:999px;padding:9px 16px}
+.cv-dl:hover{background:var(--red);color:#fff}
+.cv-x{width:38px;height:38px;padding:0;border-radius:50%;background:transparent;color:var(--ink);border:1px solid var(--line);font:400 20px/1 var(--body)}
+.cv-x:hover{background:var(--ink);color:var(--bg)}
+.cv-frame{flex:1;width:100%;border:0;background:transparent}
+body.cv-lock{overflow:hidden}
+
 footer{font:12px var(--mono);color:var(--muted);border-top:1px solid var(--line);padding-top:20px}
 
 @media (max-width:900px){
@@ -298,8 +311,9 @@ footer{font:12px var(--mono);color:var(--muted);border-top:1px solid var(--line)
       <li><a href="#side-projects">Side projects</a></li>
       <li><a href="#process">How I work</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="#cv" data-cv>CV</a></li>
     </ul></nav>
-    <a class="cv-btn" href="cv.pdf" download="Mercy-Nubi-CV.pdf"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v9M4 7.5 8 11.5 12 7.5M3 14h10"/></svg>Download CV</a>
+    <a class="cv-btn" href="#cv" data-cv><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 1.5h5.5L13 5v9.5H4z"/><path d="M9.5 1.5V5H13M6.5 8.5h4M6.5 11h4"/></svg>View CV</a>
   </aside>
 
   <main>
@@ -490,12 +504,22 @@ footer{font:12px var(--mono);color:var(--muted);border-top:1px solid var(--line)
         <span id="email">mercynubii@gmail.com</span>
         <button id="copy" type="button">Copy email</button>
       </div>
-      <p style="margin-top:18px"><a class="cv-alt" href="cv.html" target="_blank" rel="noopener">View my CV ↗</a></p>
+      <p style="margin-top:18px"><a class="cv-alt" href="#cv" data-cv>View my CV</a></p>
     </section>
 
   </main>
 </div>
 
+<div class="cv-view" id="cv-view" role="dialog" aria-modal="true" aria-label="Mercy Nubi CV">
+  <div class="cv-top">
+    <strong>My CV</strong>
+    <div class="cv-actions">
+      <a class="cv-dl" href="cv.pdf" download="Mercy-Nubi-CV.pdf"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v9M4 7.5 8 11.5 12 7.5M3 14h10"/></svg>Download PDF</a>
+      <button class="cv-x" type="button" id="cv-close" aria-label="Close CV">×</button>
+    </div>
+  </div>
+  <iframe class="cv-frame" id="cv-frame" title="Mercy Nubi CV" loading="lazy"></iframe>
+</div>
 <script>
 document.getElementById('copy').addEventListener('click', e => {
   const btn = e.currentTarget, txt = document.getElementById('email').textContent;
@@ -508,6 +532,15 @@ const io = new IntersectionObserver(es => es.forEach(en => {
   if (en.isIntersecting) links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + en.target.id));
 }), { rootMargin: '-40% 0px -55% 0px' });
 document.querySelectorAll('main section').forEach(s => io.observe(s));
+
+const cvView = document.getElementById('cv-view'), cvFrame = document.getElementById('cv-frame');
+function openCV(push){ if(!cvFrame.src) cvFrame.src = 'cv.html?embed=1'; cvView.classList.add('open'); document.body.classList.add('cv-lock'); if(push && location.hash !== '#cv') history.pushState(null,'','#cv'); document.getElementById('cv-close').focus(); }
+function closeCV(){ cvView.classList.remove('open'); document.body.classList.remove('cv-lock'); if(location.hash === '#cv') history.pushState(null,'',location.pathname + location.search); }
+document.querySelectorAll('[data-cv]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); openCV(true); }));
+document.getElementById('cv-close').addEventListener('click', closeCV);
+addEventListener('keydown', e => { if(e.key === 'Escape' && cvView.classList.contains('open')) closeCV(); });
+addEventListener('popstate', () => location.hash === '#cv' ? openCV(false) : (cvView.classList.remove('open'), document.body.classList.remove('cv-lock')));
+if(location.hash === '#cv') openCV(false);
 </script>
 
 </body>
