@@ -175,6 +175,7 @@ button:hover{background:var(--red);color:#fff}
 .cv-btn{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;margin-top:auto;font:500 13px var(--mono);text-decoration:none;background:var(--ink);color:var(--bg);border-radius:999px;padding:11px 20px}
 .cv-btn:hover{background:var(--red);color:#fff}
 .cv-btn svg{width:14px;height:14px}
+.cv-btn.cv-inline{margin-top:28px}
 .cv-alt{font:500 13px var(--mono);color:var(--ink);text-decoration:none;border-bottom:1px solid var(--red);padding-bottom:2px}
 .cv-alt:hover{color:var(--red)}
 @media (max-width:900px){.cv-btn{margin-top:0}}
@@ -347,7 +348,6 @@ footer{font:12px var(--mono);color:var(--muted);border-top:1px solid var(--line)
       <li><a href="#contact">Contact</a></li>
       <li><a href="#cv" data-cv>CV</a></li>
     </ul></nav>
-    <a class="cv-btn" href="#cv" data-cv><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 1.5h5.5L13 5v9.5H4z"/><path d="M9.5 1.5V5H13M6.5 8.5h4M6.5 11h4"/></svg>View CV</a>
   </aside>
 
   <main>
@@ -405,7 +405,7 @@ footer{font:12px var(--mono);color:var(--muted);border-top:1px solid var(--line)
           </div>
         </li>
       </ol>
-      <a class="resume-link" href="#cv" data-cv>View Full Résumé <span>→</span></a>
+      <a class="cv-btn cv-inline" href="#cv" data-cv><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 1.5h5.5L13 5v9.5H4z"/><path d="M9.5 1.5V5H13M6.5 8.5h4M6.5 11h4"/></svg>View CV</a>
     </section>
 
     <section id="work">
