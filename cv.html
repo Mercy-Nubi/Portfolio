@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mercy Nubi CV</title>
+<meta name="description" content="CV of Mercy Nubi, Product Designer and Frontend Vibecoder.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#f3f2f7; --paper:#ffffff; --ink:#17151f; --muted:#5d5a6b; --line:#e4e1ec;
+  --red:#e0287d; --red-soft:#fbe3ef; --code:#3b4cca; --code-soft:#e8eafb;
+  --display:"Bricolage Grotesque","Arial Narrow",system-ui,sans-serif;
+  --body:"Geist",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"Geist Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#121118; --paper:#1b1a23; --ink:#efedf6; --muted:#a29fb2; --line:#2e2c3a;
+  --red:#ff5fa6; --red-soft:#3a1a2c; --code:#8f9bff; --code-soft:#23253f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121118; --paper:#1b1a23; --ink:#efedf6; --muted:#a29fb2; --line:#2e2c3a;
+  --red:#ff5fa6; --red-soft:#3a1a2c; --code:#8f9bff; --code-soft:#23253f; color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:400 13.5px/1.55 var(--body);-webkit-font-smoothing:antialiased;padding:28px 16px 60px}
+a{color:inherit}
+.bar{max-width:210mm;margin:0 auto 14px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.bar span{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.btn{font:600 13px var(--body);background:var(--ink);color:var(--paper);border:0;border-radius:999px;padding:10px 18px;cursor:pointer}
+.btn:hover{background:var(--red)}
+.page{max-width:210mm;margin:0 auto;background:var(--paper);border-radius:14px;box-shadow:0 1px 0 var(--line),0 20px 50px -30px rgba(23,21,31,.35);padding:15mm 15mm 13mm}
+
+header{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:end;padding-bottom:16px;border-bottom:2px solid var(--ink)}
+h1{font:800 44px/.95 var(--display);letter-spacing:-.045em;margin:0}
+.role{margin:9px 0 0;font:600 16px/1.3 var(--display);display:flex;gap:4px 10px;flex-wrap:wrap;align-items:baseline}
+.role code{font:500 12.5px var(--mono);color:var(--code)}
+.contact{list-style:none;margin:0;padding:0;text-align:right;font:500 11.5px/1.75 var(--mono);color:var(--muted)}
+.contact a{text-decoration:none;color:var(--ink)}
+.contact a:hover{color:var(--red)}
+.contact a.pf{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+
+.grid{display:grid;grid-template-columns:1fr 58mm;gap:0 9mm;margin-top:16px}
+h2{font:500 10.5px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin:0 0 9px;display:flex;align-items:center;gap:10px}
+h2::after{content:"";flex:1;height:1px;background:var(--line)}
+section{margin-bottom:16px}
+.summary{margin:0;color:var(--muted);font-size:13.5px}
+.summary strong{color:var(--ink);font-weight:600}
+
+.job{padding:0 0 11px;margin-bottom:11px;border-bottom:1px dashed var(--line);break-inside:avoid}
+.job:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+.job-top{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.job h3{font:700 15.5px/1.2 var(--display);letter-spacing:-.01em;margin:0}
+.job h3 em{font-style:normal;font-weight:600;color:var(--muted)}
+.when{font:500 11px var(--mono);color:var(--muted);white-space:nowrap}
+.job ul{margin:5px 0 0;padding-left:15px}
+.job li{margin:2px 0;color:var(--muted)}
+.job li::marker{color:var(--red)}
+.job li strong{color:var(--ink);font-weight:600}
+.job .link{font:500 10.5px var(--mono);color:var(--code);text-decoration:none;margin-top:4px;display:inline-block}
+
+.side section{margin-bottom:15px}
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin:0;padding:0;list-style:none}
+.chips li{font:500 10.5px var(--mono);background:var(--red-soft);color:var(--red);padding:3px 8px;border-radius:999px}
+.chips.c li{background:var(--code-soft);color:var(--code)}
+.sub{font:600 12px var(--body);margin:0 0 6px}
+.sub + .chips{margin-bottom:10px}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:20px 1fr;gap:2px 6px;margin-bottom:7px;font-size:12px;color:var(--muted)}
+.steps li::before{content:counter(s,decimal-leading-zero);font:500 10.5px var(--mono);color:var(--red);padding-top:2px}
+.steps strong{color:var(--ink);font-weight:600;display:block}
+.plain{margin:0;padding:0;list-style:none;font-size:12px;color:var(--muted)}
+.plain li{margin-bottom:5px}
+.plain strong{color:var(--ink);font-weight:600;display:block}
+
+.ph{background:var(--red-soft);color:var(--red);border:1px dashed var(--red);border-radius:4px;padding:0 4px;font-style:normal}
+
+footer{margin-top:6px;padding-top:10px;border-top:1px solid var(--line);font:500 10.5px var(--mono);color:var(--muted);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+
+@media (max-width:640px){
+  body{padding:16px 16px 40px}
+  .page{padding:22px 18px;border-radius:12px}
+  header{grid-template-columns:1fr}
+  .contact{text-align:left}
+  h1{font-size:36px}
+  .grid{grid-template-columns:1fr}
+  .job-top{flex-direction:column;gap:2px}
+}
+@page{size:A4;margin:0}
+@media print{
+  :root{--bg:#fff;--paper:#fff;--ink:#17151f;--muted:#55525f;--line:#e4e1ec;--red:#d01f70;--red-soft:#fbe3ef;--code:#3b4cca;--code-soft:#e8eafb;color-scheme:light}
+  body{padding:0;background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .bar{display:none}
+  .page{max-width:none;width:210mm;min-height:297mm;border-radius:0;box-shadow:none;padding:13mm 14mm 10mm}
+  .grid{grid-template-columns:1fr 58mm}
+  header{grid-template-columns:1fr auto}
+  .contact{text-align:right}
+  body{font-size:12px;line-height:1.48}
+  .page{padding:11mm 13mm 8mm}
+  h1{font-size:38px}
+  header{padding-bottom:12px}
+  .grid{margin-top:12px}
+  section,.side section{margin-bottom:11px}
+  .summary{font-size:12px}
+  .job{padding-bottom:8px;margin-bottom:8px}
+  .job h3{font-size:14px}
+  .job li{margin:1px 0}
+  .steps li{font-size:11px;margin-bottom:5px}
+  .sub + .chips{margin-bottom:8px}
+  body{line-height:1.42}
+  .page{padding:10mm 13mm 7mm}
+  .job{padding-bottom:7px;margin-bottom:7px}
+  .job .link{margin-top:2px}
+  footer{margin-top:2px;padding-top:7px}
+}
+</style>
+</head>
+<body>
+<div class="bar">
+  <a href="./" style="font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none">← Back to portfolio</a>
+  <button class="btn" type="button" onclick="window.print()">Download as PDF</button>
+</div>
+
+<main class="page">
+  <header>
+    <div>
+      <h1>Mercy Nubi</h1>
+      <p class="role">Product Designer <code>&amp;</code> Frontend Vibecoder</p>
+    </div>
+    <ul class="contact">
+      <li>mercynubii@gmail.com</li>
+      <li>github.com/Mercy-Nubi</li>
+      <li><a class="pf" href="https://mercydesign-psi.vercel.app" target="_blank" rel="noopener">mercydesign-psi.vercel.app ↗</a></li>
+      <li>Lagos, Nigeria</li>
+    </ul>
+  </header>
+
+  <div class="grid">
+    <div class="main">
+      <section>
+        <h2>Profile</h2>
+        <p class="summary">Hi, I'm Mercy. I design products, and then I can't resist <strong>building them too</strong>. I start by asking who it's for and what's getting in their way, sketch the simplest flow that fixes it, and polish it in Figma until it feels obvious. Then I <strong>vibecode it into a real, working frontend</strong> with AI tools, because a design you can click beats one you have to imagine. <strong>Three years in</strong>, most of my work lives in <strong>fintech and Web3</strong>, where a calm, clear screen is what makes people trust you with their money.</p>
+      </section>
+
+      <section>
+        <h2>Experience</h2>
+
+        <article class="job">
+          <div class="job-top">
+            <h3>Optiwear <em>· Product Designer &amp; Frontend</em></h3>
+            <span class="when">Jun 2026 – Present</span>
+          </div>
+          <ul><li>Designing and building a full eyewear store in <strong>Next.js, React and TypeScript</strong>, connected to an Express backend: catalogue, frame and lens configurator, prescriptions, bag, checkout and <strong>Paystack payments</strong>.</li><li>Shipped camera-based <strong>face-fit and PD measurement</strong>, a frame finder, an <strong>AI shopping assistant</strong>, and admin and affiliate dashboards.</li></ul>
+        </article>
+        <article class="job">
+          <div class="job-top">
+            <h3>Resume AI <em>· Product Designer &amp; Frontend</em></h3>
+            <span class="when">Feb 2026 – Jul 2026</span>
+          </div>
+          <ul><li>Designed and built an <strong>AI resume coach</strong> that checks your CV, points out what's holding it back, and helps you <strong>rewrite and refine</strong> it until it sounds like the best version of you.</li></ul>
+        </article>
+        <article class="job">
+          <div class="job-top">
+            <h3>Expense AI <em>· Product Designer</em></h3>
+            <span class="when">Jan 2026 – Mar 2026</span>
+          </div>
+          <ul><li>Explored a receipt-first expense tracker with automatic categorisation, budgeting and clear spending insights, and built an <strong>interactive UI concept</strong> to test the ideas.</li></ul>
+        </article>
+        <article class="job">
+          <div class="job-top">
+            <h3>Zenni App <em>· Product redesign</em></h3>
+            <span class="when">Aug 2025 – Oct 2025</span>
+          </div>
+          <ul><li>Redesigned an eyewear shopping app in <strong>42 screens</strong>, including a step-by-step lens builder and virtual try-on, and shipped it as a <strong>React + TypeScript</strong> prototype.</li></ul>
+        </article>
+        <article class="job">
+          <div class="job-top">
+            <h3>Uglycash App <em>· Product redesign</em></h3>
+            <span class="when">Apr 2025 – Jun 2025</span>
+          </div>
+          <ul><li>Redesigned a money app for getting paid, spending and trading in <strong>49 screens</strong>, built as a <strong>React + TypeScript</strong> prototype with a live balance and working send keypad.</li></ul>
+        </article>
+        <article class="job">
+          <div class="job-top">
+            <h3>Our Padi <em>· Product Designer &amp; Frontend</em></h3>
+            <span class="when">Jan 2025 – Feb 2025</span>
+          </div>
+          <ul><li>Designed a mental wellness app in <strong>22 screens</strong>, from mood check-ins to an AI chat bot and therapy booking, and built it in <strong>React + TypeScript</strong>.</li></ul>
+        </article>
+        <article class="job">
+          <div class="job-top">
+            <h3>Faveremit <em>· Product Designer</em></h3>
+            <span class="when">Jun 2024 – Dec 2024</span>
+          </div>
+          <ul><li>Designed the <strong>website landing page</strong> and <strong>key mobile app screens</strong> for a fintech offering crypto and gift card trading, virtual dollar cards, transfers and bill payments.</li><li>Built user flows, wireframes and polished UI with clear transaction steps, readable amounts and rates, and reusable components.</li></ul>
+        </article>
+      </section>
+    </div>
+
+    <aside class="side">
+      <section>
+        <h2>Skills</h2>
+        <p class="sub">Design</p>
+        <ul class="chips"><li>Figma</li><li>User research</li><li>User flows</li><li>Wireframing</li><li>Prototyping</li><li>Design systems</li><li>Interaction design</li><li>Motion (After Effects)</li></ul>
+        <p class="sub">Build</p>
+        <ul class="chips c"><li>HTML &amp; CSS</li><li>React</li><li>TypeScript</li><li>Next.js</li><li>Tailwind</li><li>Vite</li><li>Express</li></ul>
+        <p class="sub">AI &amp; shipping</p>
+        <ul class="chips c"><li>Claude</li><li>Cursor</li><li>GitHub</li><li>Vercel</li></ul>
+      </section>
+
+      <section>
+        <h2>How I work</h2>
+        <ol class="steps">
+          <li><span><strong>Understand</strong>Talk to users and the team, map the flow, agree on success.</span></li>
+          <li><span><strong>Design</strong>Wireframes, high-fidelity screens and a component system.</span></li>
+          <li><span><strong>Build</strong>Vibecode the frontend so the design runs in a real browser.</span></li>
+          <li><span><strong>Refine</strong>Test the live build and hand off clean, working code.</span></li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Focus</h2>
+        <ul class="chips"><li>Fintech</li><li>Web3</li><li>Payments</li><li>Wallets</li><li>E-commerce</li></ul>
+      </section>
+
+      <section>
+        <h2>Education</h2>
+        <ul class="plain">
+          <li><strong>University of Benin</strong>2015 – 2021</li>
+          <li><strong>Figma Essentials Course</strong>2021 – 2022</li>
+          <li><strong>Adobe After Effects Course</strong>2022 – 2023</li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+</main>
+</body>
+</html>
