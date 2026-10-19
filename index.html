@@ -190,6 +190,31 @@ button:hover{background:var(--red);color:#fff}
 .cv-x:hover{background:var(--ink);color:var(--bg)}
 .cv-frame{flex:1;width:100%;border:0;background:transparent}
 body.cv-lock{overflow:hidden}
+/* Intro splash: name first, then the site */
+.intro{position:fixed;inset:0;z-index:200;display:grid;place-items:center;background:var(--bg);animation:introOut .7s cubic-bezier(.7,0,.2,1) 2.1s forwards}
+.intro-inner{text-align:center;padding:0 16px}
+.intro-name{font:800 clamp(2.6rem,9vw,6rem)/.95 var(--display);letter-spacing:-.045em;margin:0;display:flex;flex-wrap:wrap;justify-content:center;gap:0 .28em}
+.intro-name .w{display:inline-flex;overflow:hidden;padding-bottom:.08em}
+.intro-name .l{display:inline-block;transform:translateY(110%);animation:introUp .6s cubic-bezier(.2,.8,.2,1) forwards}
+.intro-name .dot{color:var(--red)}
+.intro-role{margin:18px 0 0;font:500 12px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);opacity:0;animation:introFade .5s ease 1.05s forwards}
+.intro-bar{width:min(220px,50vw);height:2px;margin:22px auto 0;background:var(--line);overflow:hidden;border-radius:2px}
+.intro-bar i{display:block;height:100%;width:100%;background:var(--red);transform:scaleX(0);transform-origin:left;animation:introLoad 1.6s cubic-bezier(.6,0,.2,1) .3s forwards}
+@keyframes introUp{to{transform:none}}
+@keyframes introFade{to{opacity:1}}
+@keyframes introLoad{to{transform:none}}
+@keyframes introOut{to{transform:translateY(-100%);visibility:hidden}}
+.page-in .side > *, .page-in main > section{opacity:0;transform:translateY(14px);animation:pageIn .6s cubic-bezier(.2,.8,.2,1) forwards}
+.page-in .side > *:nth-child(1){animation-delay:2.55s}.page-in .side > *:nth-child(2){animation-delay:2.65s}.page-in .side > *:nth-child(3){animation-delay:2.75s}.page-in .side > *:nth-child(4){animation-delay:2.85s}
+.page-in main > section:nth-child(1){animation-delay:2.7s}.page-in main > section:nth-child(n+2){animation-delay:2.85s}
+@keyframes pageIn{to{opacity:1;transform:none}}
+.intro.skip{display:none}
+.skip-in .side > *, .skip-in main > section{animation:none!important;opacity:1!important;transform:none!important}
+@media (prefers-reduced-motion:reduce){.intro{display:none}.page-in .side > *,.page-in main > section{animation:none;opacity:1;transform:none}}
+.resume-link{display:inline-flex;align-items:center;gap:8px;margin-top:28px;font:600 15px var(--body);color:var(--ink);text-decoration:none;border-bottom:1px solid var(--red);padding-bottom:3px}
+.resume-link span{transition:transform .2s}
+.resume-link:hover{color:var(--red)} .resume-link:hover span{transform:translateX(4px)}
+
 
 footer{font:12px var(--mono);color:var(--muted);border-top:1px solid var(--line);padding-top:20px}
 
@@ -295,7 +320,16 @@ footer{font:12px var(--mono);color:var(--muted);border-top:1px solid var(--line)
 
 </style>
 </head>
-<body>
+<body class="page-in">
+<div class="intro" id="intro" aria-hidden="true">
+  <div class="intro-inner">
+    <p class="intro-name"><span class="w"><span class="l" style="animation-delay:0.15s">M</span><span class="l" style="animation-delay:0.21s">e</span><span class="l" style="animation-delay:0.27s">r</span><span class="l" style="animation-delay:0.33s">c</span><span class="l" style="animation-delay:0.39s">y</span></span><span class="w"><span class="l" style="animation-delay:0.45s">N</span><span class="l" style="animation-delay:0.51s">u</span><span class="l" style="animation-delay:0.57s">b</span><span class="l" style="animation-delay:0.63s">i</span><span class="l dot" style="animation-delay:0.69s">.</span></span></p>
+    <p class="intro-role">Product Designer &amp; Frontend Vibecoder</p>
+    <div class="intro-bar"><i></i></div>
+  </div>
+</div>
+<script>try{if(sessionStorage.getItem('introSeen')){document.documentElement.classList.add('skip-in');document.write('<style>#intro{display:none}</style>')}else{sessionStorage.setItem('introSeen','1')}}catch(e){}</script>
+
 
 <div class="wrap">
   <aside class="side">
@@ -371,6 +405,7 @@ footer{font:12px var(--mono);color:var(--muted);border-top:1px solid var(--line)
           </div>
         </li>
       </ol>
+      <a class="resume-link" href="#cv" data-cv>View Full Résumé <span>→</span></a>
     </section>
 
     <section id="work">
@@ -541,6 +576,8 @@ document.getElementById('cv-close').addEventListener('click', closeCV);
 addEventListener('keydown', e => { if(e.key === 'Escape' && cvView.classList.contains('open')) closeCV(); });
 addEventListener('popstate', () => location.hash === '#cv' ? openCV(false) : (cvView.classList.remove('open'), document.body.classList.remove('cv-lock')));
 if(location.hash === '#cv') openCV(false);
+
+const intro=document.getElementById('intro'); if(intro){ intro.addEventListener('animationend',e=>{ if(e.animationName==='introOut') intro.remove(); }); intro.addEventListener('click',()=>{intro.remove();document.documentElement.classList.add('skip-in');}); }
 </script>
 
 </body>
