@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>fizzili Brand Identity · Mercy Nubi</title>
+<meta name="description" content="fizzili, a pasta-and-pop brand. Brand identity and packaging by Mercy Nubi.">
+<meta property="og:title" content="fizzili · Pasta &amp; Pop Brand Identity">
+<meta property="og:description" content="Brand identity and packaging for a playful pasta-and-soda brand, by Mercy Nubi.">
+<meta property="og:image" content="assets/00-hero.jpg">
+<link rel="icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,700;9..144,900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --grape:#5B2BD9;--sun:#FFC72C;--pink:#FF8FC8;--tomato:#FF4A1C;--wine:#6B1033;--cream:#FFF4E2;--ink:#1E0B14;
+  --f-x:"Bagel Fat One","Arial Rounded MT Bold","Trebuchet MS",sans-serif;
+  --f-s:"Fraunces",Georgia,serif;
+  --f-b:"DM Sans","Helvetica Neue",Arial,sans-serif;
+  /* layout: bold color-blocked chapters, twisted-ribbon stripe dividers, gallery rhythm of full and paired plates */
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:var(--f-b);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--grape);outline-offset:3px;border-radius:4px}
+.wrap{width:min(1240px,100% - 32px);margin-inline:auto}
+.stripe{height:28px;background:repeating-linear-gradient(-45deg,var(--grape) 0 22px,var(--sun) 22px 44px)}
+.stripe.pink{background:repeating-linear-gradient(-45deg,var(--wine) 0 22px,var(--pink) 22px 44px)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:var(--grape);color:var(--cream)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:62px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;font-size:14px;letter-spacing:.02em}
+.brand .k{font-family:var(--f-s);font-weight:900;font-size:20px;line-height:1}
+.brand .k b{color:var(--sun)}
+.nav ul{display:flex;gap:24px;list-style:none;font-size:14px}
+.nav ul a{text-decoration:none;opacity:.85}
+.nav ul a:hover{opacity:1;color:var(--sun)}
+@media (max-width:760px){.nav ul{display:none}}
+
+/* hero */
+.hero{background:var(--grape);color:var(--cream);position:relative;overflow:hidden;padding:72px 0 0}
+.hero .wrap{position:relative;z-index:2}
+.hero-top{display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:end;margin-bottom:48px}
+.hero h1{font-family:var(--f-x);font-weight:400;font-size:clamp(52px,9vw,136px);line-height:.9;letter-spacing:-.01em;color:var(--sun);text-shadow:.05em .05em 0 var(--tomato);text-wrap:balance}
+.hero h1 span{color:var(--pink);text-shadow:.05em .05em 0 var(--wine)}
+.hero .lede{font-size:18px;max-width:38ch;color:#EDE6FF}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.chips span{background:rgba(255,244,226,.12);border:1px solid rgba(255,244,226,.3);border-radius:999px;padding:6px 12px;font-size:12px;font-weight:500}
+.hero-img{border-radius:28px 28px 0 0;overflow:hidden}
+.bubbles{position:absolute;inset:0;z-index:1;pointer-events:none}
+.bubbles i{position:absolute;bottom:-60px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff 0 12%,var(--pink) 13% 100%);opacity:.75;animation:rise linear infinite}
+.bubbles i:nth-child(even){background:radial-gradient(circle at 30% 30%,#fff 0 12%,var(--cream) 13% 100%);opacity:.5}
+@keyframes rise{to{transform:translateY(-110vh) translateX(20px)}}
+@media (max-width:860px){.hero-top{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.bubbles{display:none}html{scroll-behavior:auto}}
+
+/* chapters */
+.chapter{padding:96px 0}
+.head{display:grid;grid-template-columns:220px 1fr;gap:32px;margin-bottom:44px;align-items:baseline}
+.head .no{font-family:var(--f-x);font-size:22px;color:var(--tomato)}
+.head h2{font-family:var(--f-s);font-weight:900;font-size:clamp(34px,5vw,64px);line-height:1;letter-spacing:-.01em;text-wrap:balance}
+.head h2 em{font-style:normal;color:var(--grape)}
+.head p{grid-column:2;max-width:60ch;color:#5A3D4A;font-size:17px;margin-top:14px}
+@media (max-width:760px){.head{grid-template-columns:1fr;gap:8px}.head p{grid-column:1}.chapter{padding:72px 0}}
+.plate{border-radius:22px;overflow:hidden;background:#eee}
+.stack{display:flex;flex-direction:column;gap:14px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:700px){.pair{grid-template-columns:1fr}}
+
+/* intro */
+.intro{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.intro p{font-size:clamp(17px,1.4vw,20px);max-width:56ch;margin-bottom:16px}
+.intro p.big{font-family:var(--f-s);font-weight:700;font-size:clamp(26px,2.8vw,40px);line-height:1.15;color:var(--wine)}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:18px 24px;margin-top:28px;font-size:14px}
+.facts dt{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--tomato)}
+@media (max-width:860px){.intro{grid-template-columns:1fr;gap:20px}}
+
+/* anatomy */
+.anat{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+.anat div{background:#fff;border-radius:18px;padding:24px;border-top:8px solid var(--sun)}
+.anat div:nth-child(2){border-color:var(--pink)}.anat div:nth-child(3){border-color:var(--tomato)}
+.anat b{display:block;font-family:var(--f-s);font-size:22px;margin-bottom:6px}
+.anat p{font-size:15px;color:#5A3D4A}
+@media (max-width:760px){.anat{grid-template-columns:1fr}}
+
+/* palette */
+.pal{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.sw{border-radius:999px 999px 18px 18px;min-height:300px;padding:20px 16px;display:flex;flex-direction:column;justify-content:flex-end;font-size:13px;border:0;cursor:pointer;text-align:left;font-family:var(--f-b);transition:transform .2s}
+.sw:hover{transform:translateY(-6px)}
+.sw b{display:block;font-size:15px;margin-bottom:4px}
+.sw code{font-family:var(--f-b);font-variant-numeric:tabular-nums;opacity:.85}
+.sw small{display:block;margin-top:8px;opacity:.85}
+.pal-note{margin-top:14px;font-size:13px;color:#5A3D4A;min-height:20px}
+@media (max-width:900px){.pal{grid-template-columns:repeat(3,1fr)}.sw{min-height:200px}}
+
+/* type */
+.type{background:var(--ink);color:var(--cream);border-radius:22px;padding:clamp(24px,4vw,48px);display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:20px}
+.type .card{border-radius:18px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;min-height:340px}
+.type .c1{background:var(--sun);color:var(--wine)}.type .c2{background:var(--pink);color:var(--wine)}.type .c3{background:var(--cream);color:var(--ink)}
+.type .g{font-size:clamp(90px,11vw,170px);line-height:.9}
+.type .c1 .g{font-family:var(--f-x)}.type .c2 .g{font-family:var(--f-s);font-weight:900}.type .c3 .g{font-family:var(--f-b);font-weight:500}
+.type .nm{font-size:14px;font-weight:700}
+.type .nm span{display:block;font-weight:400;opacity:.8}
+@media (max-width:860px){.type{grid-template-columns:1fr}.type .card{min-height:240px}}
+
+/* flavour finder */
+.finder{background:var(--wine);color:var(--cream);border-radius:22px;padding:clamp(24px,4vw,48px);display:grid;grid-template-columns:1fr 1.1fr;gap:36px;align-items:center}
+.finder h3{font-family:var(--f-s);font-size:clamp(26px,3vw,38px);line-height:1.05;margin-bottom:10px}
+.finder .hint{font-size:14px;opacity:.8;margin-bottom:18px}
+.picks{display:flex;flex-wrap:wrap;gap:8px}
+.picks button{font-family:var(--f-b);font-weight:700;font-size:14px;border:2px solid rgba(255,244,226,.35);background:transparent;color:var(--cream);border-radius:999px;padding:9px 16px;cursor:pointer}
+.picks button[aria-pressed="true"]{background:var(--cream);color:var(--wine);border-color:var(--cream)}
+.result{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center}
+.blob{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;font-family:var(--f-s);font-weight:900;font-size:clamp(20px,2.4vw,30px);line-height:1.05;clip-path:url(#wavy);transition:background .3s,color .3s}
+.blob small{font-family:var(--f-b);font-weight:700;font-size:11px;letter-spacing:.16em;margin-top:8px;opacity:.85}
+.plus{font-family:var(--f-x);font-size:40px;color:var(--sun)}
+.result-note{grid-column:1/-1;text-align:center;font-size:15px;opacity:.9;margin-top:6px}
+@media (max-width:860px){.finder{grid-template-columns:1fr}}
+
+/* cards */
+.card-tile{border-radius:22px;padding:clamp(24px,3.4vw,44px);display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+.deal{background:var(--sun);color:var(--wine)}
+.deal h3{font-family:var(--f-x);font-weight:400;font-size:clamp(40px,5vw,72px);line-height:.92}
+.deal table{width:100%;border-collapse:collapse;font-size:15px}
+.deal th{text-align:left;font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding-bottom:8px}
+.deal td{padding:10px 0;border-top:2px solid rgba(107,16,51,.18);font-weight:500}
+.deal td:last-child{text-align:right}
+.voice{background:var(--tomato);color:var(--cream)}
+.voice h3{font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+.voice ul{list-style:none;display:grid;gap:22px}
+.voice li{border-top:2px solid rgba(255,244,226,.35);padding-top:14px}
+.voice q{display:block;font-family:var(--f-s);font-weight:900;font-size:clamp(24px,2.6vw,38px);line-height:1.05}
+.voice small{display:block;margin-top:6px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+
+.voice-row ul{grid-template-columns:repeat(3,1fr);gap:28px}
+@media (max-width:760px){.voice-row ul{grid-template-columns:1fr}}
+/* band */
+.band{background:var(--pink);overflow:hidden;padding:26px 0;border-block:6px solid var(--wine)}
+.marq{display:flex;gap:40px;white-space:nowrap;font-family:var(--f-x);font-size:clamp(34px,5vw,64px);color:var(--wine);animation:slide 28s linear infinite;width:max-content}
+@keyframes slide{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marq{animation:none}}
+
+/* end */
+.end{background:var(--grape);color:var(--cream);text-align:center;padding:110px 20px}
+.end h2{font-family:var(--f-x);font-weight:400;font-size:clamp(56px,10vw,150px);line-height:.9;color:var(--sun);text-shadow:.05em .05em 0 var(--tomato)}
+.end p{max-width:56ch;margin:22px auto 0;color:#EDE6FF}
+.credits{margin-top:34px;display:grid;gap:6px;font-size:15px}
+.credits b{color:var(--sun)}
+.end .note{font-size:12px;opacity:.7;margin-top:28px}
+footer{background:var(--ink);color:#CDB9C4;font-size:13px;padding:24px 0}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+.labels{background:var(--wine);border-radius:22px;padding:clamp(24px,4vw,56px);display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2.4vw,32px) clamp(12px,2vw,28px)}
+.lb{display:flex;flex-direction:column;align-items:center;gap:10px}
+.lb .w{width:100%;aspect-ratio:1.15;background:var(--b);color:var(--f);clip-path:url(#wavy);display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--f-s);font-weight:900;font-size:clamp(18px,2.5vw,34px);line-height:1.02;transition:transform .25s}
+.lb:hover .w{transform:rotate(-4deg) scale(1.04)}
+.lb small{color:var(--cream);font-weight:700;font-size:12px;letter-spacing:.2em}
+@media (max-width:700px){.labels{grid-template-columns:repeat(2,1fr)}}
+.next{display:block;text-decoration:none;background:#F20E0E;color:#ECEFD5;padding:clamp(40px,6vw,80px) clamp(20px,5vw,64px)}
+.next small{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;opacity:.8}
+.next b{display:block;font-family:var(--f-s);font-weight:900;font-size:clamp(40px,7vw,96px);line-height:1;margin-top:10px}
+.next:hover b{color:var(--sun)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <clipPath id="wavy" clipPathUnits="objectBoundingBox"><path d="M.5,.02C.58,.02,.62,.09,.69,.1C.77,.11,.84,.07,.9,.12C.95,.18,.91,.26,.94,.33C.97,.41,1,.45,.98,.53C.97,.61,.91,.65,.9,.73C.89,.81,.93,.88,.87,.93C.81,.98,.74,.93,.66,.96C.59,.98,.56,1,.5,.98C.42,.97,.38,.92,.3,.92C.22,.91,.15,.96,.1,.9C.05,.84,.09,.77,.06,.69C.03,.62,0,.57,.02,.49C.03,.41,.09,.37,.1,.29C.11,.21,.07,.14,.13,.09C.19,.04,.26,.09,.34,.06C.41,.04,.44,.02,.5,.02Z"/></clipPath>
+</svg>
+
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="k">Mercy Nubi<b>.</b></span> ← All work</a>
+    <ul>
+      <li><a href="#idea">Idea</a></li>
+      <li><a href="#identity">Identity</a></li>
+      <li><a href="#flavours">Flavours</a></li>
+      <li><a href="#packaging">Packaging</a></li>
+      <li><a href="#world">In the world</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="bubbles" aria-hidden="true">
+    <i style="left:6%;width:26px;height:26px;animation-duration:11s"></i>
+    <i style="left:18%;width:14px;height:14px;animation-duration:8s;animation-delay:-3s"></i>
+    <i style="left:33%;width:34px;height:34px;animation-duration:14s;animation-delay:-6s"></i>
+    <i style="left:52%;width:18px;height:18px;animation-duration:9s;animation-delay:-2s"></i>
+    <i style="left:68%;width:40px;height:40px;animation-duration:16s;animation-delay:-9s"></i>
+    <i style="left:81%;width:16px;height:16px;animation-duration:10s;animation-delay:-4s"></i>
+    <i style="left:92%;width:28px;height:28px;animation-duration:13s;animation-delay:-7s"></i>
+  </div>
+  <div class="wrap">
+    <div class="hero-top">
+      <div>
+        <p style="font-weight:700;letter-spacing:.16em;font-size:12px;color:var(--pink);margin-bottom:18px">BRAND IDENTITY &amp; PACKAGING · 2026</p>
+        <h1>Pasta <span>&amp;</span> Pop for the fun side of lunch.</h1>
+      </div>
+      <div>
+        <p class="lede">fizzili pairs twirly cup pasta with fizzy sodas. One brand, two cravings, one bold meal deal for a younger, hungrier crowd.</p>
+        <div class="chips"><span>Branding</span><span>Logo design</span><span>Packaging</span><span>3D</span><span>Campaign</span></div>
+      </div>
+    </div>
+    <div class="hero-img"><img src="assets/00-hero.jpg" alt="fizzili striped soda cans and pasta cups with floating 3D pasta and bubbles on pink"></div>
+  </div>
+</header>
+<div class="stripe" aria-hidden="true"></div>
+
+<main>
+<section class="chapter" id="idea">
+  <div class="wrap">
+    <div class="head"><span class="no">01 · Idea</span><h2>Twirl it. Sip it. <em>Repeat.</em></h2></div>
+    <div class="intro">
+      <div>
+        <p class="big">Gen Z eats on the move. fizzili turns the quick lunch into the best ten minutes of the day.</p>
+        <dl class="facts">
+          <div><dt>Brand</dt><dd>fizzili, Pasta &amp; Pop</dd></div>
+          <div><dt>Market</dt><dd>Gen Z and young millennials</dd></div>
+          <div><dt>Products</dt><dd>4 cup pastas, 4 sodas, 1 meal deal</dd></div>
+          <div><dt>Designer</dt><dd>Mercy Nubi</dd></div>
+        </dl>
+      </div>
+      <div>
+        <p>The name says it all: <b>fizzy</b> plus <b>fusilli</b>. The identity is built on two shapes that belong to the product, the twist of the pasta and the round of the bubble, and every part of the system grows from them.</p>
+        <p>Cans spin in twisted-ribbon stripes like a fusilli spiral. Flavour labels sit in wavy, bubbly frames. Glossy 3D pasta and soda bubbles float through every shot, so the two products always feel like one world.</p>
+        <p>Every pasta comes with a soda made for it: Tomato Penne with Cherry Fizz, Cheesy Fusilli with Citrus Burst. Comfort food, made playful again.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="chapter" id="identity" style="padding-top:0">
+  <div class="wrap">
+    <div class="head"><span class="no">02 · Identity</span><h2>A wordmark you can <em>taste.</em></h2></div>
+    <div class="stack">
+      <div class="plate"><img src="assets/01-logo.jpg" alt="fizzili wordmark in yellow on grape purple with pink bubble dots"></div>
+      <div class="anat">
+        <div><b>The z’s twist</b><p>Both z letters are drawn as fusilli spirals, so the pasta lives inside the name.</p></div>
+        <div><b>The i’s fizz</b><p>Three dots become rising soda bubbles in Fizz Pink, the drink in the logo.</p></div>
+        <div><b>The shadow pops</b><p>A tomato-orange offset shadow gives the letters a sticker-like bounce on any colour.</p></div>
+      </div>
+    </div>
+
+    <div class="head" style="margin-top:80px"><span class="no">Colour</span><h2>Six colours, <em>all appetite.</em></h2><p>Tap a colour to copy its hex code.</p></div>
+    <div class="pal" id="pal">
+      <button class="sw" style="background:#5B2BD9;color:#FFF4E2" data-hex="#5B2BD9"><b>Grape</b><code>#5B2BD9</code><small>Lead colour</small></button>
+      <button class="sw" style="background:#FFC72C;color:#6B1033" data-hex="#FFC72C"><b>Sunny</b><code>#FFC72C</code><small>Wordmark, pasta</small></button>
+      <button class="sw" style="background:#FF8FC8;color:#6B1033" data-hex="#FF8FC8"><b>Fizz Pink</b><code>#FF8FC8</code><small>Bubbles</small></button>
+      <button class="sw" style="background:#FF4A1C;color:#FFF4E2" data-hex="#FF4A1C"><b>Tomato</b><code>#FF4A1C</code><small>Shadow, heat</small></button>
+      <button class="sw" style="background:#6B1033;color:#FFF4E2" data-hex="#6B1033"><b>Wine</b><code>#6B1033</code><small>Type, depth</small></button>
+      <button class="sw" style="background:#FFF4E2;color:#6B1033;box-shadow:inset 0 0 0 2px #EADBC4" data-hex="#FFF4E2"><b>Cream</b><code>#FFF4E2</code><small>Paper</small></button>
+    </div>
+    <p class="pal-note" id="palNote" aria-live="polite"></p>
+
+    <div class="head" style="margin-top:80px"><span class="no">Type</span><h2>Loud, warm <em>and clear.</em></h2></div>
+    <div class="type">
+      <div class="card c1"><span class="nm">Display<span>Bagel Fat One</span></span><span class="g" aria-hidden="true">Aa</span><span style="font-size:13px">Headlines, stickers, shouty moments</span></div>
+      <div class="card c2"><span class="nm">Flavour serif<span>Fraunces Black</span></span><span class="g" aria-hidden="true">Aa</span><span style="font-size:13px">Flavour names, taglines</span></div>
+      <div class="card c3"><span class="nm">Text<span>DM Sans</span></span><span class="g" aria-hidden="true">Aa</span><span style="font-size:13px">Labels, menus, everything small</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="band" aria-hidden="true"><div class="marq"><span>PASTA &amp; POP ✦ TWIRL IT ✦ SIP IT ✦ REPEAT ✦ PASTA &amp; POP ✦ TWIRL IT ✦ SIP IT ✦ REPEAT ✦</span><span>PASTA &amp; POP ✦ TWIRL IT ✦ SIP IT ✦ REPEAT ✦ PASTA &amp; POP ✦ TWIRL IT ✦ SIP IT ✦ REPEAT ✦</span></div></div>
+
+<section class="chapter" id="flavours">
+  <div class="wrap">
+    <div class="head"><span class="no">03 · Flavours</span><h2>Eight flavours, <em>four perfect pairs.</em></h2><p>Every pasta has a soda that was made for it. Each flavour owns a colour pair and a wavy label so the shelf reads at a glance.</p></div>
+    <div class="stack">
+      <div class="labels" aria-label="Flavour labels">
+        <div class="lb" style="--b:#FF8FC8;--f:#6B1033"><span class="w">Cherry<br>Fizz</span><small>SODA</small></div>
+        <div class="lb" style="--b:#FF4A1C;--f:#FFF4E2"><span class="w">Citrus<br>Burst</span><small>SODA</small></div>
+        <div class="lb" style="--b:#FFC72C;--f:#5B2BD9"><span class="w">Pineapple<br>Pop</span><small>SODA</small></div>
+        <div class="lb" style="--b:#5B2BD9;--f:#FFF4E2"><span class="w">Grape<br>Swirl</span><small>SODA</small></div>
+        <div class="lb" style="--b:#FF4A1C;--f:#FFF4E2"><span class="w">Tomato<br>Penne</span><small>PASTA</small></div>
+        <div class="lb" style="--b:#5B2BD9;--f:#FFC72C"><span class="w">Cheesy<br>Fusilli</span><small>PASTA</small></div>
+        <div class="lb" style="--b:#C8102E;--f:#FFC72C"><span class="w">Spicy<br>Spaghetti</span><small>PASTA</small></div>
+        <div class="lb" style="--b:#FF8FC8;--f:#6B1033"><span class="w">Garlic<br>Farfalle</span><small>PASTA</small></div>
+      </div>
+      <div class="finder">
+        <div>
+          <h3>Find your pair.</h3>
+          <p class="hint">Pick a pasta to see the soda it’s matched with.</p>
+          <div class="picks" id="picks" role="group" aria-label="Pasta flavours">
+            <button type="button" data-i="0" aria-pressed="true">Tomato Penne</button>
+            <button type="button" data-i="1" aria-pressed="false">Cheesy Fusilli</button>
+            <button type="button" data-i="2" aria-pressed="false">Spicy Spaghetti</button>
+            <button type="button" data-i="3" aria-pressed="false">Garlic Farfalle</button>
+          </div>
+        </div>
+        <div class="result">
+          <div class="blob" id="bA"></div>
+          <span class="plus" aria-hidden="true">+</span>
+          <div class="blob" id="bB"></div>
+          <p class="result-note" id="rNote" aria-live="polite"></p>
+        </div>
+      </div>
+      <div class="plate"><img src="assets/03-pattern.jpg" alt="Pattern of glossy 3D pasta and pink and purple bubbles on yellow"></div>
+    </div>
+  </div>
+</section>
+
+<div class="stripe pink" aria-hidden="true"></div>
+
+<section class="chapter" id="packaging">
+  <div class="wrap">
+    <div class="head"><span class="no">04 · Packaging</span><h2>Stripes that <em>spin.</em></h2><p>Twisted-ribbon stripes wrap every can like a fusilli spiral. The pasta cups borrow the same stripe as a base band, so the two ranges always sit together.</p></div>
+    <div class="stack">
+      <div class="plate"><img src="assets/04-cans.jpg" alt="Four striped fizzili cans: Cherry Fizz, Citrus Burst, Pineapple Pop, Grape Swirl"></div>
+      <div class="plate"><img src="assets/05-cups.jpg" alt="Four fizzili pasta cups: Tomato Penne, Cheesy Fusilli, Spicy Spaghetti, Garlic Farfalle"></div>
+      <div class="pair">
+        <div class="plate"><img src="assets/06-mealdeal.jpg" alt="Purple fizzili meal deal carrier holding a Tomato Penne cup and a Cherry Fizz can"></div>
+        <div class="card-tile deal">
+          <h3>The Meal Deal</h3>
+          <table>
+            <thead><tr><th scope="col">Pasta</th><th scope="col">Soda</th></tr></thead>
+            <tbody>
+              <tr><td>Tomato Penne</td><td>Cherry Fizz</td></tr>
+              <tr><td>Cheesy Fusilli</td><td>Citrus Burst</td></tr>
+              <tr><td>Spicy Spaghetti</td><td>Pineapple Pop</td></tr>
+              <tr><td>Garlic Farfalle</td><td>Grape Swirl</td></tr>
+            </tbody>
+          </table>
+          <p style="font-family:var(--f-s);font-weight:700;font-size:20px">One carrier, one cup, one can. Built for one hand and a busy afternoon.</p>
+        </div>
+      </div>
+      <div class="plate"><img src="assets/07-dieline.jpg" alt="Flat box design for Cheesy Fusilli with cooking steps Boil, Twirl, Sip"></div>
+    </div>
+  </div>
+</section>
+
+<section class="chapter" id="world" style="background:#FFE9F4">
+  <div class="wrap">
+    <div class="head"><span class="no">05 · In the world</span><h2>Lunch, but make it <em>fizzy.</em></h2><p>The campaign takes fizzili out of the aisle and onto the street: a hand-painted wall, a wrapped truck and bold studio shots made for the feed.</p></div>
+    <div class="stack">
+      <div class="pair">
+        <div class="plate"><img src="assets/10-mural.jpg" alt="Hand-painted fizzili mural on a brick building reading Twirl it. Sip it."></div>
+        <div class="plate"><img src="assets/09-sky.jpg" alt="Hand holding a Grape Swirl can against a blue sky"></div>
+      </div>
+      <div class="plate"><img src="assets/11-truck.jpg" alt="Delivery truck wrapped in fizzili branding"></div>
+      <div class="plate"><img src="assets/08-poster.jpg" alt="PASTA AND POP type poster and fizzili stripe poster"></div>
+      <div class="pair">
+        <div class="plate"><img src="assets/12-twirl.jpg" alt="Person twirling penne from a Tomato Penne cup with flying 3D pasta"></div>
+        <div class="plate"><img src="assets/14-merch.jpg" alt="Yellow fizzili t-shirt, pink PASTA AND POP tote and purple bucket hat"></div>
+      </div>
+      <div class="card-tile voice voice-row">
+        <h3>How fizzili talks</h3>
+        <ul>
+          <li><q>Ready, set, twirl!</q><small>Social</small></li>
+          <li><q>Lunch, but make it fizzy.</q><small>Campaign</small></li>
+          <li><q>Boil. Twirl. Sip.</q><small>On the box</small></li>
+        </ul>
+      </div>
+      <div class="plate"><img src="assets/13-social.jpg" alt="Three phones showing fizzili social posts"></div>
+    </div>
+  </div>
+</section>
+
+<section class="end" aria-label="Credits">
+  <h2>Ready, set, twirl.</h2>
+  <p>fizzili is a concept brand that blends pasta and soda into one playful system, built for the way young people eat.</p>
+  <div class="credits">
+    <div>Brand Strategy &amp; Identity → <b>Mercy Nubi</b></div>
+    <div>Packaging &amp; Campaign Design → <b>Mercy Nubi</b></div>
+    <div>Imagery → <b>Generated with Higgsfield</b></div>
+  </div>
+  <p class="note">Independent concept project. Not a real product.</p>
+</section>
+<a class="next" href="/morrow/"><small>Next project</small><b>Morrow, Good things daily →</b></a>
+</main>
+<footer><div class="wrap"><span>© 2026 Mercy Nubi · Brand Identity Design</span><span>Pasta &amp; Pop</span></div></footer>
+
+<script>
+(function(){
+  var pairs=[
+    {a:"Tomato Penne",ab:"#FF4A1C",af:"#FFF4E2",b:"Cherry Fizz",bb:"#FF8FC8",bf:"#6B1033",n:"Rich tomato sauce, brightened by a sweet cherry sparkle."},
+    {a:"Cheesy Fusilli",ab:"#5B2BD9",af:"#FFC72C",b:"Citrus Burst",bb:"#FF4A1C",bf:"#FFF4E2",n:"Creamy cheese twists, cut with a zesty citrus pop."},
+    {a:"Spicy Spaghetti",ab:"#C8102E",af:"#FFC72C",b:"Pineapple Pop",bb:"#FFC72C",bf:"#5B2BD9",n:"A chilli kick, cooled by sweet pineapple bubbles."},
+    {a:"Garlic Farfalle",ab:"#FF8FC8",af:"#6B1033",b:"Grape Swirl",bb:"#5B2BD9",bf:"#FFF4E2",n:"Buttery garlic bows with a juicy grape sip."}
+  ];
+  var bA=document.getElementById("bA"),bB=document.getElementById("bB"),rN=document.getElementById("rNote");
+  var btns=document.querySelectorAll("#picks button");
+  function show(i){var p=pairs[i];
+    bA.style.background=p.ab;bA.style.color=p.af;bA.innerHTML=p.a.replace(" ","<br>")+"<small>PASTA</small>";
+    bB.style.background=p.bb;bB.style.color=p.bf;bB.innerHTML=p.b.replace(" ","<br>")+"<small>SODA</small>";
+    rN.textContent=p.n;
+    btns.forEach(function(b){b.setAttribute("aria-pressed",String(+b.dataset.i===i))});}
+  btns.forEach(function(b){b.addEventListener("click",function(){show(+b.dataset.i)})});
+  show(0);
+  var note=document.getElementById("palNote");
+  document.querySelectorAll(".sw").forEach(function(s){s.addEventListener("click",function(){
+    var hex=s.dataset.hex;
+    try{navigator.clipboard.writeText(hex).then(function(){note.textContent="Copied "+hex},function(){note.textContent=hex})}catch(e){note.textContent=hex}
+  })});
+})();
+</script>
+</body>
+</html>

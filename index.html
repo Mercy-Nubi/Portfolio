@@ -320,6 +320,9 @@ footer{font:12px var(--mono);color:var(--muted);border-top:1px solid var(--line)
 @media(max-width:580px){.expshot{padding:16px;min-height:240px}.exp-preview{gap:6px}.exp-dashboard{padding:11px}.exp-receipt{padding:9px}.exp-brand{font-size:12px}.exp-graph{height:45px}.exp-total{font-size:20px}.exp-tagline{bottom:7px;left:14px;font-size:8px}.study-flow{grid-template-columns:1fr}.repo-card--concept .concept-grid{grid-template-columns:1fr}.repo-card--concept .concept-stamp{display:none}}
 @media(prefers-reduced-motion:reduce){.study-btn{transition:none!important}.study-btn:hover{transform:none}}
 
+.brandshot{display:block;aspect-ratio:3/2}.brandshot img{transition:transform .6s cubic-bezier(.2,.7,.2,1)}.brandshot:hover img{transform:scale(1.03)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(prefers-reduced-motion:reduce){.brandshot img{transition:none}}
 </style>
 </head>
 <body class="page-in">
@@ -343,6 +346,7 @@ footer{font:12px var(--mono);color:var(--muted);border-top:1px solid var(--line)
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#work">Selected work</a></li>
+      <li><a href="#brand">Brand identity</a></li>
       <li><a href="#side-projects">Side projects</a></li>
       <li><a href="#process">How I work</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -473,6 +477,38 @@ footer{font:12px var(--mono);color:var(--muted);border-top:1px solid var(--line)
 
 
 
+
+    <section id="brand" aria-labelledby="brand-title">
+      <p class="eyebrow">Brand identity</p>
+      <h2 id="brand-title" class="sr-only">Brand identity case studies</h2>
+      <div class="work">
+
+        <article class="proj">
+          <a class="shot brandshot" href="/morrow/" aria-label="Open the Morrow case study">
+            <img class="shotimg" src="/morrow/assets/00-hero.jpg" alt="Morrow red pastry box, two red coffee cups and a croissant" loading="lazy">
+          </a>
+          <div class="info">
+            <div class="top"><h3>Morrow</h3><span class="kind">Bakery &amp; delivery · Brand identity</span></div>
+            <p>A warm, one-ink identity for a neighbourhood bakery and everyday delivery service. A soft wordmark with a rising sun over the first “o”, a hand-drawn illustration family, and packaging, labels, menus, signage and social that all print in one confident red.</p>
+            <ul class="chips"><li>Wordmark</li><li>Illustration</li><li>Packaging</li><li>Signage</li></ul>
+            <a class="visit" href="/morrow/">View case study →</a>
+          </div>
+        </article>
+
+        <article class="proj">
+          <a class="shot brandshot" href="/fizzili/" aria-label="Open the fizzili case study">
+            <img class="shotimg" src="/fizzili/assets/00-hero.jpg" alt="fizzili striped soda cans and pasta cups with floating 3D pasta" loading="lazy">
+          </a>
+          <div class="info">
+            <div class="top"><h3>fizzili</h3><span class="kind">Pasta &amp; soda · Brand identity</span></div>
+            <p>Pasta &amp; Pop: a loud, playful system that makes cup pasta and fizzy soda one craving. Fusilli-twist letters, bubble dots and spinning stripes run through cans, cups, a meal-deal carrier, a painted wall, a wrapped truck and social.</p>
+            <ul class="chips"><li>Logo</li><li>3D packaging</li><li>Flavour system</li><li>Campaign</li></ul>
+            <a class="visit" href="/fizzili/">View case study →</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
 
     <section id="side-projects" class="side-projects" aria-labelledby="side-projects-title">
       <p class="eyebrow">Side projects / GitHub</p>
