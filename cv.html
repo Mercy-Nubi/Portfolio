@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mercy Nubi CV</title>
-<meta name="description" content="CV of Mercy Nubi, Product Designer and Frontend Vibecoder.">
+<meta name="description" content="CV of Mercy Nubi, Product Designer and Frontend Vibecoder, also designing brand identities.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
@@ -88,6 +88,7 @@ footer{margin-top:6px;padding-top:10px;border-top:1px solid var(--line);font:500
   .grid{grid-template-columns:1fr}
   .job-top{flex-direction:column;gap:2px}
 }
+.plain.brand li{margin-bottom:7px}.plain.brand strong em{font-style:normal;font-weight:500;color:var(--muted)}.plain .bl{display:block;font:500 10.5px var(--mono);color:var(--code);text-decoration:none;margin-top:2px}.plain .bl:hover{color:var(--red)}
 @page{size:A4;margin:0}
 @media print{
   :root{--bg:#fff;--paper:#fff;--ink:#17151f;--muted:#55525f;--line:#e4e1ec;--red:#d01f70;--red-soft:#fbe3ef;--code:#3b4cca;--code-soft:#e8eafb;color-scheme:light}
@@ -114,6 +115,15 @@ footer{margin-top:6px;padding-top:10px;border-top:1px solid var(--line);font:500
   .job{padding-bottom:7px;margin-bottom:7px}
   .job .link{margin-top:2px}
   footer{margin-top:2px;padding-top:7px}
+  .side section{margin-bottom:8px}
+  .side h2{margin-bottom:6px}
+  .chips{gap:4px}
+  .chips li{padding:2px 7px}
+  .sub{margin-bottom:4px}
+  .sub + .chips{margin-bottom:6px}
+  .steps li{margin-bottom:3px;line-height:1.35}
+  .plain li,.plain.brand li{margin-bottom:4px;line-height:1.38}
+  .plain .bl{margin-top:1px}
 }
 </style>
 <script>if(location.search.indexOf("embed")>-1||window.self!==window.top)document.documentElement.classList.add("embed")</script>
@@ -143,7 +153,7 @@ footer{margin-top:6px;padding-top:10px;border-top:1px solid var(--line);font:500
     <div class="main">
       <section>
         <h2>Profile</h2>
-        <p class="summary">Hi, I'm Mercy. I design products, and then I can't resist <strong>building them too</strong>. I start by asking who it's for and what's getting in their way, sketch the simplest flow that fixes it, and polish it in Figma until it feels obvious. Then I <strong>vibecode it into a real, working frontend</strong> with AI tools, because a design you can click beats one you have to imagine. <strong>Three years in</strong>, most of my work lives in <strong>fintech and Web3</strong>, where a calm, clear screen is what makes people trust you with their money.</p>
+        <p class="summary">Hi, I'm Mercy. I design products, and then I can't resist <strong>building them too</strong>. I start by asking who it's for and what's getting in their way, sketch the simplest flow that fixes it, and polish it in Figma until it feels obvious. Then I <strong>vibecode it into a real, working frontend</strong> with AI tools, because a design you can click beats one you have to imagine. <strong>Three years in</strong>, most of my work lives in <strong>fintech and Web3</strong>, where a calm, clear screen is what makes people trust you with their money. Lately I also design <strong>brand identities</strong>, from the wordmark to packaging and campaigns.</p>
       </section>
 
       <section>
@@ -205,11 +215,11 @@ footer{margin-top:6px;padding-top:10px;border-top:1px solid var(--line);font:500
       <section>
         <h2>Skills</h2>
         <p class="sub">Design</p>
-        <ul class="chips"><li>Figma</li><li>User research</li><li>User flows</li><li>Wireframing</li><li>Prototyping</li><li>Design systems</li><li>Interaction design</li><li>Motion (After Effects)</li></ul>
+        <ul class="chips"><li>Figma</li><li>User research</li><li>User flows</li><li>Wireframing</li><li>Prototyping</li><li>Design systems</li><li>Interaction design</li><li>Brand identity</li><li>Packaging</li><li>Motion (After Effects)</li></ul>
         <p class="sub">Build</p>
         <ul class="chips c"><li>HTML &amp; CSS</li><li>React</li><li>TypeScript</li><li>Next.js</li><li>Tailwind</li><li>Vite</li><li>Express</li></ul>
         <p class="sub">AI &amp; shipping</p>
-        <ul class="chips c"><li>Claude</li><li>Cursor</li><li>GitHub</li><li>Vercel</li></ul>
+        <ul class="chips c"><li>Claude</li><li>Cursor</li><li>Higgsfield</li><li>GitHub</li><li>Vercel</li></ul>
       </section>
 
       <section>
@@ -223,8 +233,16 @@ footer{margin-top:6px;padding-top:10px;border-top:1px solid var(--line);font:500
       </section>
 
       <section>
+        <h2>Brand identity</h2>
+        <ul class="plain brand">
+          <li><strong>Morrow <em>· Nov 2026</em></strong>Bakery &amp; delivery identity: wordmark, illustration family, packaging, menus, social. <a class="bl" href="https://mercydesign-psi.vercel.app/morrow/" target="_blank" rel="noopener">View case study ↗</a></li>
+          <li><strong>fizzili <em>· Nov 2026</em></strong>Pasta &amp; soda brand: logo, 3D packaging, flavour system, campaign. <a class="bl" href="https://mercydesign-psi.vercel.app/fizzili/" target="_blank" rel="noopener">View case study ↗</a></li>
+        </ul>
+      </section>
+
+      <section>
         <h2>Focus</h2>
-        <ul class="chips"><li>Fintech</li><li>Web3</li><li>Payments</li><li>Wallets</li><li>E-commerce</li></ul>
+        <ul class="chips"><li>Fintech</li><li>Web3</li><li>Payments</li><li>Wallets</li><li>E-commerce</li><li>Food &amp; drink brands</li></ul>
       </section>
 
       <section>
