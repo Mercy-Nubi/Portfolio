@@ -323,6 +323,91 @@ footer{font:12px var(--mono);color:var(--muted);border-top:1px solid var(--line)
 .brandshot{display:block;aspect-ratio:3/2}.brandshot img{transition:transform .6s cubic-bezier(.2,.7,.2,1)}.brandshot:hover img{transform:scale(1.03)}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media(prefers-reduced-motion:reduce){.brandshot img{transition:none}}
+
+/* ===== Style layer 2026: ambient glow, motion, richer cards ===== */
+::selection{background:var(--red);color:#fff}
+body{position:relative}
+.glow{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.glow i{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55}
+.glow .g1{width:520px;height:520px;left:-140px;top:-120px;background:color-mix(in srgb,var(--red) 38%,transparent);animation:drift 18s ease-in-out infinite alternate}
+.glow .g2{width:600px;height:600px;right:-180px;bottom:-200px;background:color-mix(in srgb,var(--code) 34%,transparent);animation:drift 22s ease-in-out infinite alternate-reverse}
+@keyframes drift{to{transform:translate(80px,60px) scale(1.12)}}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.spot{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(520px circle at var(--mx,50%) var(--my,30%),color-mix(in srgb,var(--red) 9%,transparent),transparent 60%)}
+@media (hover:none){.spot{display:none}}
+
+/* sidebar */
+.badge-row{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.mono-badge{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font:800 16px var(--display);letter-spacing:-.03em;color:#fff;background:linear-gradient(135deg,var(--red),var(--code));box-shadow:0 10px 24px -10px var(--red);transform:rotate(-6deg);transition:transform .35s cubic-bezier(.2,.8,.2,1.4)}
+.mono-badge:hover{transform:rotate(6deg) scale(1.06)}
+.avail{display:inline-flex;align-items:center;gap:8px;font:500 12px var(--mono);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px 6px 10px}
+.avail i{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 0 #22c55e88;animation:ping 2s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 8px #22c55e00}100%{box-shadow:0 0 0 0 #22c55e00}}
+.identity-name .dot{color:var(--red)}
+.links a{border:1px solid var(--line);border-radius:999px;padding:6px 12px;transition:border-color .2s,color .2s,transform .2s}
+.links a:hover{border-color:var(--red);transform:translateY(-2px)}
+
+/* numbered eyebrows */
+main{counter-reset:sec}
+main > section > .eyebrow::before{counter-increment:sec;content:counter(sec,decimal-leading-zero) " /";color:var(--muted)}
+.hero-h{font-size:clamp(2.1rem,4.6vw,3.5rem);line-height:1.02;letter-spacing:-.035em}
+.hero-h .hl{font-style:normal;background:linear-gradient(100deg,var(--red),var(--code));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* stats */
+.stat{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.stat div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px;transition:transform .25s,border-color .25s}
+.stat div:hover{transform:translateY(-3px);border-color:var(--red)}
+.stat strong{font-size:2.2rem;background:linear-gradient(120deg,var(--ink),var(--red));-webkit-background-clip:text;background-clip:text;color:transparent}
+@media (max-width:640px){.stat{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* experience rows */
+.xp > li{padding:22px 18px;margin-inline:-18px;border-radius:14px;border-top-color:transparent;transition:background .25s,transform .25s,box-shadow .25s;position:relative}
+.xp > li:last-child{border-bottom-color:transparent}
+.xp > li::before{content:"";position:absolute;left:0;top:22px;bottom:22px;width:3px;border-radius:3px;background:var(--red);transform:scaleY(0);transition:transform .3s}
+.xp > li:hover{background:var(--surface);box-shadow:0 18px 40px -28px color-mix(in srgb,var(--ink) 60%,transparent)}
+.xp > li:hover::before{transform:scaleY(1)}
+
+/* project cards */
+.work{counter-reset:pj}
+.proj{position:relative;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s}
+.proj::after{counter-increment:pj;content:counter(pj,decimal-leading-zero);position:absolute;top:14px;right:14px;z-index:2;font:600 12px var(--mono);color:#fff;background:color-mix(in srgb,var(--ink) 72%,transparent);backdrop-filter:blur(6px);border-radius:999px;padding:5px 10px}
+.proj:hover{transform:translateY(-6px);border-color:color-mix(in srgb,var(--red) 55%,var(--line));box-shadow:0 30px 60px -34px color-mix(in srgb,var(--red) 70%,transparent)}
+.shot .shotimg{transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.proj:hover .shot .shotimg{transform:scale(1.04)}
+.visit{transition:color .2s,letter-spacing .25s}
+.proj:hover .visit{color:var(--red)}
+.info h3{font-size:1.65rem;letter-spacing:-.03em}
+
+/* skills band */
+.band{overflow:hidden;border-block:1px solid var(--line);padding:16px 0;margin-block:-30px;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.band-track{display:flex;width:max-content;animation:slide 32s linear infinite;font:700 clamp(1.4rem,2.6vw,2rem) var(--display);letter-spacing:-.03em;white-space:nowrap}
+.band-track span{padding-right:.5em;background:linear-gradient(90deg,var(--ink),var(--red),var(--code),var(--ink));-webkit-background-clip:text;background-clip:text;color:transparent}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* steps & toolkit */
+.steps li{transition:background .25s}
+.steps li:hover{background:var(--red-soft)}
+.steps li::before{font-size:13px}
+.chips li{transition:transform .2s}
+.chips li:hover{transform:translateY(-2px)}
+
+/* contact card */
+.contact-card{background:linear-gradient(140deg,#17151f,#2a1530 60%,#1f2257);color:#f4f2fa;border-radius:24px;padding:clamp(28px,5vw,52px);position:relative;overflow:hidden}
+.contact-card::after{content:"";position:absolute;width:340px;height:340px;right:-90px;top:-110px;border-radius:50%;background:var(--red);filter:blur(80px);opacity:.45;pointer-events:none}
+.contact-card > *{position:relative;z-index:1}
+.contact-card .eyebrow{color:#ff8cc0}.contact-card .eyebrow::after{background:#ffffff26}.contact-card .eyebrow::before{color:#ffffff80}
+.contact-card h2{color:#fff}
+.contact-card p{color:#cfc9e0!important}
+.contact-card .mail span{color:#fff}
+.contact-card #copy{background:var(--red);color:#fff;border:0;border-radius:999px;padding:11px 20px;font:600 13px var(--mono);cursor:pointer;transition:transform .2s,box-shadow .2s}
+.contact-card #copy:hover{transform:translateY(-2px);box-shadow:0 12px 26px -10px var(--red)}
+.site-foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font:500 12px var(--mono);color:var(--muted);margin-top:-48px}
+
+/* reveal on scroll (transform only, content stays visible) */
+.rv{transform:translateY(22px);transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{transform:none}
+
+@media (prefers-reduced-motion:reduce){.glow i,.band-track,.avail i{animation:none}.rv{transform:none;transition:none}.proj,.proj:hover,.stat div:hover,.xp > li{transform:none!important}}
 </style>
 </head>
 <body class="page-in">
@@ -338,7 +423,8 @@ footer{font:12px var(--mono);color:var(--muted);border-top:1px solid var(--line)
 <div class="wrap">
   <aside class="side">
     <div>
-      <h1 class="identity-name">Mercy Nubi</h1>
+      <div class="badge-row"><span class="mono-badge" aria-hidden="true">MN</span><span class="avail"><i aria-hidden="true"></i>Available for new projects</span></div>
+      <h1 class="identity-name">Mercy Nubi<span class="dot">.</span></h1>
       <div class="role">Product Designer <code>&amp;</code> Frontend Vibecoder</div>
     </div>
     <p class="lede">I design digital products and build their frontends. I go from research and flows in Figma to a working interface, using AI coding tools to ship faster.</p>
@@ -351,12 +437,17 @@ footer{font:12px var(--mono);color:var(--muted);border-top:1px solid var(--line)
       <li><a href="#process">How I work</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul></nav>
+    <div class="links">
+      <a href="https://github.com/Mercy-Nubi" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="mailto:mercynubii@gmail.com">Email ↗</a>
+      <a href="#cv" data-cv>CV ↗</a>
+    </div>
   </aside>
 
   <main>
     <section id="about" class="about">
       <p class="eyebrow">About</p>
-      <h2>I design the product, then I build it.</h2>
+      <h2 class="hero-h">I design the product, <em class="hl">then I build it.</em></h2>
       <p>I'm a <strong>product designer with 3 years of experience</strong> who also works on the <strong>frontend</strong>. I start with the problem: who the product is for, what's getting in their way, and the simplest flow that fixes it. Then I turn that into clear interfaces and design systems.</p>
       <p>I don't stop at the Figma file. I <strong>vibecode</strong> my designs into real, responsive frontends with AI-assisted tools. That lets me test ideas in the browser, hand engineers something that already works, and keep the shipped product true to the design.</p>
       <p>Most of my work is in <strong>fintech and Web3</strong>: payments, wallets and commerce, where a clear interface is what earns people's trust.</p>
@@ -366,6 +457,9 @@ footer{font:12px var(--mono);color:var(--muted);border-top:1px solid var(--line)
       <p class="eyebrow">Experience</p>
       <div class="stat">
         <div><strong>3</strong><span>years in product design</span></div>
+        <div><strong>113</strong><span>app screens designed</span></div>
+        <div><strong>4</strong><span>products designed</span></div>
+        <div><strong>2</strong><span>brand identities</span></div>
       </div>
       <ol class="xp">
         <li>
@@ -510,6 +604,8 @@ footer{font:12px var(--mono);color:var(--muted);border-top:1px solid var(--line)
       </div>
     </section>
 
+    <div class="band" aria-hidden="true"><div class="band-track"><span>Product design ✦ Frontend ✦ Brand identity ✦ Fintech ✦ Web3 ✦ Design systems ✦ Prototyping ✦ </span><span>Product design ✦ Frontend ✦ Brand identity ✦ Fintech ✦ Web3 ✦ Design systems ✦ Prototyping ✦ </span></div></div>
+
     <section id="side-projects" class="side-projects" aria-labelledby="side-projects-title">
       <p class="eyebrow">Side projects / GitHub</p>
       <div class="side-heading">
@@ -566,7 +662,7 @@ footer{font:12px var(--mono);color:var(--muted);border-top:1px solid var(--line)
       </div>
     </section>
 
-    <section id="contact" class="contact">
+    <section id="contact" class="contact contact-card">
       <p class="eyebrow">Contact</p>
       <h2>Have a product that needs designing and building?</h2>
       <p style="color:var(--muted)">Tell me about it. I usually reply within a day.</p>
@@ -576,8 +672,11 @@ footer{font:12px var(--mono);color:var(--muted);border-top:1px solid var(--line)
       </div>
     </section>
 
+    <footer class="site-foot"><span>© 2026 Mercy Nubi</span><span>Designed &amp; vibecoded by me</span></footer>
   </main>
 </div>
+<div class="glow" aria-hidden="true"><i class="g1"></i><i class="g2"></i></div>
+<div class="spot" aria-hidden="true"></div>
 
 <div class="cv-view" id="cv-view" role="dialog" aria-modal="true" aria-label="Mercy Nubi CV">
   <div class="cv-top">
@@ -612,6 +711,13 @@ addEventListener('popstate', () => location.hash === '#cv' ? openCV(false) : (cv
 if(location.hash === '#cv') openCV(false);
 
 const intro=document.getElementById('intro'); if(intro){ intro.addEventListener('animationend',e=>{ if(e.animationName==='introOut'||e.animationName==='introFadeOut') intro.remove(); }); intro.addEventListener('click',()=>{intro.remove();document.documentElement.classList.add('skip-in');}); }
+
+// style layer: cursor spotlight + gentle reveal
+(()=>{const r=document.documentElement;addEventListener('pointermove',e=>{r.style.setProperty('--mx',e.clientX+'px');r.style.setProperty('--my',e.clientY+'px')},{passive:true});
+if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+const els=document.querySelectorAll('.proj,.xp > li,.stat,.steps,.kit,.repo-card,.contact-card');
+const ob=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');ob.unobserve(en.target)}}),{rootMargin:'0px 0px -8% 0px'});
+els.forEach(el=>{const b=el.getBoundingClientRect();if(b.top<innerHeight){return}el.classList.add('rv');ob.observe(el)});})();
 </script>
 
 </body>
