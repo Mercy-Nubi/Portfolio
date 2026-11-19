@@ -77,3 +77,7 @@ body{margin:0}
 .mw-next b{display:block;font-family:var(--f-d);font-weight:400;font-size:clamp(40px,7vw,96px);line-height:1;margin-top:10px}
 .mw-next:hover b{color:#FFC72C}
 .mw-pal div+div::before{display:none}
+
+.mw-voice-wide{aspect-ratio:auto;gap:28px}
+.mw-voice-wide ul{grid-template-columns:repeat(3,1fr)}
+@media (max-width:760px){.mw-voice-wide ul{grid-template-columns:1fr}}
