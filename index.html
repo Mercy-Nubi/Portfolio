@@ -71,7 +71,7 @@ h2.big em{font-style:normal;color:var(--muted);font-weight:400}
 /* 02 hello */
 .hello{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,5vw,72px);align-items:start}
 .avatar{aspect-ratio:4/5;border-radius:20px;background:linear-gradient(150deg,var(--pink),var(--indigo));display:grid;place-items:center;position:relative;overflow:hidden}
-.avatar span{font:800 clamp(90px,13vw,190px)/1 var(--display);letter-spacing:-.06em;color:#fff;mix-blend-mode:overlay;opacity:.9}
+.avatar > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 28%}
 .avatar::after{content:"about me";position:absolute;left:18px;top:18px;font:500 13px var(--mono);background:#fff;color:var(--ink);border-radius:999px;padding:5px 12px;transform:rotate(-6deg)}
 .avatar .sticker{position:absolute;right:16px;bottom:16px;background:#fff;color:var(--ink);font:600 12px var(--mono);border-radius:999px;padding:6px 12px;display:flex;align-items:center;gap:8px}
 .avatar .sticker i{width:8px;height:8px;border-radius:50%;background:#22c55e;animation:ping 2s infinite}
@@ -85,7 +85,7 @@ h2.big em{font-style:normal;color:var(--muted);font-weight:400}
 .cols3 li{list-style:none;font-size:14px;line-height:1.7}
 .cols3 a{text-decoration:none;border-bottom:1px solid var(--line)}
 .cols3 a:hover{color:var(--pink);border-color:var(--pink)}
-@media (max-width:860px){.hello{grid-template-columns:1fr}.avatar{aspect-ratio:16/10}.cols3{grid-template-columns:1fr 1fr}}
+@media (max-width:860px){.hello{grid-template-columns:1fr}.avatar{aspect-ratio:4/5;max-width:440px}.cols3{grid-template-columns:1fr 1fr}}
 
 /* 03 what i do */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);align-items:end}
@@ -241,7 +241,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font:5
   <section class="slide cover" id="cover" aria-label="Portfolio cover">
     <div class="row">
       <span>Name<b>Mercy Nubi</b></span>
-      <span>Role<b>Product Designer &amp; Frontend</b></span>
+      <span>Role<b>Product Designer, Motion Designer &amp; Frontend</b></span>
       <span>Focus<b>Fintech · Web3 · Brand</b></span>
       <span>Contact<b>mercynubii@gmail.com</b></span>
       <span>Edition<b>Portfolio 2026</b></span>
@@ -251,7 +251,6 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font:5
       <a class="folder f2" href="#brand"><svg viewBox="0 0 64 50" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4-4h16l6 6h30a4 4 0 0 1 4 4v30a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#E0287D"/><path d="M2 16h60v28a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#FF6BB0"/></svg>brand</a>
       <a class="folder f3" href="#code"><svg viewBox="0 0 64 50" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4-4h16l6 6h30a4 4 0 0 1 4 4v30a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#3B4CCA"/><path d="M2 16h60v28a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#5E6EE6"/></svg>code</a>
     </div>
-    <svg class="cursor" viewBox="0 0 24 28" aria-hidden="true"><path d="M2 2l19 11-8 2 5 9-3 2-5-9-6 6z" fill="#111014" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg>
     <h1>Portfolio<span class="yr">(2026)</span></h1>
     <div class="sub">
       <p>I design the product, <span>then I build it.</span> Product design, brand identity and code.</p>
@@ -263,7 +262,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font:5
   <section class="slide" id="hello">
     <div class="meta"><b>02 · About me</b><span>Mercy Nubi · Portfolio 2026</span></div>
     <div class="hello">
-      <div class="avatar" role="img" aria-label="Mercy Nubi monogram"><span>MN</span><span class="sticker"><i aria-hidden="true"></i>Open to work</span></div>
+      <div class="avatar"><img src="assets/mercy.jpg" alt="Mercy Nubi in glasses and a tie-dye shirt, taking a mirror selfie" width="1050" height="1400"><span class="sticker"><i aria-hidden="true"></i>Open to work</span></div>
       <div>
         <h2>Hello! I’m <span>Mercy</span> Nubi.</h2>
         <p class="intro">I design products, and then I can’t resist <strong>building them too</strong>. I start by asking who it’s for and what’s getting in their way, sketch the simplest flow that fixes it, and polish it in Figma until it feels obvious. Then I <strong>vibecode it into a real, working frontend</strong> with AI tools, because a design you can click beats one you have to imagine. Three years in, most of my work lives in <strong>fintech and Web3</strong>, where a calm, clear screen is what makes people trust you with their money.</p>
