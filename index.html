@@ -710,6 +710,17 @@ function wallSpots() {
     return { x, y, rot: left ? 6 - (k % 3) * 3 : -6 + (k % 3) * 3 };
   });
 }
+// safety net: whatever happens to the animations, the open box always ends up fully shown
+function settleInside() {
+  if (!opened) return;
+  inside.style.opacity = 1; if (inside.getAnimations) inside.getAnimations().forEach(a => a.cancel()); inside.style.transform = '';
+  [...pops, ...fades].forEach(el => { if (+getComputedStyle(el).opacity < 1) { el.getAnimations().forEach(a => a.cancel()); el.style.opacity = 1; el.style.scale = ''; el.style.transform = ''; } });
+  const sp = wallSpots(); chips.forEach((c, i) => { if (+getComputedStyle(c).opacity < 1) { c.getAnimations().forEach(a => a.cancel()); c.style.opacity = 1; c.style.transform = `translate(${sp[i].x}px,${sp[i].y}px) rotate(${sp[i].rot}deg)`; } });
+  const pr = peek.getBoundingClientRect(), cr = peek.parentElement.getBoundingClientRect();
+  if (Math.abs(pr.bottom - cr.bottom) > 4) { peek.getAnimations().forEach(a => a.cancel()); peek.style.transform = 'translate(-50%, 0%)'; }
+  busy = false;
+}
+let settleT; const settleSoon = ms => { clearTimeout(settleT); settleT = setTimeout(settleInside, ms); };
 function insideIn(first) {
   const spots = wallSpots(), W = inside.clientWidth, H = inside.clientHeight;
   if (reduce) {
@@ -719,8 +730,9 @@ function insideIn(first) {
   [...pops, ...fades, ...chips].forEach(el => el.style.opacity = 0);
   const d = first ? 0.25 : 0;
   animate(peek, { y: ['100%', '0%'], x: '-50%', rotate: [-4, 0] }, { type: spring, stiffness: 120, damping: 12, delay: d + 0.1 });
-  animate(pops, { opacity: [0, 1], scale: [0.6, 1] }, { type: spring, stiffness: 260, damping: 16, delay: stagger(0.04, { startDelay: d + 0.15 }) });
-  animate(fades, { opacity: [0, 1] }, { duration: 0.5, delay: d + 0.4 });
+  pops.forEach((el, i) => animate(el, { opacity: [0, 1], scale: [0.6, 1] }, { duration: 0.5, ease: [0.34, 1.56, 0.64, 1], delay: d + 0.15 + i * 0.04 }));
+  fades.forEach(el => animate(el, { opacity: [0, 1] }, { duration: 0.5, delay: d + 0.4 }));
+
   chips.forEach((c, i) => animate(c, { x: [W / 2 - 20, spots[i].x], y: [H * 0.5, spots[i].y], scale: [0.2, 1], rotate: [0, spots[i].rot], opacity: [0, 1] }, { type: spring, stiffness: 140, damping: 15, delay: d + 0.35 + i * 0.05 }));
 }
 
@@ -731,6 +743,7 @@ box.style.opacity = 0; arcEl.style.opacity = 0; floats.forEach(f => f.style.opac
 document.documentElement.classList.remove('m');
 if (!reduce) animate(inside, { opacity: [0, 1], scale: [1.08, 1] }, { duration: 0.7, ease: [0.2, 0.8, 0.2, 1] });
 insideIn(true);
+settleSoon(3200);
 
 async function closeBox() {
   if (busy || !opened) return; busy = true; opened = false;
@@ -753,6 +766,7 @@ async function closeBox() {
 
 async function openBox() {
   if (busy || opened) return; busy = true; opened = true;
+  settleSoon(4800);
   inside.classList.add('on'); inside.setAttribute('aria-hidden', 'false');
   if (reduce) { insideIn(false); busy = false; document.getElementById('closeBox').focus(); return; }
   inside.style.opacity = 0;
@@ -783,6 +797,7 @@ if (!reduce) {
     inView(el, () => {
       animate(el, { opacity: 1, y: [80, 0] }, { type: spring, bounce: 0.25, duration: 0.9 });
       if (items.length) animate(items, { opacity: [0, 1], y: [24, 0] }, { type: spring, bounce: 0.2, duration: 0.7, delay: stagger(0.06, { startDelay: 0.15 }) });
+      setTimeout(() => [el, ...items].forEach(x => { if (+getComputedStyle(x).opacity < 1) { x.getAnimations().forEach(a => a.cancel()); x.style.opacity = 1; x.style.transform = 'none'; } }), 2600);
     }, { amount: 0.12 });
   });
   // jumping with a menu link: show the sections you land on right away, so the page doesn't shift under you
