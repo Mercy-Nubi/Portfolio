@@ -160,6 +160,20 @@ h2.big em{font-style:normal;color:var(--muted);font-weight:400}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
 .grid2 > *{border-radius:22px;overflow:hidden}
 @media (max-width:700px){.grid2{grid-template-columns:1fr}}
+.mo-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:clamp(24px,4vw,44px)}
+.mo{margin:0}
+.mo-play{position:relative;display:block;width:100%;aspect-ratio:16/9;padding:0;border:0;border-radius:22px;overflow:hidden;background:var(--night);cursor:pointer}
+.mo-play img{width:100%;height:100%;object-fit:cover;display:block;color:transparent;font-size:0;transition:transform .5s cubic-bezier(.2,.8,.2,1),opacity .3s}
+.mo-play:hover img{transform:scale(1.04);opacity:.85}
+.mo-play .pb{position:absolute;left:50%;top:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;background:var(--pink);display:grid;place-items:center;box-shadow:0 10px 30px -8px rgba(224,40,125,.7);transition:transform .25s}
+.mo-play:hover .pb{transform:scale(1.1)}
+.mo-play .pb svg{width:22px;height:22px;margin-left:4px;fill:#fff}
+.mo iframe{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:22px;background:#000}
+.mo figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:12px 4px 0;font:500 12px var(--mono);color:var(--muted)}
+.mo figcaption b{font:700 18px var(--display);letter-spacing:-.02em;color:var(--ink)}
+.mo figcaption a{color:var(--muted);text-decoration:none}.mo figcaption a:hover{color:var(--pink)}
+@media (max-width:700px){.mo-grid{grid-template-columns:1fr}}
+
 
 /* code */
 .repos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:clamp(24px,4vw,44px)}
@@ -215,7 +229,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font:5
   <div class="wrap">
     <a class="brand" href="#cover">Mercy Nubi<b>.</b></a>
     <nav aria-label="Sections">
-      <a href="#hello">About</a><a href="#product">Product</a><a href="#brand">Brand</a><a href="#code">Code</a><a href="#process">Process</a>
+      <a href="#hello">About</a><a href="#product">Product</a><a href="#brand">Brand</a><a href="#motion-design">Motion</a><a href="#code">Code</a><a href="#process">Process</a>
     </nav>
     <a class="hire" href="#contact">Hire me</a>
   </div>
@@ -324,6 +338,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font:5
       <ol class="toc">
         <li><a href="#product"><b>Product design</b><span>Faveremit · Our Padi · Zenni · Uglycash</span></a></li>
         <li><a href="#brand"><b>Brand identity</b><span>Morrow · fizzili</span></a></li>
+        <li><a href="#motion-design"><b>Motion design</b><span>4 After Effects pieces</span></a></li>
         <li><a href="#code"><b>Code</b><span>Live prototypes on GitHub</span></a></li>
         <li><a href="#process"><b>How I work</b><span>Understand → Refine</span></a></li>
       </ol>
@@ -458,9 +473,42 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font:5
   <div class="bleed rv"><img src="fizzili/assets/04-cans.jpg" alt="Four fizzili soda cans" loading="lazy"></div>
   <div class="grid2 rv"><img src="fizzili/assets/10-mural.jpg" alt="fizzili painted wall mural" loading="lazy"><img src="fizzili/assets/12-twirl.jpg" alt="Person twirling penne from a fizzili cup" loading="lazy"></div>
 
+  <!-- DIVIDER: MOTION -->
+  <a class="slide divider" id="motion-design" href="#motion" style="text-decoration:none">
+    <div class="meta"><b>Chapter 03</b><span>4 pieces</span></div>
+    <svg class="arrow" viewBox="0 0 120 60" fill="none" stroke-width="5" aria-hidden="true"><path d="M2 30h110M86 4l26 26-26 26"/></svg>
+    <div><h2>Motion<br>design<span>.</span></h2><p>After Effects · Animation · Product motion</p></div>
+  </a>
+
+  <section class="slide" id="motion">
+    <div class="meta"><b>Motion · After Effects</b><span>Mercy Nubi · Portfolio 2026</span></div>
+    <div class="split">
+      <h2 class="big">Things that<br>move.</h2>
+      <p class="lead">Animation brings a product to life. Here are motion pieces I designed and animated in After Effects. Tap any one to play it here.</p>
+    </div>
+    <div class="mo-grid">
+      <figure class="mo">
+        <button class="mo-play" type="button" data-yt="t64DOKfkAAs" aria-label="Play motion piece 01"><img src="https://i.ytimg.com/vi/t64DOKfkAAs/hqdefault.jpg" alt="Motion piece 01 preview" loading="lazy"><span class="pb"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg></span></button>
+        <figcaption><b>Motion 01</b><a href="https://youtu.be/t64DOKfkAAs" target="_blank" rel="noopener">Watch on YouTube ↗</a></figcaption>
+      </figure>
+      <figure class="mo">
+        <button class="mo-play" type="button" data-yt="5iIaUMu8HWc" aria-label="Play motion piece 02"><img src="https://i.ytimg.com/vi/5iIaUMu8HWc/hqdefault.jpg" alt="Motion piece 02 preview" loading="lazy"><span class="pb"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg></span></button>
+        <figcaption><b>Motion 02</b><a href="https://youtu.be/5iIaUMu8HWc" target="_blank" rel="noopener">Watch on YouTube ↗</a></figcaption>
+      </figure>
+      <figure class="mo">
+        <button class="mo-play" type="button" data-yt="imx4ZW3AHkw" aria-label="Play motion piece 03"><img src="https://i.ytimg.com/vi/imx4ZW3AHkw/hqdefault.jpg" alt="Motion piece 03 preview" loading="lazy"><span class="pb"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg></span></button>
+        <figcaption><b>Motion 03</b><a href="https://youtu.be/imx4ZW3AHkw" target="_blank" rel="noopener">Watch on YouTube ↗</a></figcaption>
+      </figure>
+      <figure class="mo">
+        <button class="mo-play" type="button" data-yt="anneS8ZvI7s" aria-label="Play motion piece 04"><img src="https://i.ytimg.com/vi/anneS8ZvI7s/hqdefault.jpg" alt="Motion piece 04 preview" loading="lazy"><span class="pb"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg></span></button>
+        <figcaption><b>Motion 04</b><a href="https://youtu.be/anneS8ZvI7s" target="_blank" rel="noopener">Watch on YouTube ↗</a></figcaption>
+      </figure>
+    </div>
+  </section>
+
   <!-- DIVIDER: CODE -->
   <a class="slide divider" id="code" href="#repos" style="text-decoration:none">
-    <div class="meta"><b>Chapter 03</b><span>3 live prototypes</span></div>
+    <div class="meta"><b>Chapter 04</b><span>3 live prototypes</span></div>
     <svg class="arrow" viewBox="0 0 120 60" fill="none" stroke-width="5" aria-hidden="true"><path d="M2 30h110M86 4l26 26-26 26"/></svg>
     <div><h2>Code<span>.</span></h2><p>Design ideas, shipped in code</p></div>
   </a>
@@ -515,6 +563,14 @@ document.getElementById('copy').addEventListener('click', e => {
   const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } }), { rootMargin: '0px 0px -6% 0px' });
   els.forEach(el => { if (el.getBoundingClientRect().top < innerHeight) el.classList.add('in'); else io.observe(el); });
 })();
+
+document.querySelectorAll('.mo-play').forEach(b => b.addEventListener('click', () => {
+  const f = document.createElement('iframe');
+  f.src = 'https://www.youtube-nocookie.com/embed/' + b.dataset.yt + '?autoplay=1&rel=0&playsinline=1';
+  f.title = b.getAttribute('aria-label').replace('Play ','');
+  f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen'; f.allowFullscreen = true;
+  b.replaceWith(f);
+}));
 </script>
 </body>
 </html>
