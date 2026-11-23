@@ -10,7 +10,7 @@
 <meta property="og:image" content="/assets/boards/zenni-1.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Silkscreen:wght@400;700&display=swap">
 <style>
 :root{
   --paper:#F6F5F1; --white:#FFFFFF; --ink:#111014; --muted:#6A6670; --line:#E3E0D9;
@@ -135,6 +135,36 @@ h2.big em{font-style:normal;color:var(--muted);font-weight:400}
 .divider h2 span{color:var(--pink)}
 .divider p{font:500 13px var(--mono);color:#8d8995;margin-top:16px}
 
+
+/* ===== COVER: unboxing my portfolio ===== */
+.unbox{--grid:rgba(59,76,202,.11);background:#FBF7EF;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:44px 44px;padding:0;min-height:min(94vh,920px);display:flex;flex-direction:column;justify-content:space-between}
+.unbox .row{padding:18px clamp(22px,4vw,56px) 0;position:relative;z-index:4}
+.tape{overflow:hidden;background:#FFF6E4;border-bottom:2px dashed rgba(17,16,20,.12);position:relative;z-index:4}
+.tape.bottom{border-bottom:0;border-top:2px dashed rgba(17,16,20,.12)}
+.tape-track{display:flex;width:max-content;gap:18px;align-items:center;padding:12px 0;will-change:transform}
+.stk{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font:700 13px 'Silkscreen',var(--mono);letter-spacing:.04em;padding:8px 14px;border-radius:12px;box-shadow:0 2px 0 rgba(17,16,20,.15);transform:rotate(var(--r,0deg))}
+.stk.p{background:var(--pink);color:#fff}.stk.i{background:var(--indigo);color:#fff}.stk.y{background:#FFD43B;color:var(--ink)}.stk.w{background:#fff;color:var(--ink);border:2px solid var(--ink)}
+.stk svg{width:18px;height:18px}
+.tape .ico{width:38px;height:38px;flex:none}
+.stage{position:relative;flex:1;display:grid;place-items:center;min-height:min(62vh,600px);perspective:1200px;padding:10px 16px}
+.arc{position:absolute;left:0;right:0;margin:0 auto;top:0;width:min(880px,96%);overflow:visible;z-index:1;pointer-events:none}
+.arc text{font:700 44px 'Silkscreen',var(--mono);fill:var(--indigo);letter-spacing:0}
+.arc .dots{fill:var(--pink)}
+.boxwrap{position:relative;z-index:2;width:min(420px,58vw);margin-top:clamp(120px,13vw,190px);transform-style:preserve-3d;cursor:pointer;will-change:transform}
+.boxwrap img{width:100%;height:auto;display:block;filter:drop-shadow(0 30px 30px rgba(59,76,202,.18));user-select:none;-webkit-user-drag:none}
+.boxshadow{position:absolute;left:12%;right:12%;bottom:-26px;height:34px;border-radius:50%;background:radial-gradient(closest-side,rgba(17,16,20,.28),transparent);z-index:1;will-change:transform,opacity}
+.boxhint{position:absolute;left:50%;bottom:-62px;transform:translateX(-50%);font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.float{position:absolute;z-index:3;text-decoration:none;will-change:transform}
+.float.folder{display:flex;flex-direction:column;align-items:center;gap:6px;font:700 12px 'Silkscreen',var(--mono);color:var(--ink)}
+.float.folder svg{width:clamp(54px,5.4vw,78px);filter:drop-shadow(0 10px 14px rgba(59,76,202,.25))}
+.fl1{left:8%;top:34%}.fl2{left:16%;top:66%}.fl3{right:9%;top:30%}.fl4{right:15%;top:64%}
+.fl5{left:28%;top:76%}.fl6{right:28%;top:78%}.fl7{left:5%;top:84%}.fl8{right:5%;top:86%}
+.float.icon svg{width:clamp(40px,4vw,58px);height:auto;filter:drop-shadow(0 6px 10px rgba(17,16,20,.15))}
+.unbox .sub{padding:0 clamp(22px,4vw,56px) 18px;position:relative;z-index:4}
+.unbox h1.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (max-width:760px){.unbox{min-height:auto}.arc text{font-size:46px}.boxwrap{width:62vw;margin-top:84px}.fl5,.fl6,.fl7,.fl8{display:none}.fl1{left:1%;top:42%}.fl2{left:1%;top:68%}.fl3{right:1%;top:42%}.fl4{right:1%;top:68%}.float.folder svg{width:40px}.float.folder{font-size:9px}.stage{min-height:480px}.boxhint{bottom:-54px}}
+@media (prefers-reduced-motion:reduce){.tape-track{transform:none!important}}
+
 /* project intro */
 .proj-intro{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(24px,5vw,72px);align-items:center}
 .proj-intro h3{font:800 clamp(34px,4.6vw,66px)/.95 var(--display);letter-spacing:-.045em;margin-bottom:22px}
@@ -222,6 +252,8 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font:5
 .rv.in{transform:none}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.band-track,.cursor,.avatar .sticker i{animation:none}.rv{transform:none;transition:none}*{transition:none!important}}
 </style>
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('m');setTimeout(()=>document.documentElement.classList.remove('m'),4000)}</script>
+<style>.m .unbox .float,.m .unbox .boxwrap,.m .unbox .arc{opacity:0}</style>
 </head>
 <body>
 
@@ -238,7 +270,8 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font:5
 <main class="wrap">
 
   <!-- 01 COVER -->
-  <section class="slide cover" id="cover" aria-label="Portfolio cover">
+  <section class="slide cover unbox" id="cover" aria-label="Portfolio cover">
+    <div class="tape top" aria-hidden="true"><div class="tape-track"><span class="stk p" style="--r:-2deg">Born to design</span><span class="ico"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M20 34C8 25 2 18 2 11 2 5.5 6.5 2 11 2c4 0 7 2.5 9 6 2-3.5 5-6 9-6 4.5 0 9 3.5 9 9 0 7-6 14-18 23z" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><circle cx="14" cy="14" r="3" fill="#fff"/><circle cx="26" cy="14" r="3" fill="#fff"/><circle cx="14.6" cy="14.6" r="1.4" fill="#111014"/><circle cx="26.6" cy="14.6" r="1.4" fill="#111014"/></svg></span><span class="stk i" style="--r:2deg">Raised by deadlines</span><span class="ico"><svg viewBox="0 0 44 42" aria-hidden="true"><path d="M22 2l6 13 14 2-10 10 2.5 14L22 34l-12.5 7L12 27 2 17l14-2z" fill="#3B4CCA" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 22c2 3 8 3 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="18" r="1.8" fill="#fff"/><circle cx="26" cy="18" r="1.8" fill="#fff"/></svg></span><span class="stk y" style="--r:-1deg">Product · Brand · Motion · Code</span><span class="ico"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2c2 10 8 16 18 18-10 2-16 8-18 18-2-10-8-16-18-18 10-2 16-8 18-18z" fill="#FFD43B" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/></svg></span><span class="stk w" style="--r:2deg">Mercy Nubi ✦ Portfolio 2026</span><span class="ico"><svg viewBox="0 0 44 36" aria-hidden="true"><rect x="2" y="2" width="40" height="32" rx="9" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><path d="M18 11l11 7-11 7z" fill="#fff"/></svg></span><span class="stk p" style="--r:1deg">Lagos, Nigeria</span><span class="ico"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M20 34C8 25 2 18 2 11 2 5.5 6.5 2 11 2c4 0 7 2.5 9 6 2-3.5 5-6 9-6 4.5 0 9 3.5 9 9 0 7-6 14-18 23z" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><circle cx="14" cy="14" r="3" fill="#fff"/><circle cx="26" cy="14" r="3" fill="#fff"/><circle cx="14.6" cy="14.6" r="1.4" fill="#111014"/><circle cx="26.6" cy="14.6" r="1.4" fill="#111014"/></svg></span><span class="stk i" style="--r:-2deg">Open to work</span><span class="ico"><svg viewBox="0 0 44 42" aria-hidden="true"><path d="M22 2l6 13 14 2-10 10 2.5 14L22 34l-12.5 7L12 27 2 17l14-2z" fill="#3B4CCA" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 22c2 3 8 3 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="18" r="1.8" fill="#fff"/><circle cx="26" cy="18" r="1.8" fill="#fff"/></svg></span><span class="stk p" style="--r:-2deg">Born to design</span><span class="ico"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M20 34C8 25 2 18 2 11 2 5.5 6.5 2 11 2c4 0 7 2.5 9 6 2-3.5 5-6 9-6 4.5 0 9 3.5 9 9 0 7-6 14-18 23z" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><circle cx="14" cy="14" r="3" fill="#fff"/><circle cx="26" cy="14" r="3" fill="#fff"/><circle cx="14.6" cy="14.6" r="1.4" fill="#111014"/><circle cx="26.6" cy="14.6" r="1.4" fill="#111014"/></svg></span><span class="stk i" style="--r:2deg">Raised by deadlines</span><span class="ico"><svg viewBox="0 0 44 42" aria-hidden="true"><path d="M22 2l6 13 14 2-10 10 2.5 14L22 34l-12.5 7L12 27 2 17l14-2z" fill="#3B4CCA" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 22c2 3 8 3 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="18" r="1.8" fill="#fff"/><circle cx="26" cy="18" r="1.8" fill="#fff"/></svg></span><span class="stk y" style="--r:-1deg">Product · Brand · Motion · Code</span><span class="ico"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2c2 10 8 16 18 18-10 2-16 8-18 18-2-10-8-16-18-18 10-2 16-8 18-18z" fill="#FFD43B" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/></svg></span><span class="stk w" style="--r:2deg">Mercy Nubi ✦ Portfolio 2026</span><span class="ico"><svg viewBox="0 0 44 36" aria-hidden="true"><rect x="2" y="2" width="40" height="32" rx="9" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><path d="M18 11l11 7-11 7z" fill="#fff"/></svg></span><span class="stk p" style="--r:1deg">Lagos, Nigeria</span><span class="ico"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M20 34C8 25 2 18 2 11 2 5.5 6.5 2 11 2c4 0 7 2.5 9 6 2-3.5 5-6 9-6 4.5 0 9 3.5 9 9 0 7-6 14-18 23z" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><circle cx="14" cy="14" r="3" fill="#fff"/><circle cx="26" cy="14" r="3" fill="#fff"/><circle cx="14.6" cy="14.6" r="1.4" fill="#111014"/><circle cx="26.6" cy="14.6" r="1.4" fill="#111014"/></svg></span><span class="stk i" style="--r:-2deg">Open to work</span><span class="ico"><svg viewBox="0 0 44 42" aria-hidden="true"><path d="M22 2l6 13 14 2-10 10 2.5 14L22 34l-12.5 7L12 27 2 17l14-2z" fill="#3B4CCA" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 22c2 3 8 3 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="18" r="1.8" fill="#fff"/><circle cx="26" cy="18" r="1.8" fill="#fff"/></svg></span><span class="stk p" style="--r:-2deg">Born to design</span><span class="ico"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M20 34C8 25 2 18 2 11 2 5.5 6.5 2 11 2c4 0 7 2.5 9 6 2-3.5 5-6 9-6 4.5 0 9 3.5 9 9 0 7-6 14-18 23z" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><circle cx="14" cy="14" r="3" fill="#fff"/><circle cx="26" cy="14" r="3" fill="#fff"/><circle cx="14.6" cy="14.6" r="1.4" fill="#111014"/><circle cx="26.6" cy="14.6" r="1.4" fill="#111014"/></svg></span><span class="stk i" style="--r:2deg">Raised by deadlines</span><span class="ico"><svg viewBox="0 0 44 42" aria-hidden="true"><path d="M22 2l6 13 14 2-10 10 2.5 14L22 34l-12.5 7L12 27 2 17l14-2z" fill="#3B4CCA" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 22c2 3 8 3 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="18" r="1.8" fill="#fff"/><circle cx="26" cy="18" r="1.8" fill="#fff"/></svg></span><span class="stk y" style="--r:-1deg">Product · Brand · Motion · Code</span><span class="ico"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2c2 10 8 16 18 18-10 2-16 8-18 18-2-10-8-16-18-18 10-2 16-8 18-18z" fill="#FFD43B" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/></svg></span><span class="stk w" style="--r:2deg">Mercy Nubi ✦ Portfolio 2026</span><span class="ico"><svg viewBox="0 0 44 36" aria-hidden="true"><rect x="2" y="2" width="40" height="32" rx="9" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><path d="M18 11l11 7-11 7z" fill="#fff"/></svg></span><span class="stk p" style="--r:1deg">Lagos, Nigeria</span><span class="ico"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M20 34C8 25 2 18 2 11 2 5.5 6.5 2 11 2c4 0 7 2.5 9 6 2-3.5 5-6 9-6 4.5 0 9 3.5 9 9 0 7-6 14-18 23z" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><circle cx="14" cy="14" r="3" fill="#fff"/><circle cx="26" cy="14" r="3" fill="#fff"/><circle cx="14.6" cy="14.6" r="1.4" fill="#111014"/><circle cx="26.6" cy="14.6" r="1.4" fill="#111014"/></svg></span><span class="stk i" style="--r:-2deg">Open to work</span><span class="ico"><svg viewBox="0 0 44 42" aria-hidden="true"><path d="M22 2l6 13 14 2-10 10 2.5 14L22 34l-12.5 7L12 27 2 17l14-2z" fill="#3B4CCA" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 22c2 3 8 3 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="18" r="1.8" fill="#fff"/><circle cx="26" cy="18" r="1.8" fill="#fff"/></svg></span></div></div>
     <div class="row">
       <span>Name<b>Mercy Nubi</b></span>
       <span>Role<b>Product Designer, Motion Designer &amp; Frontend</b></span>
@@ -246,16 +279,28 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font:5
       <span>Contact<b>mercynubii@gmail.com</b></span>
       <span>Edition<b>Portfolio 2026</b></span>
     </div>
-    <div class="folders" aria-hidden="false">
-      <a class="folder f1" href="#product"><svg viewBox="0 0 64 50" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4-4h16l6 6h30a4 4 0 0 1 4 4v30a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#5B8DEF"/><path d="M2 16h60v28a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#7AA6FF"/></svg>product</a>
-      <a class="folder f2" href="#brand"><svg viewBox="0 0 64 50" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4-4h16l6 6h30a4 4 0 0 1 4 4v30a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#E0287D"/><path d="M2 16h60v28a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#FF6BB0"/></svg>brand</a>
-      <a class="folder f3" href="#code"><svg viewBox="0 0 64 50" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4-4h16l6 6h30a4 4 0 0 1 4 4v30a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#3B4CCA"/><path d="M2 16h60v28a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#5E6EE6"/></svg>code</a>
+    <h1 class="sr">Mercy Nubi, Portfolio 2026</h1>
+    <div class="stage" id="stage">
+      <svg class="arc" viewBox="0 0 900 300" aria-hidden="true"><defs><path id="arcPath" d="M40 270 Q450 -40 860 270"/></defs><text><textPath href="#arcPath" startOffset="50%" text-anchor="middle" id="arcText">UNBOXING MY<tspan class="dots"> PORTFOLIO ...</tspan></textPath></text></svg>
+      <div class="boxwrap" id="box" role="button" tabindex="0" aria-label="Open the box: see what is inside">
+        <span class="boxshadow" id="boxShadow"></span>
+        <img src="assets/box.webp" width="817" height="820" alt="A cardboard box covered in Mercy Nubi stickers: Portfolio 2026, product, motion, brand and code" fetchpriority="high">
+        <span class="boxhint">Tap the box to open it</span>
+      </div>
+      <a class="float folder fl1" href="#product"><svg viewBox="0 0 64 50" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4-4h16l6 6h30a4 4 0 0 1 4 4v30a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#5B8DEF" stroke="#111014" stroke-width="2"/><path d="M2 16h60v28a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#7AA6FF" stroke="#111014" stroke-width="2"/></svg>product</a>
+      <a class="float folder fl3" href="#brand"><svg viewBox="0 0 64 50" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4-4h16l6 6h30a4 4 0 0 1 4 4v30a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#E0287D" stroke="#111014" stroke-width="2"/><path d="M2 16h60v28a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#FF6BB0" stroke="#111014" stroke-width="2"/></svg>brand</a>
+      <a class="float folder fl2" href="#motion-design"><svg viewBox="0 0 64 50" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4-4h16l6 6h30a4 4 0 0 1 4 4v30a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#FFB800" stroke="#111014" stroke-width="2"/><path d="M2 16h60v28a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#FFD43B" stroke="#111014" stroke-width="2"/></svg>motion</a>
+      <a class="float folder fl4" href="#code"><svg viewBox="0 0 64 50" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4-4h16l6 6h30a4 4 0 0 1 4 4v30a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#3B4CCA" stroke="#111014" stroke-width="2"/><path d="M2 16h60v28a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#5E6EE6" stroke="#111014" stroke-width="2"/></svg>code</a>
+      <span class="float icon fl5" aria-hidden="true"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M20 34C8 25 2 18 2 11 2 5.5 6.5 2 11 2c4 0 7 2.5 9 6 2-3.5 5-6 9-6 4.5 0 9 3.5 9 9 0 7-6 14-18 23z" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><circle cx="14" cy="14" r="3" fill="#fff"/><circle cx="26" cy="14" r="3" fill="#fff"/><circle cx="14.6" cy="14.6" r="1.4" fill="#111014"/><circle cx="26.6" cy="14.6" r="1.4" fill="#111014"/></svg></span>
+      <span class="float icon fl6" aria-hidden="true"><svg viewBox="0 0 44 42" aria-hidden="true"><path d="M22 2l6 13 14 2-10 10 2.5 14L22 34l-12.5 7L12 27 2 17l14-2z" fill="#3B4CCA" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 22c2 3 8 3 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="18" r="1.8" fill="#fff"/><circle cx="26" cy="18" r="1.8" fill="#fff"/></svg></span>
+      <span class="float icon fl7" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2c2 10 8 16 18 18-10 2-16 8-18 18-2-10-8-16-18-18 10-2 16-8 18-18z" fill="#FFD43B" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/></svg></span>
+      <span class="float icon fl8" aria-hidden="true"><svg viewBox="0 0 44 36" aria-hidden="true"><rect x="2" y="2" width="40" height="32" rx="9" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><path d="M18 11l11 7-11 7z" fill="#fff"/></svg></span>
     </div>
-    <h1>Portfolio<span class="yr">(2026)</span></h1>
     <div class="sub">
       <p>I design the product, <span>make it move,</span> then I build it. Product design, brand identity, motion design and code.</p>
       <a class="links-one hire" href="#contents">What’s inside ↓</a>
     </div>
+    <div class="tape bottom" aria-hidden="true"><div class="tape-track"><span class="stk p" style="--r:-2deg">Born to design</span><span class="ico"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M20 34C8 25 2 18 2 11 2 5.5 6.5 2 11 2c4 0 7 2.5 9 6 2-3.5 5-6 9-6 4.5 0 9 3.5 9 9 0 7-6 14-18 23z" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><circle cx="14" cy="14" r="3" fill="#fff"/><circle cx="26" cy="14" r="3" fill="#fff"/><circle cx="14.6" cy="14.6" r="1.4" fill="#111014"/><circle cx="26.6" cy="14.6" r="1.4" fill="#111014"/></svg></span><span class="stk i" style="--r:2deg">Raised by deadlines</span><span class="ico"><svg viewBox="0 0 44 42" aria-hidden="true"><path d="M22 2l6 13 14 2-10 10 2.5 14L22 34l-12.5 7L12 27 2 17l14-2z" fill="#3B4CCA" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 22c2 3 8 3 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="18" r="1.8" fill="#fff"/><circle cx="26" cy="18" r="1.8" fill="#fff"/></svg></span><span class="stk y" style="--r:-1deg">Product · Brand · Motion · Code</span><span class="ico"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2c2 10 8 16 18 18-10 2-16 8-18 18-2-10-8-16-18-18 10-2 16-8 18-18z" fill="#FFD43B" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/></svg></span><span class="stk w" style="--r:2deg">Mercy Nubi ✦ Portfolio 2026</span><span class="ico"><svg viewBox="0 0 44 36" aria-hidden="true"><rect x="2" y="2" width="40" height="32" rx="9" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><path d="M18 11l11 7-11 7z" fill="#fff"/></svg></span><span class="stk p" style="--r:1deg">Lagos, Nigeria</span><span class="ico"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M20 34C8 25 2 18 2 11 2 5.5 6.5 2 11 2c4 0 7 2.5 9 6 2-3.5 5-6 9-6 4.5 0 9 3.5 9 9 0 7-6 14-18 23z" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><circle cx="14" cy="14" r="3" fill="#fff"/><circle cx="26" cy="14" r="3" fill="#fff"/><circle cx="14.6" cy="14.6" r="1.4" fill="#111014"/><circle cx="26.6" cy="14.6" r="1.4" fill="#111014"/></svg></span><span class="stk i" style="--r:-2deg">Open to work</span><span class="ico"><svg viewBox="0 0 44 42" aria-hidden="true"><path d="M22 2l6 13 14 2-10 10 2.5 14L22 34l-12.5 7L12 27 2 17l14-2z" fill="#3B4CCA" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 22c2 3 8 3 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="18" r="1.8" fill="#fff"/><circle cx="26" cy="18" r="1.8" fill="#fff"/></svg></span><span class="stk p" style="--r:-2deg">Born to design</span><span class="ico"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M20 34C8 25 2 18 2 11 2 5.5 6.5 2 11 2c4 0 7 2.5 9 6 2-3.5 5-6 9-6 4.5 0 9 3.5 9 9 0 7-6 14-18 23z" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><circle cx="14" cy="14" r="3" fill="#fff"/><circle cx="26" cy="14" r="3" fill="#fff"/><circle cx="14.6" cy="14.6" r="1.4" fill="#111014"/><circle cx="26.6" cy="14.6" r="1.4" fill="#111014"/></svg></span><span class="stk i" style="--r:2deg">Raised by deadlines</span><span class="ico"><svg viewBox="0 0 44 42" aria-hidden="true"><path d="M22 2l6 13 14 2-10 10 2.5 14L22 34l-12.5 7L12 27 2 17l14-2z" fill="#3B4CCA" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 22c2 3 8 3 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="18" r="1.8" fill="#fff"/><circle cx="26" cy="18" r="1.8" fill="#fff"/></svg></span><span class="stk y" style="--r:-1deg">Product · Brand · Motion · Code</span><span class="ico"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2c2 10 8 16 18 18-10 2-16 8-18 18-2-10-8-16-18-18 10-2 16-8 18-18z" fill="#FFD43B" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/></svg></span><span class="stk w" style="--r:2deg">Mercy Nubi ✦ Portfolio 2026</span><span class="ico"><svg viewBox="0 0 44 36" aria-hidden="true"><rect x="2" y="2" width="40" height="32" rx="9" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><path d="M18 11l11 7-11 7z" fill="#fff"/></svg></span><span class="stk p" style="--r:1deg">Lagos, Nigeria</span><span class="ico"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M20 34C8 25 2 18 2 11 2 5.5 6.5 2 11 2c4 0 7 2.5 9 6 2-3.5 5-6 9-6 4.5 0 9 3.5 9 9 0 7-6 14-18 23z" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><circle cx="14" cy="14" r="3" fill="#fff"/><circle cx="26" cy="14" r="3" fill="#fff"/><circle cx="14.6" cy="14.6" r="1.4" fill="#111014"/><circle cx="26.6" cy="14.6" r="1.4" fill="#111014"/></svg></span><span class="stk i" style="--r:-2deg">Open to work</span><span class="ico"><svg viewBox="0 0 44 42" aria-hidden="true"><path d="M22 2l6 13 14 2-10 10 2.5 14L22 34l-12.5 7L12 27 2 17l14-2z" fill="#3B4CCA" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 22c2 3 8 3 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="18" r="1.8" fill="#fff"/><circle cx="26" cy="18" r="1.8" fill="#fff"/></svg></span><span class="stk p" style="--r:-2deg">Born to design</span><span class="ico"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M20 34C8 25 2 18 2 11 2 5.5 6.5 2 11 2c4 0 7 2.5 9 6 2-3.5 5-6 9-6 4.5 0 9 3.5 9 9 0 7-6 14-18 23z" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><circle cx="14" cy="14" r="3" fill="#fff"/><circle cx="26" cy="14" r="3" fill="#fff"/><circle cx="14.6" cy="14.6" r="1.4" fill="#111014"/><circle cx="26.6" cy="14.6" r="1.4" fill="#111014"/></svg></span><span class="stk i" style="--r:2deg">Raised by deadlines</span><span class="ico"><svg viewBox="0 0 44 42" aria-hidden="true"><path d="M22 2l6 13 14 2-10 10 2.5 14L22 34l-12.5 7L12 27 2 17l14-2z" fill="#3B4CCA" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 22c2 3 8 3 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="18" r="1.8" fill="#fff"/><circle cx="26" cy="18" r="1.8" fill="#fff"/></svg></span><span class="stk y" style="--r:-1deg">Product · Brand · Motion · Code</span><span class="ico"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2c2 10 8 16 18 18-10 2-16 8-18 18-2-10-8-16-18-18 10-2 16-8 18-18z" fill="#FFD43B" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/></svg></span><span class="stk w" style="--r:2deg">Mercy Nubi ✦ Portfolio 2026</span><span class="ico"><svg viewBox="0 0 44 36" aria-hidden="true"><rect x="2" y="2" width="40" height="32" rx="9" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><path d="M18 11l11 7-11 7z" fill="#fff"/></svg></span><span class="stk p" style="--r:1deg">Lagos, Nigeria</span><span class="ico"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M20 34C8 25 2 18 2 11 2 5.5 6.5 2 11 2c4 0 7 2.5 9 6 2-3.5 5-6 9-6 4.5 0 9 3.5 9 9 0 7-6 14-18 23z" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><circle cx="14" cy="14" r="3" fill="#fff"/><circle cx="26" cy="14" r="3" fill="#fff"/><circle cx="14.6" cy="14.6" r="1.4" fill="#111014"/><circle cx="26.6" cy="14.6" r="1.4" fill="#111014"/></svg></span><span class="stk i" style="--r:-2deg">Open to work</span><span class="ico"><svg viewBox="0 0 44 42" aria-hidden="true"><path d="M22 2l6 13 14 2-10 10 2.5 14L22 34l-12.5 7L12 27 2 17l14-2z" fill="#3B4CCA" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 22c2 3 8 3 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="18" r="1.8" fill="#fff"/><circle cx="26" cy="18" r="1.8" fill="#fff"/></svg></span></div></div>
   </section>
 
   <!-- 02 HELLO -->
@@ -551,6 +596,53 @@ document.querySelectorAll('.mo-play').forEach(b => b.addEventListener('click', (
   f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen'; f.allowFullscreen = true;
   b.replaceWith(f);
 }));
+</script>
+
+<script type="module">
+import { animate, scroll, stagger, spring } from "https://cdn.jsdelivr.net/npm/motion@12.29.3/+esm";
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+requestAnimationFrame(()=>document.documentElement.classList.remove('m'));
+const cover = document.getElementById('cover'), stage = document.getElementById('stage');
+const box = document.getElementById('box'), shadow = document.getElementById('boxShadow');
+const floats = [...stage.querySelectorAll('.float')];
+const tapes = [...cover.querySelectorAll('.tape-track')];
+
+// sticker tapes scroll like packing tape
+tapes.forEach((t, i) => { if (!reduce) animate(t, { x: i ? ['-33.333%', '0%'] : ['0%', '-33.333%'] }, { duration: 38, repeat: Infinity, ease: 'linear' }); });
+
+if (reduce) { /* show everything still */ } else {
+  [...floats, box, document.querySelector('.arc')].forEach(el => el.style.opacity = 0);
+  // 1. headline arcs in
+  animate('.arc', { opacity: [0, 1], y: [30, 0], scale: [0.9, 1] }, { duration: 0.8, delay: 0.15, ease: [0.2, 0.8, 0.2, 1] });
+  // 2. the box drops in and lands with a bounce
+  animate(box, { y: [-420, 0], rotate: [-18, 0], opacity: [0, 1] }, { type: spring, stiffness: 170, damping: 11, mass: 1.1, delay: 0.35 });
+  animate(shadow, { scaleX: [0.2, 1], opacity: [0, 1] }, { duration: 0.7, delay: 0.55 });
+  // 3. stickers and folders pop out around it
+  animate(floats, { scale: [0, 1], rotate: [-25, 0], opacity: [0, 1] }, { type: spring, stiffness: 260, damping: 14, delay: stagger(0.08, { startDelay: 1.0 }) });
+  // 4. idle: the box gently floats, stickers bob
+  setTimeout(() => {
+    animate(box, { y: [0, -16, 0], rotate: [-1.5, 1.5, -1.5] }, { duration: 5, repeat: Infinity, ease: 'easeInOut' });
+    animate(shadow, { scaleX: [1, 0.86, 1], opacity: [1, 0.7, 1] }, { duration: 5, repeat: Infinity, ease: 'easeInOut' });
+    floats.forEach((f, i) => animate(f, { y: [0, i % 2 ? 10 : -10, 0], rotate: [0, i % 2 ? 4 : -4, 0] }, { duration: 3.2 + (i % 4) * 0.6, repeat: Infinity, ease: 'easeInOut', delay: i * 0.15 }));
+  }, 1900);
+  // 5. tilt toward the cursor (laptops)
+  const img = box.querySelector('img');
+  stage.addEventListener('pointermove', e => {
+    if (e.pointerType !== 'mouse') return;
+    const r = stage.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+    animate(img, { rotateY: x * 18, rotateX: -y * 14 }, { type: spring, stiffness: 120, damping: 14 });
+  });
+  stage.addEventListener('pointerleave', () => animate(img, { rotateY: 0, rotateX: 0 }, { type: spring, stiffness: 120, damping: 14 }));
+  // 6. scrolling away: the box shrinks, tilts and drifts up
+  scroll(animate(stage, { y: [0, -60], scale: [1, 0.9], opacity: [1, 0.4] }, { ease: 'linear' }), { target: cover, offset: ['start start', 'end start'] });
+}
+// 7. tap the box: it wiggles open, then you are taken inside
+async function openBox() {
+  if (!reduce) await animate(box.querySelector('img'), { rotate: [0, -8, 8, -5, 0], scale: [1, 1.08, 1] }, { duration: 0.6 });
+  document.getElementById('contents')?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+}
+box.addEventListener('click', openBox);
+box.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openBox(); } });
 </script>
 </body>
 </html>
