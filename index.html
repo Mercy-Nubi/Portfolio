@@ -186,7 +186,7 @@ h2.big em{font-style:normal;color:var(--muted);font-weight:400}
 .lbl.i{background:var(--indigo)}.lbl.w{background:#fff;color:var(--ink)}
 .back .tags .lbl:nth-child(1){rotate:-4deg}.back .tags .lbl:nth-child(2){rotate:3deg}
 .peekclip{position:absolute;left:var(--l);top:var(--t);width:calc(var(--r) - var(--l));height:calc(var(--b) - var(--t) + 3%);overflow:hidden;z-index:3;pointer-events:none}
-.peek{position:absolute;left:50%;bottom:0;width:62%;max-width:600px;transform:translate(-50%,100%)}
+.peek{position:absolute;left:50%;bottom:0;width:62%;max-width:600px;transform:translate(-50%,0%)}
 .peek img{width:100%;display:block}
 .peek::after{content:"";position:absolute;inset:0;background:radial-gradient(rgba(17,16,20,.5) 30%,transparent 32%) 0 0/5px 5px;-webkit-mask:url(https://d2ol7oe51mr4n9.cloudfront.net/user_33VtlYlqjGIvKMOQUyo0ROrS1d1/172c0f61-20f7-4a45-8d86-1454f12f2449.webp) center/100% 100%;mask:url(https://d2ol7oe51mr4n9.cloudfront.net/user_33VtlYlqjGIvKMOQUyo0ROrS1d1/172c0f61-20f7-4a45-8d86-1454f12f2449.webp) center/100% 100%;mix-blend-mode:multiply;opacity:.35}
 .back .bst{position:absolute;width:clamp(30px,4vw,58px)}
@@ -293,12 +293,10 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font:5
 @keyframes slide{to{transform:translateX(-50%)}}
 
 /* reveal: transform only, content always visible */
-.rv{transform:translateY(26px);transition:transform .9s cubic-bezier(.2,.7,.2,1)}
-.rv.in{transform:none}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.band-track,.cursor,.avatar .sticker i{animation:none}.rv{transform:none;transition:none}*{transition:none!important}}
 </style>
 <script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('m');setTimeout(()=>document.documentElement.classList.remove('m'),4000)}</script>
-<style>.m .unbox .float,.m .unbox .boxwrap,.m .unbox .arc{opacity:0}</style>
+<style>.m .unbox .float,.m .unbox .boxwrap,.m .unbox .arc,.m .inside .back,.m .inside .wl,.m .inside .yr,.m .inside .inbar,.m .inside .whisper{opacity:0}.m .peek{transform:translate(-50%,100%)!important}.m main > :not(.cover){opacity:0}</style>
 </head>
 <body>
 
@@ -349,7 +347,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font:5
     </div>
     <div class="tape bottom" aria-hidden="true"><div class="tape-track"><span class="stk p" style="--r:-2deg">Born to design</span><span class="ico"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M20 34C8 25 2 18 2 11 2 5.5 6.5 2 11 2c4 0 7 2.5 9 6 2-3.5 5-6 9-6 4.5 0 9 3.5 9 9 0 7-6 14-18 23z" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><circle cx="14" cy="14" r="3" fill="#fff"/><circle cx="26" cy="14" r="3" fill="#fff"/><circle cx="14.6" cy="14.6" r="1.4" fill="#111014"/><circle cx="26.6" cy="14.6" r="1.4" fill="#111014"/></svg></span><span class="stk i" style="--r:2deg">Raised by deadlines</span><span class="ico"><svg viewBox="0 0 44 42" aria-hidden="true"><path d="M22 2l6 13 14 2-10 10 2.5 14L22 34l-12.5 7L12 27 2 17l14-2z" fill="#3B4CCA" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 22c2 3 8 3 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="18" r="1.8" fill="#fff"/><circle cx="26" cy="18" r="1.8" fill="#fff"/></svg></span><span class="stk y" style="--r:-1deg">Product · Brand · Motion · Code</span><span class="ico"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2c2 10 8 16 18 18-10 2-16 8-18 18-2-10-8-16-18-18 10-2 16-8 18-18z" fill="#FFD43B" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/></svg></span><span class="stk w" style="--r:2deg">Mercy Nubi ✦ Portfolio 2026</span><span class="ico"><svg viewBox="0 0 44 36" aria-hidden="true"><rect x="2" y="2" width="40" height="32" rx="9" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><path d="M18 11l11 7-11 7z" fill="#fff"/></svg></span><span class="stk p" style="--r:1deg">Lagos, Nigeria</span><span class="ico"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M20 34C8 25 2 18 2 11 2 5.5 6.5 2 11 2c4 0 7 2.5 9 6 2-3.5 5-6 9-6 4.5 0 9 3.5 9 9 0 7-6 14-18 23z" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><circle cx="14" cy="14" r="3" fill="#fff"/><circle cx="26" cy="14" r="3" fill="#fff"/><circle cx="14.6" cy="14.6" r="1.4" fill="#111014"/><circle cx="26.6" cy="14.6" r="1.4" fill="#111014"/></svg></span><span class="stk i" style="--r:-2deg">Open to work</span><span class="ico"><svg viewBox="0 0 44 42" aria-hidden="true"><path d="M22 2l6 13 14 2-10 10 2.5 14L22 34l-12.5 7L12 27 2 17l14-2z" fill="#3B4CCA" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 22c2 3 8 3 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="18" r="1.8" fill="#fff"/><circle cx="26" cy="18" r="1.8" fill="#fff"/></svg></span><span class="stk p" style="--r:-2deg">Born to design</span><span class="ico"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M20 34C8 25 2 18 2 11 2 5.5 6.5 2 11 2c4 0 7 2.5 9 6 2-3.5 5-6 9-6 4.5 0 9 3.5 9 9 0 7-6 14-18 23z" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><circle cx="14" cy="14" r="3" fill="#fff"/><circle cx="26" cy="14" r="3" fill="#fff"/><circle cx="14.6" cy="14.6" r="1.4" fill="#111014"/><circle cx="26.6" cy="14.6" r="1.4" fill="#111014"/></svg></span><span class="stk i" style="--r:2deg">Raised by deadlines</span><span class="ico"><svg viewBox="0 0 44 42" aria-hidden="true"><path d="M22 2l6 13 14 2-10 10 2.5 14L22 34l-12.5 7L12 27 2 17l14-2z" fill="#3B4CCA" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 22c2 3 8 3 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="18" r="1.8" fill="#fff"/><circle cx="26" cy="18" r="1.8" fill="#fff"/></svg></span><span class="stk y" style="--r:-1deg">Product · Brand · Motion · Code</span><span class="ico"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2c2 10 8 16 18 18-10 2-16 8-18 18-2-10-8-16-18-18 10-2 16-8 18-18z" fill="#FFD43B" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/></svg></span><span class="stk w" style="--r:2deg">Mercy Nubi ✦ Portfolio 2026</span><span class="ico"><svg viewBox="0 0 44 36" aria-hidden="true"><rect x="2" y="2" width="40" height="32" rx="9" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><path d="M18 11l11 7-11 7z" fill="#fff"/></svg></span><span class="stk p" style="--r:1deg">Lagos, Nigeria</span><span class="ico"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M20 34C8 25 2 18 2 11 2 5.5 6.5 2 11 2c4 0 7 2.5 9 6 2-3.5 5-6 9-6 4.5 0 9 3.5 9 9 0 7-6 14-18 23z" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><circle cx="14" cy="14" r="3" fill="#fff"/><circle cx="26" cy="14" r="3" fill="#fff"/><circle cx="14.6" cy="14.6" r="1.4" fill="#111014"/><circle cx="26.6" cy="14.6" r="1.4" fill="#111014"/></svg></span><span class="stk i" style="--r:-2deg">Open to work</span><span class="ico"><svg viewBox="0 0 44 42" aria-hidden="true"><path d="M22 2l6 13 14 2-10 10 2.5 14L22 34l-12.5 7L12 27 2 17l14-2z" fill="#3B4CCA" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 22c2 3 8 3 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="18" r="1.8" fill="#fff"/><circle cx="26" cy="18" r="1.8" fill="#fff"/></svg></span><span class="stk p" style="--r:-2deg">Born to design</span><span class="ico"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M20 34C8 25 2 18 2 11 2 5.5 6.5 2 11 2c4 0 7 2.5 9 6 2-3.5 5-6 9-6 4.5 0 9 3.5 9 9 0 7-6 14-18 23z" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><circle cx="14" cy="14" r="3" fill="#fff"/><circle cx="26" cy="14" r="3" fill="#fff"/><circle cx="14.6" cy="14.6" r="1.4" fill="#111014"/><circle cx="26.6" cy="14.6" r="1.4" fill="#111014"/></svg></span><span class="stk i" style="--r:2deg">Raised by deadlines</span><span class="ico"><svg viewBox="0 0 44 42" aria-hidden="true"><path d="M22 2l6 13 14 2-10 10 2.5 14L22 34l-12.5 7L12 27 2 17l14-2z" fill="#3B4CCA" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 22c2 3 8 3 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="18" r="1.8" fill="#fff"/><circle cx="26" cy="18" r="1.8" fill="#fff"/></svg></span><span class="stk y" style="--r:-1deg">Product · Brand · Motion · Code</span><span class="ico"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2c2 10 8 16 18 18-10 2-16 8-18 18-2-10-8-16-18-18 10-2 16-8 18-18z" fill="#FFD43B" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/></svg></span><span class="stk w" style="--r:2deg">Mercy Nubi ✦ Portfolio 2026</span><span class="ico"><svg viewBox="0 0 44 36" aria-hidden="true"><rect x="2" y="2" width="40" height="32" rx="9" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><path d="M18 11l11 7-11 7z" fill="#fff"/></svg></span><span class="stk p" style="--r:1deg">Lagos, Nigeria</span><span class="ico"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M20 34C8 25 2 18 2 11 2 5.5 6.5 2 11 2c4 0 7 2.5 9 6 2-3.5 5-6 9-6 4.5 0 9 3.5 9 9 0 7-6 14-18 23z" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><circle cx="14" cy="14" r="3" fill="#fff"/><circle cx="26" cy="14" r="3" fill="#fff"/><circle cx="14.6" cy="14.6" r="1.4" fill="#111014"/><circle cx="26.6" cy="14.6" r="1.4" fill="#111014"/></svg></span><span class="stk i" style="--r:-2deg">Open to work</span><span class="ico"><svg viewBox="0 0 44 42" aria-hidden="true"><path d="M22 2l6 13 14 2-10 10 2.5 14L22 34l-12.5 7L12 27 2 17l14-2z" fill="#3B4CCA" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 22c2 3 8 3 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="18" r="1.8" fill="#fff"/><circle cx="26" cy="18" r="1.8" fill="#fff"/></svg></span></div></div>
   
-    <div class="inside" id="inside" aria-hidden="true">
+    <div class="inside on" id="inside" aria-hidden="false">
       <div class="wall t"></div><div class="wall b"></div><div class="wall lw"></div><div class="wall rw"></div>
       <div class="back">
         <div class="tags"><span class="lbl">Product Designer</span><span class="lbl i">Motion Designer &amp; Frontend</span></div>
@@ -652,9 +650,6 @@ document.getElementById('copy').addEventListener('click', e => {
 });
 (() => {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const els = document.querySelectorAll('.rv');
-  const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } }), { rootMargin: '0px 0px -6% 0px' });
-  els.forEach(el => { if (el.getBoundingClientRect().top < innerHeight) el.classList.add('in'); else io.observe(el); });
 })();
 
 document.querySelectorAll('.mo-play').forEach(b => b.addEventListener('click', () => {
@@ -667,44 +662,12 @@ document.querySelectorAll('.mo-play').forEach(b => b.addEventListener('click', (
 </script>
 
 <script type="module">
-import { animate, scroll, stagger, spring } from "https://cdn.jsdelivr.net/npm/motion@12.29.3/+esm";
+import { animate, scroll, stagger, spring, inView } from "https://cdn.jsdelivr.net/npm/motion@12.29.3/+esm";
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-requestAnimationFrame(()=>document.documentElement.classList.remove('m'));
 const cover = document.getElementById('cover'), stage = document.getElementById('stage');
 const box = document.getElementById('box'), shadow = document.getElementById('boxShadow');
-const floats = [...stage.querySelectorAll('.float')];
+const floats = [...stage.querySelectorAll('.float')], arcEl = cover.querySelector('.arc');
 const tapes = [...cover.querySelectorAll('.tape-track')];
-function idle(){ if (reduce) return; animate(box, { y: [0, -16, 0], rotate: [-1.5, 1.5, -1.5] }, { duration: 5, repeat: Infinity, ease: 'easeInOut' }); animate(shadow, { scaleX: [1, 0.86, 1], opacity: [1, 0.7, 1] }, { duration: 5, repeat: Infinity, ease: 'easeInOut' }); }
-
-// sticker tapes scroll like packing tape
-tapes.forEach((t, i) => { if (!reduce) animate(t, { x: i ? ['-33.333%', '0%'] : ['0%', '-33.333%'] }, { duration: 38, repeat: Infinity, ease: 'linear' }); });
-
-if (reduce) { /* show everything still */ } else {
-  [...floats, box, document.querySelector('.arc')].forEach(el => el.style.opacity = 0);
-  // 1. headline arcs in
-  animate('.arc', { opacity: [0, 1], y: [30, 0], scale: [0.9, 1] }, { duration: 0.8, delay: 0.15, ease: [0.2, 0.8, 0.2, 1] });
-  // 2. the box drops in and lands with a bounce
-  animate(box, { y: [-420, 0], rotate: [-18, 0], opacity: [0, 1] }, { type: spring, stiffness: 170, damping: 11, mass: 1.1, delay: 0.35 });
-  animate(shadow, { scaleX: [0.2, 1], opacity: [0, 1] }, { duration: 0.7, delay: 0.55 });
-  // 3. stickers and folders pop out around it
-  animate(floats, { scale: [0, 1], rotate: [-25, 0], opacity: [0, 1] }, { type: spring, stiffness: 260, damping: 14, delay: stagger(0.08, { startDelay: 1.0 }) });
-  // 4. idle: the box gently floats, stickers bob
-  setTimeout(() => {
-    idle();
-    floats.forEach((f, i) => animate(f, { y: [0, i % 2 ? 10 : -10, 0], rotate: [0, i % 2 ? 4 : -4, 0] }, { duration: 3.2 + (i % 4) * 0.6, repeat: Infinity, ease: 'easeInOut', delay: i * 0.15 }));
-  }, 1900);
-  // 5. tilt toward the cursor (laptops)
-  stage.addEventListener('pointermove', e => {
-    if (e.pointerType !== 'mouse' || opened) return;
-    const r = stage.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
-    animate(imgs, { rotateY: x * 18, rotateX: -y * 14 }, { type: spring, stiffness: 120, damping: 14 });
-  });
-  stage.addEventListener('pointerleave', () => animate(imgs, { rotateY: 0, rotateX: 0 }, { type: spring, stiffness: 120, damping: 14 }));
-  // 6. scrolling away: the scene shrinks and drifts up
-  scroll(animate(stage, { y: [0, -60], scale: [1, 0.92], opacity: [1, 0.5] }, { ease: 'linear' }), { target: cover, offset: ['start start', 'end start'] });
-}
-
-// 7. tap the box: it pops open and we dive inside it
 const imgs = [...box.querySelectorAll('img')];
 const closedImg = box.querySelector('img.closed'), openImg = box.querySelector('img.open');
 const glow = document.getElementById('boxGlow');
@@ -714,7 +677,10 @@ const pops = [...inside.querySelectorAll('.lbl, .yr, .bst, .nm, .ptitle')];
 const fades = [...inside.querySelectorAll('.whisper, .inbar')];
 const TOOLS = [...document.querySelectorAll('#tools .tool')].map(t => ({ ico: t.querySelector('i').outerHTML, name: t.querySelector('b').firstChild.textContent.trim() }));
 const chips = TOOLS.map(t => { const c = document.createElement('div'); c.className = 'tchip'; c.innerHTML = t.ico + `<b>${t.name}</b>`; inside.insertBefore(c, inside.querySelector('.wrap-sheen')); return c; });
-let opened = false, busy = false;
+let opened = true, busy = false, idleOn = false;
+
+// sticker tapes scroll like packing tape
+if (!reduce) tapes.forEach((t, i) => animate(t, { x: i ? ['-33.333%', '0%'] : ['0%', '-33.333%'] }, { duration: 38, repeat: Infinity, ease: 'linear' }));
 
 // tools stick to the left and right walls of the box
 function wallSpots() {
@@ -728,50 +694,114 @@ function wallSpots() {
     return { x, y, rot: left ? 6 - (k % 3) * 3 : -6 + (k % 3) * 3 };
   });
 }
+function placeChips() { const sp = wallSpots(); chips.forEach((c, i) => { c.style.opacity = 1; c.style.transform = `translate(${sp[i].x}px,${sp[i].y}px) rotate(${sp[i].rot}deg)`; }); }
+
+// A. the inside of the box comes alive (first thing visitors see)
+async function insideIn(fromBox) {
+  inside.classList.add('on'); inside.setAttribute('aria-hidden', 'false');
+  const sp = wallSpots(), W = inside.clientWidth, H = inside.clientHeight;
+  [backEl, ...pops, ...fades, ...chips].forEach(el => el.style.opacity = 0);
+  peek.style.transform = 'translate(-50%,100%)';
+  document.documentElement.classList.remove('m');
+  if (fromBox) await animate(inside, { opacity: [0, 1], scale: [1.35, 1] }, { duration: 0.75, ease: [0.2, 0.8, 0.2, 1] });
+  else { inside.style.opacity = 1; await animate(inside, { scale: [1.08, 1] }, { duration: 0.9, ease: [0.2, 0.8, 0.2, 1] }); }
+  animate(backEl, { opacity: [0, 1], scale: [0.94, 1] }, { duration: 0.5, ease: 'easeOut' });
+  animate(peek, { y: ['100%', '0%'], x: '-50%', rotate: [-4, 0] }, { type: spring, stiffness: 120, damping: 12, delay: 0.25 });
+  animate(pops, { opacity: [0, 1], scale: [0.6, 1] }, { type: spring, stiffness: 260, damping: 16, delay: stagger(0.04, { startDelay: 0.35 }) });
+  animate(fades, { opacity: [0, 1] }, { duration: 0.5, delay: 0.6 });
+  chips.forEach((c, i) => animate(c, { x: [W / 2 - 20, sp[i].x], y: [H * 0.5, sp[i].y], scale: [0.2, 1], rotate: [0, sp[i].rot], opacity: [0, 1] }, { type: spring, stiffness: 140, damping: 15, delay: 0.55 + i * 0.05 }));
+}
+
+// B. the closed box scene (after "Close the box")
+function sceneIn() {
+  animate(arcEl, { opacity: [0, 1], y: [30, 0], scale: [0.9, 1] }, { duration: 0.7, ease: [0.2, 0.8, 0.2, 1] });
+  animate(closedImg, { opacity: 1, rotate: 0 }, { duration: 0.01 }); openImg.style.opacity = 0; glow.style.opacity = 0;
+  animate(box, { y: [-420, 0], rotate: [-18, 0], scale: [1, 1], opacity: [0, 1] }, { type: spring, stiffness: 170, damping: 11, mass: 1.1, delay: 0.15 })
+    .then(() => { if (!idleOn) { idleOn = true; animate(box, { y: [0, -16, 0], rotate: [-1.5, 1.5, -1.5] }, { duration: 5, repeat: Infinity, ease: 'easeInOut' }); animate(shadow, { scaleX: [1, 0.86, 1], opacity: [1, 0.7, 1] }, { duration: 5, repeat: Infinity, ease: 'easeInOut' }); } });
+  animate(shadow, { scaleX: [0.2, 1], opacity: [0, 1] }, { duration: 0.7, delay: 0.35 });
+  animate(floats, { scale: [0, 1], rotate: [-25, 0], opacity: [0, 1] }, { type: spring, stiffness: 260, damping: 14, delay: stagger(0.07, { startDelay: 0.6 }) });
+  floats.forEach(f => f.style.pointerEvents = '');
+}
 
 async function openBox() {
-  if (busy || opened) return; busy = true; opened = true;
-  inside.classList.add('on'); inside.setAttribute('aria-hidden', 'false');
-  const spots = wallSpots(), W = inside.clientWidth, H = inside.clientHeight;
-  if (reduce) {
-    chips.forEach((c, i) => { c.style.opacity = 1; c.style.transform = `translate(${spots[i].x}px,${spots[i].y}px) rotate(${spots[i].rot}deg)`; });
-    peek.style.transform = 'translate(-50%, 0%)'; busy = false; document.getElementById('closeBox').focus(); return;
-  }
-  inside.style.opacity = 0; chips.forEach(c => c.style.opacity = 0); pops.forEach(p => p.style.opacity = 0); fades.forEach(p => p.style.opacity = 0);
-  // shake, pop the flaps open, then zoom into the box
+  if (busy || opened) return; busy = true; opened = true; idleOn = false;
+  if (reduce) { inside.classList.add('on'); inside.setAttribute('aria-hidden', 'false'); placeChips(); busy = false; return; }
   await animate(closedImg, { rotate: [0, -6, 6, -4, 3, 0], y: [0, -6, 0] }, { duration: 0.45 });
   animate(closedImg, { opacity: 0 }, { duration: 0.15 });
   animate(openImg, { opacity: [0, 1], scale: [0.92, 1.05, 1] }, { duration: 0.4 });
   await animate(glow, { opacity: [0, 1], scale: [0.2, 1.1] }, { duration: 0.4 });
   animate(box, { scale: 3.2, y: 40, opacity: 0 }, { duration: 0.7, ease: [0.7, 0, 0.3, 1] });
-  await animate(inside, { opacity: [0, 1], scale: [1.35, 1] }, { duration: 0.75, ease: [0.2, 0.8, 0.2, 1], delay: 0.15 });
-  // you pop up from behind the edge
-  animate(peek, { y: ['100%', '0%'], x: '-50%', rotate: [-4, 0] }, { type: spring, stiffness: 120, damping: 12 });
-  animate(pops, { opacity: [0, 1], scale: [0.6, 1] }, { type: spring, stiffness: 260, damping: 16, delay: stagger(0.04, { startDelay: 0.15 }) });
-  animate(fades, { opacity: [0, 1] }, { duration: 0.5, delay: 0.4 });
-  chips.forEach((c, i) => animate(c, { x: [W / 2 - 20, spots[i].x], y: [H * 0.5, spots[i].y], scale: [0.2, 1], rotate: [0, spots[i].rot], opacity: [0, 1] }, { type: spring, stiffness: 140, damping: 15, delay: 0.35 + i * 0.05 }));
+  await new Promise(r => setTimeout(r, 150));
+  await insideIn(true);
   setTimeout(() => { busy = false; document.getElementById('closeBox').focus({ preventScroll: true }); }, 900);
 }
 
 async function closeBox() {
   if (busy || !opened) return; busy = true; opened = false;
   inside.setAttribute('aria-hidden', 'true');
-  if (reduce) { inside.classList.remove('on'); busy = false; box.focus({ preventScroll: true }); return; }
+  if (reduce) { inside.classList.remove('on'); [arcEl, box, ...floats].forEach(e => e.style.opacity = 1); busy = false; box.focus({ preventScroll: true }); return; }
   animate(peek, { y: '100%', x: '-50%' }, { duration: 0.3 });
   await animate(inside, { opacity: 0, scale: 1.2 }, { duration: 0.45, ease: [0.7, 0, 0.3, 1] });
   inside.classList.remove('on');
-  animate(glow, { opacity: 0, scale: 0.2 }, { duration: 0.2 });
-  animate(openImg, { opacity: 0 }, { duration: 0.2 });
-  animate(closedImg, { opacity: 1 }, { duration: 0.2 });
-  await animate(box, { scale: [0.6, 1], y: 0, opacity: [0, 1], rotate: 0 }, { type: spring, stiffness: 200, damping: 14 });
-  idle(); busy = false; box.focus({ preventScroll: true });
+  sceneIn();
+  setTimeout(() => { busy = false; box.focus({ preventScroll: true }); }, 700);
 }
+
+// first load: we start inside the box; the closed-box scene waits behind it
+[arcEl, box, ...floats].forEach(el => el.style.opacity = 0);
+floats.forEach(f => f.style.pointerEvents = 'none');
+if (reduce) { document.documentElement.classList.remove('m'); placeChips(); peek.style.transform = 'translate(-50%,0%)'; }
+else insideIn(false);
+floats.forEach((f, i) => { if (!reduce) animate(f, { y: [0, i % 2 ? 10 : -10, 0], rotate: [0, i % 2 ? 4 : -4, 0] }, { duration: 3.2 + (i % 4) * 0.6, repeat: Infinity, ease: 'easeInOut', delay: i * 0.15 }); });
+
 box.addEventListener('click', openBox);
 box.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openBox(); } });
 document.getElementById('closeBox').addEventListener('click', closeBox);
-inside.querySelector('.inbar a').addEventListener('click', () => setTimeout(closeBox, 600));
-addEventListener('keydown', e => { if (e.key === 'Escape' && opened) closeBox(); });
+inside.querySelector('.inbar a').addEventListener('click', () => setTimeout(closeBox, 700));
+addEventListener('keydown', e => { if (e.key === 'Escape' && opened && document.activeElement && cover.contains(document.activeElement)) closeBox(); });
 addEventListener('resize', () => { if (opened) { const sp = wallSpots(); chips.forEach((c, i) => animate(c, { x: sp[i].x, y: sp[i].y }, { duration: 0.2 })); } });
+if (!reduce) {
+  stage.addEventListener('pointermove', e => {
+    if (e.pointerType !== 'mouse' || opened) return;
+    const r = stage.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+    animate(imgs, { rotateY: x * 18, rotateX: -y * 14 }, { type: spring, stiffness: 120, damping: 14 });
+  });
+  stage.addEventListener('pointerleave', () => animate(imgs, { rotateY: 0, rotateX: 0 }, { type: spring, stiffness: 120, damping: 14 }));
+}
+
+// C. slide-in effects for the rest of the page (Motion inView + stagger + spring)
+const sections = [...document.querySelectorAll('main > :not(.cover)')];
+if (reduce) { sections.forEach(s => s.style.opacity = 1); }
+else {
+  const ease = [0.2, 0.8, 0.2, 1];
+  const kids = sec => {
+    const parts = [...sec.querySelectorAll(':scope > .meta, :scope > h2, :scope > .split > *, :scope > .hello > *, :scope > .proj-intro > *, :scope > div:not(.split):not(.hello):not(.proj-intro)')];
+    return parts.length ? parts : [...sec.children];
+  };
+  const groups = sec => [...sec.querySelectorAll('.tools > *, .mo-grid > *, .toc > li, .cols3 > *, .skills > *, .jobs > li, .deliv > li, .steps > li, ol > li, .ab > *')];
+  sections.forEach(sec => {
+    sec.style.opacity = 0;
+    const isImg = sec.matches('.bleed, .grid2'), isDivider = sec.matches('.divider');
+    inView(sec, () => {
+      if (isImg) {
+        sec.style.opacity = 1;
+        const imgsIn = [...sec.querySelectorAll('img')];
+        if (sec.matches('.grid2')) imgsIn.forEach((im, i) => animate(im, { x: [i ? 80 : -80, 0], opacity: [0, 1], rotate: [i ? 3 : -3, 0] }, { type: spring, stiffness: 90, damping: 18, delay: i * 0.08 }));
+        else { animate(sec, { clipPath: ['inset(18% 6% 18% 6% round 22px)', 'inset(0% 0% 0% 0% round 22px)'] }, { duration: 1, ease }); imgsIn.forEach(im => animate(im, { scale: [1.18, 1] }, { duration: 1.2, ease })); }
+      } else if (isDivider) {
+        animate(sec, { opacity: [0, 1], y: [60, 0] }, { duration: 0.7, ease });
+        const h = sec.querySelector('h2'), ar = sec.querySelector('.arrow');
+        if (h) animate(h, { x: [-120, 0], opacity: [0, 1] }, { type: spring, stiffness: 80, damping: 16, delay: 0.1 });
+        if (ar) animate(ar, { x: [-60, 0], opacity: [0, 1] }, { duration: 0.8, ease, delay: 0.25 });
+      } else {
+        animate(sec, { opacity: [0, 1], y: [70, 0] }, { type: spring, stiffness: 90, damping: 20 });
+        const k = kids(sec); if (k.length) animate(k, { opacity: [0, 1], y: [40, 0] }, { duration: 0.7, ease, delay: stagger(0.08, { startDelay: 0.1 }) });
+        const g = groups(sec); if (g.length) animate(g, { opacity: [0, 1], y: [24, 0], scale: [0.96, 1] }, { type: spring, stiffness: 200, damping: 20, delay: stagger(0.045, { startDelay: 0.3 }) });
+      }
+    }, { margin: '0px 0px -60px 0px' });
+  });
+}
+document.documentElement.classList.remove('m');
 </script>
 </body>
 </html>
