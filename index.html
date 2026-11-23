@@ -10,7 +10,7 @@
 <meta property="og:image" content="/assets/boards/zenni-1.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Silkscreen:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
 <style>
 :root{
   --paper:#F6F5F1; --white:#FFFFFF; --ink:#111014; --muted:#6A6670; --line:#E3E0D9;
@@ -137,32 +137,48 @@ h2.big em{font-style:normal;color:var(--muted);font-weight:400}
 
 
 /* ===== COVER: unboxing my portfolio ===== */
-.unbox{--grid:rgba(59,76,202,.11);background:#FBF7EF;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:44px 44px;padding:0;min-height:min(94vh,920px);display:flex;flex-direction:column;justify-content:space-between}
+.unbox{--grid:rgba(17,16,20,.055);background:var(--white);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:44px 44px;background-position:center;padding:0;min-height:min(94vh,920px);display:flex;flex-direction:column;justify-content:space-between}
 .unbox .row{padding:18px clamp(22px,4vw,56px) 0;position:relative;z-index:4}
-.tape{overflow:hidden;background:#FFF6E4;border-bottom:2px dashed rgba(17,16,20,.12);position:relative;z-index:4}
-.tape.bottom{border-bottom:0;border-top:2px dashed rgba(17,16,20,.12)}
+.tape{overflow:hidden;background:var(--paper);border-bottom:1px solid var(--line);position:relative;z-index:4}
+.tape.bottom{border-bottom:0;border-top:1px solid var(--line)}
 .tape-track{display:flex;width:max-content;gap:18px;align-items:center;padding:12px 0;will-change:transform}
-.stk{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font:700 13px 'Silkscreen',var(--mono);letter-spacing:.04em;padding:8px 14px;border-radius:12px;box-shadow:0 2px 0 rgba(17,16,20,.15);transform:rotate(var(--r,0deg))}
-.stk.p{background:var(--pink);color:#fff}.stk.i{background:var(--indigo);color:#fff}.stk.y{background:#FFD43B;color:var(--ink)}.stk.w{background:#fff;color:var(--ink);border:2px solid var(--ink)}
+.stk{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:8px 14px;border-radius:999px;box-shadow:0 2px 0 rgba(17,16,20,.15);transform:rotate(var(--r,0deg))}
+.stk.p{background:var(--pink);color:#fff}.stk.i{background:var(--indigo);color:#fff}.stk.y{background:var(--pink-soft);color:var(--pink)}.stk.w{background:var(--white);color:var(--ink);border:1px solid var(--ink)}
 .stk svg{width:18px;height:18px}
-.tape .ico{width:38px;height:38px;flex:none}
+.tape .ico{width:30px;height:30px;flex:none}
 .stage{position:relative;flex:1;display:grid;place-items:center;min-height:min(62vh,600px);perspective:1200px;padding:10px 16px}
 .arc{position:absolute;left:0;right:0;margin:0 auto;top:0;width:min(880px,96%);overflow:visible;z-index:1;pointer-events:none}
-.arc text{font:700 44px 'Silkscreen',var(--mono);fill:var(--indigo);letter-spacing:0}
+.arc text{font:800 58px var(--display);fill:var(--ink);letter-spacing:-2px}
 .arc .dots{fill:var(--pink)}
 .boxwrap{position:relative;z-index:2;width:min(420px,58vw);margin-top:clamp(120px,13vw,190px);transform-style:preserve-3d;cursor:pointer;will-change:transform}
-.boxwrap img{width:100%;height:auto;display:block;filter:drop-shadow(0 30px 30px rgba(59,76,202,.18));user-select:none;-webkit-user-drag:none}
+.boxwrap img{width:100%;height:auto;display:block;filter:drop-shadow(0 30px 30px rgba(17,16,20,.14));user-select:none;-webkit-user-drag:none}
 .boxshadow{position:absolute;left:12%;right:12%;bottom:-26px;height:34px;border-radius:50%;background:radial-gradient(closest-side,rgba(17,16,20,.28),transparent);z-index:1;will-change:transform,opacity}
 .boxhint{position:absolute;left:50%;bottom:-62px;transform:translateX(-50%);font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
 .float{position:absolute;z-index:3;text-decoration:none;will-change:transform}
-.float.folder{display:flex;flex-direction:column;align-items:center;gap:6px;font:700 12px 'Silkscreen',var(--mono);color:var(--ink)}
+.float.folder{display:flex;flex-direction:column;align-items:center;gap:6px;font:500 12px var(--mono);color:var(--ink)}
 .float.folder svg{width:clamp(54px,5.4vw,78px);filter:drop-shadow(0 10px 14px rgba(59,76,202,.25))}
 .fl1{left:8%;top:34%}.fl2{left:16%;top:66%}.fl3{right:9%;top:30%}.fl4{right:15%;top:64%}
 .fl5{left:28%;top:76%}.fl6{right:28%;top:78%}.fl7{left:5%;top:84%}.fl8{right:5%;top:86%}
 .float.icon svg{width:clamp(40px,4vw,58px);height:auto;filter:drop-shadow(0 6px 10px rgba(17,16,20,.15))}
 .unbox .sub{padding:0 clamp(22px,4vw,56px) 18px;position:relative;z-index:4}
 .unbox h1.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-@media (max-width:760px){.unbox{min-height:auto}.arc text{font-size:46px}.boxwrap{width:62vw;margin-top:84px}.fl5,.fl6,.fl7,.fl8{display:none}.fl1{left:1%;top:42%}.fl2{left:1%;top:68%}.fl3{right:1%;top:42%}.fl4{right:1%;top:68%}.float.folder svg{width:40px}.float.folder{font-size:9px}.stage{min-height:480px}.boxhint{bottom:-54px}}
+@media (max-width:760px){.unbox{min-height:auto}.arc text{font-size:62px}.boxwrap{width:62vw;margin-top:84px}.fl5,.fl6,.fl7,.fl8{display:none}.fl1{left:1%;top:42%}.fl2{left:1%;top:68%}.fl3{right:1%;top:42%}.fl4{right:1%;top:68%}.float.folder svg{width:40px}.float.folder{font-size:9px}.stage{min-height:480px}.boxhint{bottom:-54px}}
+
+.unbox::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 55%,transparent 45%,var(--white) 92%);pointer-events:none;z-index:0}
+.unbox > *{position:relative;z-index:1}
+.boxwrap .open{position:absolute;left:-6%;bottom:0;width:112%;max-width:none;opacity:0;pointer-events:none}
+.boxglow{position:absolute;left:-10%;top:-50%;width:120%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(224,40,125,.32),rgba(224,40,125,0));opacity:0;z-index:-1;pointer-events:none}
+.toolfly{position:absolute;inset:0;pointer-events:none;z-index:5}
+.chip{position:absolute;left:0;top:0;display:flex;align-items:center;gap:10px;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:8px 12px 8px 8px;box-shadow:0 10px 24px -12px rgba(17,16,20,.35);white-space:nowrap;opacity:0;pointer-events:auto;will-change:transform}
+.chip i{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font:700 12px var(--display);font-style:normal;color:#fff;flex:none}
+.chip b{font:600 13px var(--body);display:block;line-height:1.1}
+.chip small{display:block;font:500 10px var(--mono);color:var(--muted)}
+.openbar{position:absolute;left:-40px;right:-40px;bottom:-74px;display:flex;justify-content:center;gap:8px;opacity:0;pointer-events:none;z-index:6}
+.openbar.on{pointer-events:auto}
+.openbar button,.openbar a{font:600 13px var(--body);border-radius:999px;padding:9px 16px;border:1px solid var(--ink);background:var(--white);color:var(--ink);text-decoration:none;cursor:pointer;white-space:nowrap}
+.openbar a{background:var(--ink);color:#fff}
+.toolcap{position:absolute;left:0;right:0;top:22px;text-align:center;font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--pink);opacity:0;z-index:5;pointer-events:none}
+@media (max-width:760px){.chip{padding:6px 9px 6px 6px;gap:7px;border-radius:12px}.chip i{width:24px;height:24px;font-size:10px;border-radius:7px}.chip b{font-size:11px}.chip small{display:none}.openbar{bottom:-66px}.openbar button,.openbar a{font-size:12px;padding:8px 12px}}
 @media (prefers-reduced-motion:reduce){.tape-track{transform:none!important}}
 
 /* project intro */
@@ -284,8 +300,11 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font:5
       <svg class="arc" viewBox="0 0 900 300" aria-hidden="true"><defs><path id="arcPath" d="M40 270 Q450 -40 860 270"/></defs><text><textPath href="#arcPath" startOffset="50%" text-anchor="middle" id="arcText">UNBOXING MY<tspan class="dots"> PORTFOLIO ...</tspan></textPath></text></svg>
       <div class="boxwrap" id="box" role="button" tabindex="0" aria-label="Open the box: see what is inside">
         <span class="boxshadow" id="boxShadow"></span>
-        <img src="assets/box.webp" width="817" height="820" alt="A cardboard box covered in Mercy Nubi stickers: Portfolio 2026, product, motion, brand and code" fetchpriority="high">
-        <span class="boxhint">Tap the box to open it</span>
+        <span class="boxglow" id="boxGlow"></span>
+        <img src="assets/box.webp" width="817" height="820" alt="A cardboard box covered in Mercy Nubi stickers: Portfolio 2026, product, motion, brand and code" fetchpriority="high" class="closed">
+        <img class="open" src="https://d2ol7oe51mr4n9.cloudfront.net/user_33VtlYlqjGIvKMOQUyo0ROrS1d1/aefd5fda-08ea-4397-894a-c79b0463815f.webp" width="1000" height="956" alt="" aria-hidden="true" loading="eager">
+        <span class="boxhint" id="boxHint">Tap the box to open it</span>
+        <div class="openbar" id="openbar"><button type="button" id="closeBox">Close the box</button><a href="#contents">See my work ↓</a></div>
       </div>
       <a class="float folder fl1" href="#product"><svg viewBox="0 0 64 50" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4-4h16l6 6h30a4 4 0 0 1 4 4v30a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#5B8DEF" stroke="#111014" stroke-width="2"/><path d="M2 16h60v28a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#7AA6FF" stroke="#111014" stroke-width="2"/></svg>product</a>
       <a class="float folder fl3" href="#brand"><svg viewBox="0 0 64 50" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4-4h16l6 6h30a4 4 0 0 1 4 4v30a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#E0287D" stroke="#111014" stroke-width="2"/><path d="M2 16h60v28a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#FF6BB0" stroke="#111014" stroke-width="2"/></svg>brand</a>
@@ -294,6 +313,8 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font:5
       <span class="float icon fl5" aria-hidden="true"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M20 34C8 25 2 18 2 11 2 5.5 6.5 2 11 2c4 0 7 2.5 9 6 2-3.5 5-6 9-6 4.5 0 9 3.5 9 9 0 7-6 14-18 23z" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><circle cx="14" cy="14" r="3" fill="#fff"/><circle cx="26" cy="14" r="3" fill="#fff"/><circle cx="14.6" cy="14.6" r="1.4" fill="#111014"/><circle cx="26.6" cy="14.6" r="1.4" fill="#111014"/></svg></span>
       <span class="float icon fl6" aria-hidden="true"><svg viewBox="0 0 44 42" aria-hidden="true"><path d="M22 2l6 13 14 2-10 10 2.5 14L22 34l-12.5 7L12 27 2 17l14-2z" fill="#3B4CCA" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 22c2 3 8 3 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="18" r="1.8" fill="#fff"/><circle cx="26" cy="18" r="1.8" fill="#fff"/></svg></span>
       <span class="float icon fl7" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2c2 10 8 16 18 18-10 2-16 8-18 18-2-10-8-16-18-18 10-2 16-8 18-18z" fill="#FFD43B" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/></svg></span>
+      <div class="toolfly" id="toolfly" aria-live="polite"></div>
+      <p class="toolcap" id="toolcap">What’s in the box: my toolkit</p>
       <span class="float icon fl8" aria-hidden="true"><svg viewBox="0 0 44 36" aria-hidden="true"><rect x="2" y="2" width="40" height="32" rx="9" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><path d="M18 11l11 7-11 7z" fill="#fff"/></svg></span>
     </div>
     <div class="sub">
@@ -606,6 +627,7 @@ const cover = document.getElementById('cover'), stage = document.getElementById(
 const box = document.getElementById('box'), shadow = document.getElementById('boxShadow');
 const floats = [...stage.querySelectorAll('.float')];
 const tapes = [...cover.querySelectorAll('.tape-track')];
+function idle(){ if (reduce) return; animate(box, { y: [0, -16, 0], rotate: [-1.5, 1.5, -1.5] }, { duration: 5, repeat: Infinity, ease: 'easeInOut' }); animate(shadow, { scaleX: [1, 0.86, 1], opacity: [1, 0.7, 1] }, { duration: 5, repeat: Infinity, ease: 'easeInOut' }); }
 
 // sticker tapes scroll like packing tape
 tapes.forEach((t, i) => { if (!reduce) animate(t, { x: i ? ['-33.333%', '0%'] : ['0%', '-33.333%'] }, { duration: 38, repeat: Infinity, ease: 'linear' }); });
@@ -621,28 +643,100 @@ if (reduce) { /* show everything still */ } else {
   animate(floats, { scale: [0, 1], rotate: [-25, 0], opacity: [0, 1] }, { type: spring, stiffness: 260, damping: 14, delay: stagger(0.08, { startDelay: 1.0 }) });
   // 4. idle: the box gently floats, stickers bob
   setTimeout(() => {
-    animate(box, { y: [0, -16, 0], rotate: [-1.5, 1.5, -1.5] }, { duration: 5, repeat: Infinity, ease: 'easeInOut' });
-    animate(shadow, { scaleX: [1, 0.86, 1], opacity: [1, 0.7, 1] }, { duration: 5, repeat: Infinity, ease: 'easeInOut' });
+    idle();
     floats.forEach((f, i) => animate(f, { y: [0, i % 2 ? 10 : -10, 0], rotate: [0, i % 2 ? 4 : -4, 0] }, { duration: 3.2 + (i % 4) * 0.6, repeat: Infinity, ease: 'easeInOut', delay: i * 0.15 }));
   }, 1900);
   // 5. tilt toward the cursor (laptops)
-  const img = box.querySelector('img');
   stage.addEventListener('pointermove', e => {
-    if (e.pointerType !== 'mouse') return;
+    if (e.pointerType !== 'mouse' || opened) return;
     const r = stage.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
-    animate(img, { rotateY: x * 18, rotateX: -y * 14 }, { type: spring, stiffness: 120, damping: 14 });
+    animate(imgs, { rotateY: x * 18, rotateX: -y * 14 }, { type: spring, stiffness: 120, damping: 14 });
   });
-  stage.addEventListener('pointerleave', () => animate(img, { rotateY: 0, rotateX: 0 }, { type: spring, stiffness: 120, damping: 14 }));
-  // 6. scrolling away: the box shrinks, tilts and drifts up
-  scroll(animate(stage, { y: [0, -60], scale: [1, 0.9], opacity: [1, 0.4] }, { ease: 'linear' }), { target: cover, offset: ['start start', 'end start'] });
+  stage.addEventListener('pointerleave', () => animate(imgs, { rotateY: 0, rotateX: 0 }, { type: spring, stiffness: 120, damping: 14 }));
+  // 6. scrolling away: the scene shrinks and drifts up
+  scroll(animate(stage, { y: [0, -60], scale: [1, 0.92], opacity: [1, 0.5] }, { ease: 'linear' }), { target: cover, offset: ['start start', 'end start'] });
 }
-// 7. tap the box: it wiggles open, then you are taken inside
+
+// 7. tap the box: it opens and the toolkit flies out
+const imgs = [...box.querySelectorAll('img')];
+const closedImg = box.querySelector('img.closed'), openImg = box.querySelector('img.open');
+const glow = document.getElementById('boxGlow'), hint = document.getElementById('boxHint');
+const fly = document.getElementById('toolfly'), cap = document.getElementById('toolcap'), bar = document.getElementById('openbar');
+const arcEl = cover.querySelector('.arc');
+const TOOLS = [...document.querySelectorAll('#tools .tool')].map(t => ({ ico: t.querySelector('i').outerHTML, name: t.querySelector('b').firstChild.textContent.trim(), kind: t.querySelector('small')?.textContent || '' }));
+const chips = TOOLS.map(t => { const c = document.createElement('div'); c.className = 'chip'; c.innerHTML = t.ico + `<span><b>${t.name}</b><small>${t.kind}</small></span>`; fly.appendChild(c); return c; });
+let opened = false, busy = false;
+
+function layout() {
+  const S = stage.getBoundingClientRect(), B = closedImg.getBoundingClientRect();
+  const narrow = S.width < 700, cols = narrow ? 3 : 6, rows = Math.ceil(chips.length / cols);
+  const mouthX = B.left - S.left + B.width / 2, mouthY = B.top - S.top + B.height * 0.18;
+  const top = narrow ? 50 : 56, gapX = narrow ? 8 : 14, gapY = narrow ? 10 : 14;
+  const cw = Math.min(narrow ? 112 : 168, (S.width - 32 - gapX * (cols - 1)) / cols), ch = narrow ? 40 : 50;
+  const gridW = cols * cw + (cols - 1) * gapX, x0 = (S.width - gridW) / 2;
+  return chips.map((c, i) => {
+    const col = i % cols, row = Math.floor(i / cols);
+    c.style.width = cw + 'px';
+    return { fromX: mouthX - cw / 2, fromY: mouthY - ch / 2, x: x0 + col * (cw + gapX), y: top + row * (ch + gapY), rot: ((i * 37) % 9) - 4, rows, ch, gapY, top };
+  });
+}
+
 async function openBox() {
-  if (!reduce) await animate(box.querySelector('img'), { rotate: [0, -8, 8, -5, 0], scale: [1, 1.08, 1] }, { duration: 0.6 });
-  document.getElementById('contents')?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+  if (busy) return; busy = true;
+  if (opened) { await closeBox(); busy = false; return; }
+  opened = true;
+  floats.forEach(f => f.style.pointerEvents = 'none');
+  hint.style.opacity = 0;
+  const pos = layout(), g = pos[0], toolsBottom = g.top + g.rows * (g.ch + g.gapY);
+  const B = closedImg.getBoundingClientRect(), S = stage.getBoundingClientRect();
+  const dropBy = Math.max(0, toolsBottom + 30 - (B.top - S.top));
+  if (reduce) {
+    closedImg.style.opacity = 0; openImg.style.opacity = 1; arcEl.style.opacity = 0; floats.forEach(f => f.style.opacity = 0);
+    chips.forEach((c, i) => { c.style.opacity = 1; c.style.transform = `translate(${pos[i].x}px,${pos[i].y}px)`; });
+    cap.style.opacity = 1; bar.style.opacity = 1; bar.classList.add('on'); busy = false; return;
+  }
+  // shake, then pop open
+  await animate(closedImg, { rotate: [0, -6, 6, -4, 3, 0], y: [0, -6, 0] }, { duration: 0.45 });
+  animate(arcEl, { opacity: 0, y: -20 }, { duration: 0.3 });
+  animate(floats, { opacity: 0, scale: 0.6 }, { duration: 0.3 });
+  animate(box, { y: dropBy * 0.55, scale: 0.86, rotate: 0 }, { type: spring, stiffness: 160, damping: 18 });
+  animate(closedImg, { opacity: 0 }, { duration: 0.15 });
+  animate(openImg, { opacity: [0, 1], scale: [0.92, 1.04, 1] }, { duration: 0.45 });
+  animate(glow, { opacity: [0, 1], scale: [0.2, 1.1] }, { duration: 0.6 });
+  // tools burst out of the box and land in a neat grid
+  chips.forEach((c, i) => {
+    const p = pos[i];
+    animate(c, { x: [p.fromX, p.x], y: [p.fromY + 20, p.y], scale: [0.2, 1], rotate: [p.rot * 6, p.rot], opacity: [0, 1] },
+      { type: spring, stiffness: 140, damping: 15, delay: 0.12 + i * 0.05 });
+  });
+  animate(cap, { opacity: [0, 1], y: [-8, 0] }, { duration: 0.4, delay: 0.6 });
+  animate(bar, { opacity: [0, 1], y: [10, 0] }, { duration: 0.4, delay: 0.9 }); bar.classList.add('on');
+  setTimeout(() => { busy = false; }, 900);
+}
+
+async function closeBox() {
+  opened = false; hint.style.opacity = 1;
+  bar.classList.remove('on');
+  const pos = layout();
+  if (reduce) {
+    closedImg.style.opacity = 1; openImg.style.opacity = 0; arcEl.style.opacity = 1; floats.forEach(f => { f.style.opacity = 1; f.style.pointerEvents = ''; });
+    chips.forEach(c => c.style.opacity = 0); cap.style.opacity = 0; bar.style.opacity = 0; return;
+  }
+  animate([cap, bar], { opacity: 0 }, { duration: 0.2 });
+  await Promise.all(chips.map((c, i) => animate(c, { x: pos[i].fromX, y: pos[i].fromY + 20, scale: 0.2, opacity: 0, rotate: 0 }, { duration: 0.35, delay: (chips.length - i) * 0.025, ease: [0.5, 0, 0.75, 0] })));
+  animate(glow, { opacity: 0, scale: 0.2 }, { duration: 0.3 });
+  animate(openImg, { opacity: 0 }, { duration: 0.2 });
+  animate(closedImg, { opacity: 1, scale: [0.94, 1] }, { type: spring, stiffness: 300, damping: 14 });
+  animate(box, { y: 0, scale: 1, rotate: 0 }, { type: spring, stiffness: 160, damping: 18 }).then(idle);
+  animate(arcEl, { opacity: 1, y: 0 }, { duration: 0.4 });
+  animate(floats, { opacity: 1, scale: 1 }, { type: spring, stiffness: 220, damping: 14 });
+  floats.forEach(f => f.style.pointerEvents = '');
 }
 box.addEventListener('click', openBox);
 box.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openBox(); } });
+document.getElementById('openbar').addEventListener('click', e => e.stopPropagation());
+document.getElementById('closeBox').addEventListener('click', () => { if (!busy && opened) { busy = true; closeBox().then(() => busy = false); } });
+addEventListener('resize', () => { if (opened) { const pos = layout(); chips.forEach((c, i) => animate(c, { x: pos[i].x, y: pos[i].y }, { duration: 0.2 })); } });
 </script>
 </body>
 </html>
