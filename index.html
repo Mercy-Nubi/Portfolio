@@ -662,27 +662,42 @@ document.querySelectorAll('.mo-play').forEach(b => b.addEventListener('click', (
 </script>
 
 <script type="module">
-import { animate, scroll, stagger, spring, inView } from "https://cdn.jsdelivr.net/npm/motion@12.29.3/+esm";
+import { animate, scroll, inView, stagger, spring } from "https://cdn.jsdelivr.net/npm/motion@12.29.3/+esm";
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const cover = document.getElementById('cover'), stage = document.getElementById('stage');
 const box = document.getElementById('box'), shadow = document.getElementById('boxShadow');
-const floats = [...stage.querySelectorAll('.float')], arcEl = cover.querySelector('.arc');
+const floats = [...stage.querySelectorAll('.float')];
 const tapes = [...cover.querySelectorAll('.tape-track')];
-const imgs = [...box.querySelectorAll('img')];
+const arcEl = cover.querySelector('.arc');
 const closedImg = box.querySelector('img.closed'), openImg = box.querySelector('img.open');
+const imgs = [closedImg, openImg];
 const glow = document.getElementById('boxGlow');
 const inside = document.getElementById('inside'), peek = document.getElementById('peek');
-const backEl = inside.querySelector('.back');
 const pops = [...inside.querySelectorAll('.lbl, .yr, .bst, .nm, .ptitle')];
 const fades = [...inside.querySelectorAll('.whisper, .inbar')];
 const TOOLS = [...document.querySelectorAll('#tools .tool')].map(t => ({ ico: t.querySelector('i').outerHTML, name: t.querySelector('b').firstChild.textContent.trim() }));
 const chips = TOOLS.map(t => { const c = document.createElement('div'); c.className = 'tchip'; c.innerHTML = t.ico + `<b>${t.name}</b>`; inside.insertBefore(c, inside.querySelector('.wrap-sheen')); return c; });
-let opened = true, busy = false, idleOn = false;
+let opened = false, busy = false, idling = false;
 
-// sticker tapes scroll like packing tape
-if (!reduce) tapes.forEach((t, i) => animate(t, { x: i ? ['-33.333%', '0%'] : ['0%', '-33.333%'] }, { duration: 38, repeat: Infinity, ease: 'linear' }));
+/* ---------- the closed box scene ---------- */
+tapes.forEach((t, i) => { if (!reduce) animate(t, { x: i ? ['-33.333%', '0%'] : ['0%', '-33.333%'] }, { duration: 38, repeat: Infinity, ease: 'linear' }); });
+function idle() {
+  if (reduce) return;
+  animate(box, { y: [0, -16, 0], rotate: [-1.5, 1.5, -1.5] }, { duration: 5, repeat: Infinity, ease: 'easeInOut' });
+  animate(shadow, { scaleX: [1, 0.86, 1], opacity: [1, 0.7, 1] }, { duration: 5, repeat: Infinity, ease: 'easeInOut' });
+  if (!idling) { idling = true; floats.forEach((f, i) => animate(f, { y: [0, i % 2 ? 10 : -10, 0], rotate: [0, i % 2 ? 4 : -4, 0] }, { duration: 3.2 + (i % 4) * 0.6, repeat: Infinity, ease: 'easeInOut', delay: i * 0.15 })); }
+}
+if (!reduce) {
+  stage.addEventListener('pointermove', e => {
+    if (e.pointerType !== 'mouse' || opened) return;
+    const r = stage.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+    animate(imgs, { rotateY: x * 18, rotateX: -y * 14 }, { type: spring, stiffness: 120, damping: 14 });
+  });
+  stage.addEventListener('pointerleave', () => animate(imgs, { rotateY: 0, rotateX: 0 }, { type: spring, stiffness: 120, damping: 14 }));
+  scroll(animate(stage, { y: [0, -60], scale: [1, 0.92], opacity: [1, 0.5] }, { ease: 'linear' }), { target: cover, offset: ['start start', 'end start'] });
+}
 
-// tools stick to the left and right walls of the box
+/* ---------- inside the box (what visitors see first) ---------- */
 function wallSpots() {
   const W = inside.clientWidth, H = inside.clientHeight, narrow = W < 700;
   const half = Math.ceil(chips.length / 2), y0 = H * (narrow ? 0.30 : 0.28), y1 = H * (narrow ? 0.66 : 0.72);
@@ -694,114 +709,82 @@ function wallSpots() {
     return { x, y, rot: left ? 6 - (k % 3) * 3 : -6 + (k % 3) * 3 };
   });
 }
-function placeChips() { const sp = wallSpots(); chips.forEach((c, i) => { c.style.opacity = 1; c.style.transform = `translate(${sp[i].x}px,${sp[i].y}px) rotate(${sp[i].rot}deg)`; }); }
-
-// A. the inside of the box comes alive (first thing visitors see)
-async function insideIn(fromBox) {
-  inside.classList.add('on'); inside.setAttribute('aria-hidden', 'false');
-  const sp = wallSpots(), W = inside.clientWidth, H = inside.clientHeight;
-  [backEl, ...pops, ...fades, ...chips].forEach(el => el.style.opacity = 0);
-  peek.style.transform = 'translate(-50%,100%)';
-  document.documentElement.classList.remove('m');
-  if (fromBox) await animate(inside, { opacity: [0, 1], scale: [1.35, 1] }, { duration: 0.75, ease: [0.2, 0.8, 0.2, 1] });
-  else { inside.style.opacity = 1; await animate(inside, { scale: [1.08, 1] }, { duration: 0.9, ease: [0.2, 0.8, 0.2, 1] }); }
-  animate(backEl, { opacity: [0, 1], scale: [0.94, 1] }, { duration: 0.5, ease: 'easeOut' });
-  animate(peek, { y: ['100%', '0%'], x: '-50%', rotate: [-4, 0] }, { type: spring, stiffness: 120, damping: 12, delay: 0.25 });
-  animate(pops, { opacity: [0, 1], scale: [0.6, 1] }, { type: spring, stiffness: 260, damping: 16, delay: stagger(0.04, { startDelay: 0.35 }) });
-  animate(fades, { opacity: [0, 1] }, { duration: 0.5, delay: 0.6 });
-  chips.forEach((c, i) => animate(c, { x: [W / 2 - 20, sp[i].x], y: [H * 0.5, sp[i].y], scale: [0.2, 1], rotate: [0, sp[i].rot], opacity: [0, 1] }, { type: spring, stiffness: 140, damping: 15, delay: 0.55 + i * 0.05 }));
+function insideIn(first) {
+  const spots = wallSpots(), W = inside.clientWidth, H = inside.clientHeight;
+  if (reduce) {
+    chips.forEach((c, i) => { c.style.opacity = 1; c.style.transform = `translate(${spots[i].x}px,${spots[i].y}px) rotate(${spots[i].rot}deg)`; });
+    peek.style.transform = 'translate(-50%, 0%)'; return;
+  }
+  [...pops, ...fades, ...chips].forEach(el => el.style.opacity = 0);
+  const d = first ? 0.25 : 0;
+  animate(peek, { y: ['100%', '0%'], x: '-50%', rotate: [-4, 0] }, { type: spring, stiffness: 120, damping: 12, delay: d + 0.1 });
+  animate(pops, { opacity: [0, 1], scale: [0.6, 1] }, { type: spring, stiffness: 260, damping: 16, delay: stagger(0.04, { startDelay: d + 0.15 }) });
+  animate(fades, { opacity: [0, 1] }, { duration: 0.5, delay: d + 0.4 });
+  chips.forEach((c, i) => animate(c, { x: [W / 2 - 20, spots[i].x], y: [H * 0.5, spots[i].y], scale: [0.2, 1], rotate: [0, spots[i].rot], opacity: [0, 1] }, { type: spring, stiffness: 140, damping: 15, delay: d + 0.35 + i * 0.05 }));
 }
 
-// B. the closed box scene (after "Close the box")
-function sceneIn() {
-  animate(arcEl, { opacity: [0, 1], y: [30, 0], scale: [0.9, 1] }, { duration: 0.7, ease: [0.2, 0.8, 0.2, 1] });
-  animate(closedImg, { opacity: 1, rotate: 0 }, { duration: 0.01 }); openImg.style.opacity = 0; glow.style.opacity = 0;
-  animate(box, { y: [-420, 0], rotate: [-18, 0], scale: [1, 1], opacity: [0, 1] }, { type: spring, stiffness: 170, damping: 11, mass: 1.1, delay: 0.15 })
-    .then(() => { if (!idleOn) { idleOn = true; animate(box, { y: [0, -16, 0], rotate: [-1.5, 1.5, -1.5] }, { duration: 5, repeat: Infinity, ease: 'easeInOut' }); animate(shadow, { scaleX: [1, 0.86, 1], opacity: [1, 0.7, 1] }, { duration: 5, repeat: Infinity, ease: 'easeInOut' }); } });
-  animate(shadow, { scaleX: [0.2, 1], opacity: [0, 1] }, { duration: 0.7, delay: 0.35 });
-  animate(floats, { scale: [0, 1], rotate: [-25, 0], opacity: [0, 1] }, { type: spring, stiffness: 260, damping: 14, delay: stagger(0.07, { startDelay: 0.6 }) });
-  floats.forEach(f => f.style.pointerEvents = '');
+// first visit: start inside the open box
+inside.classList.add('on'); inside.setAttribute('aria-hidden', 'false'); opened = true;
+box.style.opacity = 0; arcEl.style.opacity = 0; floats.forEach(f => f.style.opacity = 0);
+[...pops, ...fades].forEach(el => el.style.opacity = 0); peek.style.transform = 'translate(-50%,100%)';
+document.documentElement.classList.remove('m');
+if (!reduce) animate(inside, { opacity: [0, 1], scale: [1.08, 1] }, { duration: 0.7, ease: [0.2, 0.8, 0.2, 1] });
+insideIn(true);
+
+async function closeBox() {
+  if (busy || !opened) return; busy = true; opened = false;
+  inside.setAttribute('aria-hidden', 'true');
+  closedImg.style.opacity = 1; openImg.style.opacity = 0;
+  if (reduce) {
+    inside.classList.remove('on'); [box, arcEl, ...floats].forEach(el => el.style.opacity = 1);
+    busy = false; box.focus({ preventScroll: true }); return;
+  }
+  animate(peek, { y: '100%', x: '-50%' }, { duration: 0.3 });
+  await animate(inside, { opacity: 0, scale: 1.2 }, { duration: 0.45, ease: [0.7, 0, 0.3, 1] });
+  inside.classList.remove('on');
+  animate(glow, { opacity: 0, scale: 0.2 }, { duration: 0.2 });
+  animate(arcEl, { opacity: [0, 1], y: [30, 0] }, { duration: 0.6, ease: [0.2, 0.8, 0.2, 1] });
+  animate(box, { y: [-360, 0], rotate: [-14, 0], scale: [1, 1], opacity: [0, 1] }, { type: spring, stiffness: 170, damping: 11, mass: 1.1 });
+  animate(shadow, { scaleX: [0.2, 1], opacity: [0, 1] }, { duration: 0.7, delay: 0.2 });
+  animate(floats, { scale: [0, 1], rotate: [-25, 0], opacity: [0, 1] }, { type: spring, stiffness: 260, damping: 14, delay: stagger(0.06, { startDelay: 0.5 }) });
+  setTimeout(() => { idle(); busy = false; box.focus({ preventScroll: true }); }, 1300);
 }
 
 async function openBox() {
-  if (busy || opened) return; busy = true; opened = true; idleOn = false;
-  if (reduce) { inside.classList.add('on'); inside.setAttribute('aria-hidden', 'false'); placeChips(); busy = false; return; }
+  if (busy || opened) return; busy = true; opened = true;
+  inside.classList.add('on'); inside.setAttribute('aria-hidden', 'false');
+  if (reduce) { insideIn(false); busy = false; document.getElementById('closeBox').focus(); return; }
+  inside.style.opacity = 0;
   await animate(closedImg, { rotate: [0, -6, 6, -4, 3, 0], y: [0, -6, 0] }, { duration: 0.45 });
   animate(closedImg, { opacity: 0 }, { duration: 0.15 });
   animate(openImg, { opacity: [0, 1], scale: [0.92, 1.05, 1] }, { duration: 0.4 });
   await animate(glow, { opacity: [0, 1], scale: [0.2, 1.1] }, { duration: 0.4 });
   animate(box, { scale: 3.2, y: 40, opacity: 0 }, { duration: 0.7, ease: [0.7, 0, 0.3, 1] });
-  await new Promise(r => setTimeout(r, 150));
-  await insideIn(true);
+  await animate(inside, { opacity: [0, 1], scale: [1.35, 1] }, { duration: 0.75, ease: [0.2, 0.8, 0.2, 1], delay: 0.15 });
+  insideIn(false);
   setTimeout(() => { busy = false; document.getElementById('closeBox').focus({ preventScroll: true }); }, 900);
 }
-
-async function closeBox() {
-  if (busy || !opened) return; busy = true; opened = false;
-  inside.setAttribute('aria-hidden', 'true');
-  if (reduce) { inside.classList.remove('on'); [arcEl, box, ...floats].forEach(e => e.style.opacity = 1); busy = false; box.focus({ preventScroll: true }); return; }
-  animate(peek, { y: '100%', x: '-50%' }, { duration: 0.3 });
-  await animate(inside, { opacity: 0, scale: 1.2 }, { duration: 0.45, ease: [0.7, 0, 0.3, 1] });
-  inside.classList.remove('on');
-  sceneIn();
-  setTimeout(() => { busy = false; box.focus({ preventScroll: true }); }, 700);
-}
-
-// first load: we start inside the box; the closed-box scene waits behind it
-[arcEl, box, ...floats].forEach(el => el.style.opacity = 0);
-floats.forEach(f => f.style.pointerEvents = 'none');
-if (reduce) { document.documentElement.classList.remove('m'); placeChips(); peek.style.transform = 'translate(-50%,0%)'; }
-else insideIn(false);
-floats.forEach((f, i) => { if (!reduce) animate(f, { y: [0, i % 2 ? 10 : -10, 0], rotate: [0, i % 2 ? 4 : -4, 0] }, { duration: 3.2 + (i % 4) * 0.6, repeat: Infinity, ease: 'easeInOut', delay: i * 0.15 }); });
-
 box.addEventListener('click', openBox);
 box.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openBox(); } });
 document.getElementById('closeBox').addEventListener('click', closeBox);
-inside.querySelector('.inbar a').addEventListener('click', () => setTimeout(closeBox, 700));
-addEventListener('keydown', e => { if (e.key === 'Escape' && opened && document.activeElement && cover.contains(document.activeElement)) closeBox(); });
+addEventListener('keydown', e => { if (e.key === 'Escape' && opened && cover.getBoundingClientRect().bottom > 0) closeBox(); });
 addEventListener('resize', () => { if (opened) { const sp = wallSpots(); chips.forEach((c, i) => animate(c, { x: sp[i].x, y: sp[i].y }, { duration: 0.2 })); } });
-if (!reduce) {
-  stage.addEventListener('pointermove', e => {
-    if (e.pointerType !== 'mouse' || opened) return;
-    const r = stage.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
-    animate(imgs, { rotateY: x * 18, rotateX: -y * 14 }, { type: spring, stiffness: 120, damping: 14 });
-  });
-  stage.addEventListener('pointerleave', () => animate(imgs, { rotateY: 0, rotateX: 0 }, { type: spring, stiffness: 120, damping: 14 }));
-}
 
-// C. slide-in effects for the rest of the page (Motion inView + stagger + spring)
-const sections = [...document.querySelectorAll('main > :not(.cover)')];
-if (reduce) { sections.forEach(s => s.style.opacity = 1); }
-else {
-  const ease = [0.2, 0.8, 0.2, 1];
-  const kids = sec => {
-    const parts = [...sec.querySelectorAll(':scope > .meta, :scope > h2, :scope > .split > *, :scope > .hello > *, :scope > .proj-intro > *, :scope > div:not(.split):not(.hello):not(.proj-intro)')];
-    return parts.length ? parts : [...sec.children];
-  };
-  const groups = sec => [...sec.querySelectorAll('.tools > *, .mo-grid > *, .toc > li, .cols3 > *, .skills > *, .jobs > li, .deliv > li, .steps > li, ol > li, .ab > *')];
-  sections.forEach(sec => {
-    sec.style.opacity = 0;
-    const isImg = sec.matches('.bleed, .grid2'), isDivider = sec.matches('.divider');
-    inView(sec, () => {
-      if (isImg) {
-        sec.style.opacity = 1;
-        const imgsIn = [...sec.querySelectorAll('img')];
-        if (sec.matches('.grid2')) imgsIn.forEach((im, i) => animate(im, { x: [i ? 80 : -80, 0], opacity: [0, 1], rotate: [i ? 3 : -3, 0] }, { type: spring, stiffness: 90, damping: 18, delay: i * 0.08 }));
-        else { animate(sec, { clipPath: ['inset(18% 6% 18% 6% round 22px)', 'inset(0% 0% 0% 0% round 22px)'] }, { duration: 1, ease }); imgsIn.forEach(im => animate(im, { scale: [1.18, 1] }, { duration: 1.2, ease })); }
-      } else if (isDivider) {
-        animate(sec, { opacity: [0, 1], y: [60, 0] }, { duration: 0.7, ease });
-        const h = sec.querySelector('h2'), ar = sec.querySelector('.arrow');
-        if (h) animate(h, { x: [-120, 0], opacity: [0, 1] }, { type: spring, stiffness: 80, damping: 16, delay: 0.1 });
-        if (ar) animate(ar, { x: [-60, 0], opacity: [0, 1] }, { duration: 0.8, ease, delay: 0.25 });
-      } else {
-        animate(sec, { opacity: [0, 1], y: [70, 0] }, { type: spring, stiffness: 90, damping: 20 });
-        const k = kids(sec); if (k.length) animate(k, { opacity: [0, 1], y: [40, 0] }, { duration: 0.7, ease, delay: stagger(0.08, { startDelay: 0.1 }) });
-        const g = groups(sec); if (g.length) animate(g, { opacity: [0, 1], y: [24, 0], scale: [0.96, 1] }, { type: spring, stiffness: 200, damping: 20, delay: stagger(0.045, { startDelay: 0.3 }) });
-      }
-    }, { margin: '0px 0px -60px 0px' });
+/* ---------- slide-in as you scroll (Motion's whileInView, vanilla API) ---------- */
+if (!reduce) {
+  const blocks = [...document.querySelectorAll('main > .slide:not(#cover), main > .bleed, main > .grid2, main > .band, footer')];
+  const ITEMS = '.meta, h2, h3, .lead, .intro, .tool, .mo, .toc li, .cols3 > div, .deliv li, .chips li, .proj-intro > *, .grid2 > img, .xp li, .steps li, .repo, .avatar';
+  blocks.forEach(el => {
+    if (el.getBoundingClientRect().top < innerHeight * 0.9) return;   // already on screen: leave it
+    el.style.opacity = 0; el.style.transform = 'translateY(80px)';
+    const items = [...el.querySelectorAll(ITEMS)].filter(i => !i.closest('.mo-play')).slice(0, 24);
+    items.forEach(i => i.style.opacity = 0);
+    inView(el, () => {
+      animate(el, { opacity: 1, y: [80, 0] }, { type: spring, bounce: 0.25, duration: 0.9 });
+      if (items.length) animate(items, { opacity: [0, 1], y: [24, 0] }, { type: spring, bounce: 0.2, duration: 0.7, delay: stagger(0.06, { startDelay: 0.15 }) });
+    }, { amount: 0.12 });
   });
 }
-document.documentElement.classList.remove('m');
 </script>
 </body>
 </html>
