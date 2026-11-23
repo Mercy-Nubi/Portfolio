@@ -185,9 +185,10 @@ h2.big em{font-style:normal;color:var(--muted);font-weight:400}
 .lbl{display:inline-block;font:600 clamp(11px,1.15vw,16px)/1.3 var(--body);padding:5px 12px;background:var(--pink);color:#fff;box-shadow:0 3px 0 rgba(17,16,20,.15)}
 .lbl.i{background:var(--indigo)}.lbl.w{background:#fff;color:var(--ink)}
 .back .tags .lbl:nth-child(1){rotate:-4deg}.back .tags .lbl:nth-child(2){rotate:3deg}
-.peek{position:absolute;left:50%;bottom:0;width:min(46%,340px);transform:translate(-50%,62%);z-index:2}
+.peekclip{position:absolute;left:var(--l);top:var(--t);width:calc(var(--r) - var(--l));height:calc(var(--b) - var(--t) + 3%);overflow:hidden;z-index:3;pointer-events:none}
+.peek{position:absolute;left:50%;bottom:0;width:62%;max-width:600px;transform:translate(-50%,100%)}
 .peek img{width:100%;display:block}
-.peek::after{content:"";position:absolute;inset:0;background:radial-gradient(rgba(17,16,20,.5) 30%,transparent 32%) 0 0/5px 5px;-webkit-mask:url(https://d2ol7oe51mr4n9.cloudfront.net/user_33VtlYlqjGIvKMOQUyo0ROrS1d1/a19858f2-ccad-42ed-a0c0-5bb41c7e6baa.webp) center/100% 100%;mask:url(https://d2ol7oe51mr4n9.cloudfront.net/user_33VtlYlqjGIvKMOQUyo0ROrS1d1/a19858f2-ccad-42ed-a0c0-5bb41c7e6baa.webp) center/100% 100%;mix-blend-mode:multiply;opacity:.35}
+.peek::after{content:"";position:absolute;inset:0;background:radial-gradient(rgba(17,16,20,.5) 30%,transparent 32%) 0 0/5px 5px;-webkit-mask:url(https://d2ol7oe51mr4n9.cloudfront.net/user_33VtlYlqjGIvKMOQUyo0ROrS1d1/172c0f61-20f7-4a45-8d86-1454f12f2449.webp) center/100% 100%;mask:url(https://d2ol7oe51mr4n9.cloudfront.net/user_33VtlYlqjGIvKMOQUyo0ROrS1d1/172c0f61-20f7-4a45-8d86-1454f12f2449.webp) center/100% 100%;mix-blend-mode:multiply;opacity:.35}
 .back .bst{position:absolute;width:clamp(30px,4vw,58px)}
 .back .bst svg{width:100%;height:auto}
 .back .b1{left:5%;bottom:10%}.back .b2{right:6%;bottom:14%}.back .b3{left:8%;top:12%}.back .b4{right:7%;top:10%}
@@ -206,7 +207,7 @@ h2.big em{font-style:normal;color:var(--muted);font-weight:400}
 .tchip{position:absolute;left:0;top:0;z-index:7;display:flex;align-items:center;gap:8px;background:#fff;border-radius:10px;padding:5px 10px 5px 5px;box-shadow:0 6px 14px -6px rgba(17,16,20,.45);white-space:nowrap;opacity:0}
 .tchip i{width:24px;height:24px;border-radius:7px;display:grid;place-items:center;font:700 10px var(--display);font-style:normal;color:#fff;flex:none}
 .tchip b{font:600 12px var(--body)}
-@media (max-width:760px){.inside{--l:14%;--r:86%;--t:24%;--b:70%}.wl1{left:5%;top:7%}.wl2{right:5%;top:15%}.wl3{display:none}.yr{left:6%;bottom:12%;font-size:34px}.wh3,.wh4{display:none}.peek{width:74%}.back .tags{top:6%;gap:6px}.back .ptitle{top:24%;-webkit-text-stroke:2px #fff}.back .nm{top:48%}.tchip{padding:4px}.tchip b{display:none}.inbar{bottom:4%}.inbar button,.inbar a{font-size:12px;padding:8px 12px}.wh2{display:none}}
+@media (max-width:760px){.inside{--l:14%;--r:86%;--t:24%;--b:70%}.wl1{left:5%;top:7%}.wl2{right:5%;top:15%}.wl3{display:none}.yr{left:6%;bottom:12%;font-size:34px}.wh3,.wh4{display:none}.peek{width:96%}.back .tags{top:6%;gap:6px}.back .ptitle{top:24%;-webkit-text-stroke:2px #fff}.back .nm{top:48%}.tchip{padding:4px}.tchip b{display:none}.inbar{bottom:4%}.inbar button,.inbar a{font-size:12px;padding:8px 12px}.wh2{display:none}}
 @media (prefers-reduced-motion:reduce){.tape-track{transform:none!important}}
 
 /* project intro */
@@ -355,8 +356,8 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font:5
         <div class="ptitle">PORTFOLIO<span>.</span></div>
         <span class="bst b1"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M20 34C8 25 2 18 2 11 2 5.5 6.5 2 11 2c4 0 7 2.5 9 6 2-3.5 5-6 9-6 4.5 0 9 3.5 9 9 0 7-6 14-18 23z" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><circle cx="14" cy="14" r="3" fill="#fff"/><circle cx="26" cy="14" r="3" fill="#fff"/><circle cx="14.6" cy="14.6" r="1.4" fill="#111014"/><circle cx="26.6" cy="14.6" r="1.4" fill="#111014"/></svg></span><span class="bst b2"><svg viewBox="0 0 44 42" aria-hidden="true"><path d="M22 2l6 13 14 2-10 10 2.5 14L22 34l-12.5 7L12 27 2 17l14-2z" fill="#3B4CCA" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 22c2 3 8 3 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="18" r="1.8" fill="#fff"/><circle cx="26" cy="18" r="1.8" fill="#fff"/></svg></span><span class="bst b3"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2c2 10 8 16 18 18-10 2-16 8-18 18-2-10-8-16-18-18 10-2 16-8 18-18z" fill="#FFD43B" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/></svg></span><span class="bst b4"><svg viewBox="0 0 44 36" aria-hidden="true"><rect x="2" y="2" width="40" height="32" rx="9" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><path d="M18 11l11 7-11 7z" fill="#fff"/></svg></span>
         <span class="nm">MERCY NUBI</span>
-        <div class="peek" id="peek"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_33VtlYlqjGIvKMOQUyo0ROrS1d1/a19858f2-ccad-42ed-a0c0-5bb41c7e6baa.webp" width="900" height="880" alt="Mercy Nubi peeking out of the box"></div>
       </div>
+      <div class="peekclip"><div class="peek" id="peek"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_33VtlYlqjGIvKMOQUyo0ROrS1d1/172c0f61-20f7-4a45-8d86-1454f12f2449.webp" width="1100" height="732" alt="Mercy Nubi peeking over the edge of the box"></div></div>
       <div class="wl wl1"><span class="lbl">Born to design,</span><span class="lbl i">raised by deadlines</span></div>
       <div class="wl wl2"><span class="lbl w">With a heart full of</span><span class="lbl">pixels &amp; keyframes</span></div>
       <div class="wl wl3"><span class="lbl i">Where design</span><span class="lbl">meets motion</span></div>
@@ -734,7 +735,7 @@ async function openBox() {
   const spots = wallSpots(), W = inside.clientWidth, H = inside.clientHeight;
   if (reduce) {
     chips.forEach((c, i) => { c.style.opacity = 1; c.style.transform = `translate(${spots[i].x}px,${spots[i].y}px) rotate(${spots[i].rot}deg)`; });
-    peek.style.transform = 'translate(-50%, 24%)'; busy = false; document.getElementById('closeBox').focus(); return;
+    peek.style.transform = 'translate(-50%, 0%)'; busy = false; document.getElementById('closeBox').focus(); return;
   }
   inside.style.opacity = 0; chips.forEach(c => c.style.opacity = 0); pops.forEach(p => p.style.opacity = 0); fades.forEach(p => p.style.opacity = 0);
   // shake, pop the flaps open, then zoom into the box
@@ -745,7 +746,7 @@ async function openBox() {
   animate(box, { scale: 3.2, y: 40, opacity: 0 }, { duration: 0.7, ease: [0.7, 0, 0.3, 1] });
   await animate(inside, { opacity: [0, 1], scale: [1.35, 1] }, { duration: 0.75, ease: [0.2, 0.8, 0.2, 1], delay: 0.15 });
   // you pop up from behind the edge
-  animate(peek, { y: ['62%', '24%'], x: '-50%', rotate: [-6, 0] }, { type: spring, stiffness: 120, damping: 11 });
+  animate(peek, { y: ['100%', '0%'], x: '-50%', rotate: [-4, 0] }, { type: spring, stiffness: 120, damping: 12 });
   animate(pops, { opacity: [0, 1], scale: [0.6, 1] }, { type: spring, stiffness: 260, damping: 16, delay: stagger(0.04, { startDelay: 0.15 }) });
   animate(fades, { opacity: [0, 1] }, { duration: 0.5, delay: 0.4 });
   chips.forEach((c, i) => animate(c, { x: [W / 2 - 20, spots[i].x], y: [H * 0.5, spots[i].y], scale: [0.2, 1], rotate: [0, spots[i].rot], opacity: [0, 1] }, { type: spring, stiffness: 140, damping: 15, delay: 0.35 + i * 0.05 }));
@@ -756,7 +757,7 @@ async function closeBox() {
   if (busy || !opened) return; busy = true; opened = false;
   inside.setAttribute('aria-hidden', 'true');
   if (reduce) { inside.classList.remove('on'); busy = false; box.focus({ preventScroll: true }); return; }
-  animate(peek, { y: '62%', x: '-50%' }, { duration: 0.3 });
+  animate(peek, { y: '100%', x: '-50%' }, { duration: 0.3 });
   await animate(inside, { opacity: 0, scale: 1.2 }, { duration: 0.45, ease: [0.7, 0, 0.3, 1] });
   inside.classList.remove('on');
   animate(glow, { opacity: 0, scale: 0.2 }, { duration: 0.2 });
