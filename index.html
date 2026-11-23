@@ -22,7 +22,7 @@
   color-scheme:light;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
 body{background:var(--paper);color:var(--ink);font:400 16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
 img{display:block;width:100%;height:auto}
 a{color:inherit}
@@ -136,6 +136,7 @@ h2.big em{font-style:normal;color:var(--muted);font-weight:400}
 .divider p{font:500 13px var(--mono);color:#8d8995;margin-top:16px}
 
 
+main img:not(.mo-play img){height:auto}
 /* ===== COVER: unboxing my portfolio ===== */
 .unbox{--grid:rgba(17,16,20,.055);background:var(--white);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:44px 44px;background-position:center;padding:0;min-height:min(94vh,920px);display:flex;flex-direction:column;justify-content:space-between}
 .unbox .row{padding:18px clamp(22px,4vw,56px) 0;position:relative;z-index:4}
@@ -477,7 +478,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font:5
         <ul class="deliv"><li>Landing page</li><li>User flows</li><li>Wireframes</li><li>Mobile UI</li><li>Components</li></ul>
         <div class="links"><a class="solid" href="https://faveremit.com/" target="_blank" rel="noopener">Visit faveremit.com ↗</a></div>
       </div>
-      <div class="pv"><span class="tag tr">project 1</span><img src="assets/faveremit.jpg" alt="Faveremit app home screen on a phone held in hand" loading="lazy"></div>
+      <div class="pv"><span class="tag tr">project 1</span><img width="852" height="480" src="assets/faveremit.jpg" alt="Faveremit app home screen on a phone held in hand" loading="lazy"></div>
     </div>
   </section>
 
@@ -494,11 +495,11 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font:5
         <ul class="deliv"><li>22 screens</li><li>Onboarding</li><li>Accessibility</li><li>React</li><li>TypeScript</li></ul>
         <div class="links"><a class="solid" href="https://mercy-nubi.github.io/Our-Padi/" target="_blank" rel="noopener">Live demo ↗</a><a href="https://github.com/Mercy-Nubi/Our-Padi" target="_blank" rel="noopener">View code ↗</a></div>
       </div>
-      <div class="pv"><span class="tag tr">project 2</span><img src="assets/our-padi.jpg" alt="Our Padi splash and onboarding screens" loading="lazy"></div>
+      <div class="pv"><span class="tag tr">project 2</span><img width="1000" height="562" src="assets/our-padi.jpg" alt="Our Padi splash and onboarding screens" loading="lazy"></div>
     </div>
   </section>
-  <div class="bleed rv"><img src="assets/boards/padi-1.jpg" alt="Our Padi onboarding and sign-up screens" loading="lazy"></div>
-  <div class="bleed rv"><img src="assets/boards/padi-2.jpg" alt="Our Padi mood check-in, reflection, breathing, library, chat bot and community screens" loading="lazy"></div>
+  <div class="bleed rv"><img width="2400" height="1350" src="assets/boards/padi-1.jpg" alt="Our Padi onboarding and sign-up screens" loading="lazy"></div>
+  <div class="bleed rv"><img width="2400" height="1350" src="assets/boards/padi-2.jpg" alt="Our Padi mood check-in, reflection, breathing, library, chat bot and community screens" loading="lazy"></div>
 
   <!-- PROJECT: ZENNI -->
   <section class="slide" id="zenni">
@@ -513,11 +514,11 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font:5
         <ul class="deliv"><li>42 screens</li><li>Lens builder</li><li>Virtual try-on</li><li>React</li><li>TypeScript</li></ul>
         <div class="links"><a class="solid" href="https://mercy-nubi.github.io/Zenni-app/" target="_blank" rel="noopener">Live demo ↗</a><a href="https://github.com/Mercy-Nubi/Zenni-app" target="_blank" rel="noopener">View code ↗</a></div>
       </div>
-      <div class="pv"><span class="tag tr">project 3</span><img src="assets/zenni.jpg" alt="Zenni redesign product page, home and lens builder" loading="lazy"></div>
+      <div class="pv"><span class="tag tr">project 3</span><img width="1200" height="675" src="assets/zenni.jpg" alt="Zenni redesign product page, home and lens builder" loading="lazy"></div>
     </div>
   </section>
-  <div class="bleed rv"><img src="assets/boards/zenni-1.jpg" alt="Zenni home, categories, shape and colour, listing, product and search screens" loading="lazy"></div>
-  <div class="bleed rv"><img src="assets/boards/zenni-2.jpg" alt="Zenni lens builder, virtual try-on, style quiz, favorites and cart screens" loading="lazy"></div>
+  <div class="bleed rv"><img width="2400" height="1350" src="assets/boards/zenni-1.jpg" alt="Zenni home, categories, shape and colour, listing, product and search screens" loading="lazy"></div>
+  <div class="bleed rv"><img width="2400" height="1350" src="assets/boards/zenni-2.jpg" alt="Zenni lens builder, virtual try-on, style quiz, favorites and cart screens" loading="lazy"></div>
 
   <!-- PROJECT: UGLYCASH -->
   <section class="slide" id="uglycash">
@@ -532,11 +533,11 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font:5
         <ul class="deliv"><li>49 screens</li><li>Fintech</li><li>Social trading</li><li>React</li><li>TypeScript</li></ul>
         <div class="links"><a class="solid" href="https://mercy-nubi.github.io/UGLYCASH/" target="_blank" rel="noopener">Live demo ↗</a><a href="https://github.com/Mercy-Nubi/UGLYCASH" target="_blank" rel="noopener">View code ↗</a></div>
       </div>
-      <div class="pv"><span class="tag tr">project 4</span><img src="assets/uglycash.jpg" alt="Uglycash onboarding, home balance and Visa card screens" loading="lazy"></div>
+      <div class="pv"><span class="tag tr">project 4</span><img width="1200" height="675" src="assets/uglycash.jpg" alt="Uglycash onboarding, home balance and Visa card screens" loading="lazy"></div>
     </div>
   </section>
-  <div class="bleed rv"><img src="assets/boards/ugly-1.jpg" alt="Uglycash splash and onboarding screens on hot pink" loading="lazy"></div>
-  <div class="bleed rv"><img src="assets/boards/ugly-2.jpg" alt="Uglycash account creation and survey screens on sky blue" loading="lazy"></div>
+  <div class="bleed rv"><img width="2400" height="1350" src="assets/boards/ugly-1.jpg" alt="Uglycash splash and onboarding screens on hot pink" loading="lazy"></div>
+  <div class="bleed rv"><img width="2400" height="1350" src="assets/boards/ugly-2.jpg" alt="Uglycash account creation and survey screens on sky blue" loading="lazy"></div>
 
   <!-- DIVIDER: BRAND -->
   <a class="slide divider" id="brand" href="#morrow" style="text-decoration:none">
@@ -558,11 +559,11 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font:5
         <ul class="deliv"><li>Wordmark</li><li>Illustration</li><li>Packaging</li><li>Menus</li><li>Social</li></ul>
         <div class="links"><a class="solid" href="/morrow/">Full case study →</a></div>
       </div>
-      <div class="pv"><span class="tag tr">project 5</span><img src="morrow/assets/00-hero.jpg" alt="Morrow red pastry box, coffee cups and croissant" loading="lazy"></div>
+      <div class="pv"><span class="tag tr">project 5</span><img width="2000" height="1328" src="morrow/assets/00-hero.jpg" alt="Morrow red pastry box, coffee cups and croissant" loading="lazy"></div>
     </div>
   </section>
-  <div class="bleed rv"><img src="morrow/assets/02-logo.jpg" alt="Morrow wordmark in cream on red" loading="lazy"></div>
-  <div class="grid2 rv"><img src="morrow/assets/05-labels.jpg" alt="Morrow pastry labels" loading="lazy"><img src="morrow/assets/09-takeaway.jpg" alt="Morrow takeaway bag and cups" loading="lazy"></div>
+  <div class="bleed rv"><img width="2000" height="1328" src="morrow/assets/02-logo.jpg" alt="Morrow wordmark in cream on red" loading="lazy"></div>
+  <div class="grid2 rv"><img width="2000" height="1131" src="morrow/assets/05-labels.jpg" alt="Morrow pastry labels" loading="lazy"><img width="2000" height="1328" src="morrow/assets/09-takeaway.jpg" alt="Morrow takeaway bag and cups" loading="lazy"></div>
 
   <!-- DIVIDER: MOTION -->
   <a class="slide divider" id="motion-design" href="#motion" style="text-decoration:none">
@@ -784,6 +785,14 @@ if (!reduce) {
       if (items.length) animate(items, { opacity: [0, 1], y: [24, 0] }, { type: spring, bounce: 0.2, duration: 0.7, delay: stagger(0.06, { startDelay: 0.15 }) });
     }, { amount: 0.12 });
   });
+  // jumping with a menu link: show the sections you land on right away, so the page doesn't shift under you
+  const showNow = el => { el.style.opacity = 1; el.style.transform = 'none'; el.querySelectorAll(ITEMS).forEach(i => { i.style.opacity = 1; i.style.transform = 'none'; }); };
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]'); if (!a) return;
+    const t = document.querySelector(a.getAttribute('href')); if (!t) return;
+    const y = t.getBoundingClientRect().top + scrollY;
+    blocks.forEach(b => { const by = b.getBoundingClientRect().top + scrollY; if (Math.abs(by - y) < innerHeight * 1.5 || b.contains(t)) showNow(b); });
+  }, true);
 }
 </script>
 </body>
