@@ -168,17 +168,45 @@ h2.big em{font-style:normal;color:var(--muted);font-weight:400}
 .unbox > *{position:relative;z-index:1}
 .boxwrap .open{position:absolute;left:-6%;bottom:0;width:112%;max-width:none;opacity:0;pointer-events:none}
 .boxglow{position:absolute;left:-10%;top:-50%;width:120%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(224,40,125,.32),rgba(224,40,125,0));opacity:0;z-index:-1;pointer-events:none}
-.toolfly{position:absolute;inset:0;pointer-events:none;z-index:5}
-.chip{position:absolute;left:0;top:0;display:flex;align-items:center;gap:10px;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:8px 12px 8px 8px;box-shadow:0 10px 24px -12px rgba(17,16,20,.35);white-space:nowrap;opacity:0;pointer-events:auto;will-change:transform}
-.chip i{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font:700 12px var(--display);font-style:normal;color:#fff;flex:none}
-.chip b{font:600 13px var(--body);display:block;line-height:1.1}
-.chip small{display:block;font:500 10px var(--mono);color:var(--muted)}
-.openbar{position:absolute;left:-40px;right:-40px;bottom:-74px;display:flex;justify-content:center;gap:8px;opacity:0;pointer-events:none;z-index:6}
-.openbar.on{pointer-events:auto}
-.openbar button,.openbar a{font:600 13px var(--body);border-radius:999px;padding:9px 16px;border:1px solid var(--ink);background:var(--white);color:var(--ink);text-decoration:none;cursor:pointer;white-space:nowrap}
-.openbar a{background:var(--ink);color:#fff}
-.toolcap{position:absolute;left:0;right:0;top:22px;text-align:center;font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--pink);opacity:0;z-index:5;pointer-events:none}
-@media (max-width:760px){.chip{padding:6px 9px 6px 6px;gap:7px;border-radius:12px}.chip i{width:24px;height:24px;font-size:10px;border-radius:7px}.chip b{font-size:11px}.chip small{display:none}.openbar{bottom:-66px}.openbar button,.openbar a{font-size:12px;padding:8px 12px}}
+
+/* ===== INSIDE THE BOX (after you open it) ===== */
+.inside{--l:24%;--r:76%;--t:21%;--b:77%;position:absolute;inset:0;z-index:20;display:none;overflow:hidden;border-radius:inherit;background:#C98A3E;transform-origin:50% 45%}
+.inside.on{display:block}
+.wall{position:absolute;inset:0}
+.wall.t{clip-path:polygon(0 0,100% 0,var(--r) var(--t),var(--l) var(--t));background:repeating-linear-gradient(90deg,rgba(255,255,255,.07) 0 2px,transparent 2px 13px),linear-gradient(#B97A30,#D59A4B)}
+.wall.b{clip-path:polygon(var(--l) var(--b),var(--r) var(--b),100% 100%,0 100%);background:repeating-linear-gradient(90deg,rgba(255,255,255,.08) 0 2px,transparent 2px 13px),linear-gradient(#E3AE5E,#F0C077)}
+.wall.lw{clip-path:polygon(0 0,var(--l) var(--t),var(--l) var(--b),0 100%);background:repeating-linear-gradient(0deg,rgba(255,255,255,.07) 0 2px,transparent 2px 13px),linear-gradient(90deg,#D9A052,#C98A3E)}
+.wall.rw{clip-path:polygon(100% 0,100% 100%,var(--r) var(--b),var(--r) var(--t));background:repeating-linear-gradient(0deg,rgba(0,0,0,.05) 0 2px,transparent 2px 13px),linear-gradient(270deg,#C88838,#B47328)}
+.wrap-sheen{position:absolute;inset:0;pointer-events:none;z-index:6;background:linear-gradient(115deg,rgba(255,255,255,.28) 0 6%,transparent 14% 60%,rgba(255,255,255,.18) 66%,transparent 74%),linear-gradient(200deg,transparent 0 78%,rgba(255,255,255,.22) 84%,transparent 90%);mix-blend-mode:screen}
+.back{position:absolute;left:var(--l);top:var(--t);width:calc(var(--r) - var(--l));height:calc(var(--b) - var(--t));overflow:hidden;background:#fff;background-image:linear-gradient(rgba(59,76,202,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(59,76,202,.16) 1px,transparent 1px);background-size:32px 32px;box-shadow:inset 0 0 40px rgba(17,16,20,.18)}
+.back .ptitle{position:absolute;left:0;right:0;top:20%;text-align:center;font:800 clamp(40px,8.4vw,128px)/.9 var(--display);letter-spacing:-.05em;color:var(--indigo);-webkit-text-stroke:3px #fff;paint-order:stroke fill;text-shadow:0 4px 0 rgba(17,16,20,.12)}
+.back .ptitle span{color:var(--pink)}
+.back .tags{position:absolute;left:0;right:0;top:9%;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.lbl{display:inline-block;font:600 clamp(11px,1.15vw,16px)/1.3 var(--body);padding:5px 12px;background:var(--pink);color:#fff;box-shadow:0 3px 0 rgba(17,16,20,.15)}
+.lbl.i{background:var(--indigo)}.lbl.w{background:#fff;color:var(--ink)}
+.back .tags .lbl:nth-child(1){rotate:-4deg}.back .tags .lbl:nth-child(2){rotate:3deg}
+.peek{position:absolute;left:50%;bottom:0;width:min(46%,340px);transform:translate(-50%,62%);z-index:2}
+.peek img{width:100%;display:block}
+.peek::after{content:"";position:absolute;inset:0;background:radial-gradient(rgba(17,16,20,.5) 30%,transparent 32%) 0 0/5px 5px;-webkit-mask:url(https://d2ol7oe51mr4n9.cloudfront.net/user_33VtlYlqjGIvKMOQUyo0ROrS1d1/a19858f2-ccad-42ed-a0c0-5bb41c7e6baa.webp) center/100% 100%;mask:url(https://d2ol7oe51mr4n9.cloudfront.net/user_33VtlYlqjGIvKMOQUyo0ROrS1d1/a19858f2-ccad-42ed-a0c0-5bb41c7e6baa.webp) center/100% 100%;mix-blend-mode:multiply;opacity:.35}
+.back .bst{position:absolute;width:clamp(30px,4vw,58px)}
+.back .bst svg{width:100%;height:auto}
+.back .b1{left:5%;bottom:10%}.back .b2{right:6%;bottom:14%}.back .b3{left:8%;top:12%}.back .b4{right:7%;top:10%}
+.back .nm{position:absolute;right:6%;top:52%;font:700 clamp(10px,1vw,14px) var(--mono);background:var(--indigo);color:#fff;padding:6px 12px;border-radius:999px;rotate:-8deg}
+.wl{position:absolute;z-index:7}
+.wl .lbl{display:block;width:max-content}
+.wl1{left:8%;top:12%}.wl2{right:8%;top:12%;text-align:right}.wl2 .lbl{margin-left:auto}.wl3{right:8%;bottom:9%;text-align:right}.wl3 .lbl{margin-left:auto}
+.yr{position:absolute;left:8%;bottom:7%;z-index:7;font:800 clamp(36px,5vw,72px)/.85 var(--display);color:var(--pink);letter-spacing:-.04em}
+.yr span{display:block;margin-left:.5em}
+.whisper{position:absolute;z-index:7;font:500 italic clamp(10px,.95vw,13px) var(--mono);color:rgba(255,255,255,.85);white-space:nowrap}
+.wh1{left:50%;top:calc(var(--t) - 4%);transform:translateX(-50%)}.wh2{left:50%;bottom:4%;transform:translateX(-50%)}
+.wh3{left:calc(var(--l) / 7);top:50%;transform:translate(-50%,-50%) rotate(90deg)}.wh4{right:calc((100% - var(--r)) / 7);top:50%;transform:translate(50%,-50%) rotate(-90deg)}
+.inbar{position:absolute;left:0;right:0;bottom:calc((100% - var(--b)) / 2 - 18px);display:flex;justify-content:center;gap:8px;z-index:8}
+.inbar button,.inbar a{font:600 13px var(--body);border-radius:999px;padding:9px 16px;border:1px solid var(--ink);background:var(--white);color:var(--ink);text-decoration:none;cursor:pointer;white-space:nowrap}
+.inbar a{background:var(--ink);color:#fff}
+.tchip{position:absolute;left:0;top:0;z-index:7;display:flex;align-items:center;gap:8px;background:#fff;border-radius:10px;padding:5px 10px 5px 5px;box-shadow:0 6px 14px -6px rgba(17,16,20,.45);white-space:nowrap;opacity:0}
+.tchip i{width:24px;height:24px;border-radius:7px;display:grid;place-items:center;font:700 10px var(--display);font-style:normal;color:#fff;flex:none}
+.tchip b{font:600 12px var(--body)}
+@media (max-width:760px){.inside{--l:14%;--r:86%;--t:24%;--b:70%}.wl1{left:5%;top:7%}.wl2{right:5%;top:15%}.wl3{display:none}.yr{left:6%;bottom:12%;font-size:34px}.wh3,.wh4{display:none}.peek{width:74%}.back .tags{top:6%;gap:6px}.back .ptitle{top:24%;-webkit-text-stroke:2px #fff}.back .nm{top:48%}.tchip{padding:4px}.tchip b{display:none}.inbar{bottom:4%}.inbar button,.inbar a{font-size:12px;padding:8px 12px}.wh2{display:none}}
 @media (prefers-reduced-motion:reduce){.tape-track{transform:none!important}}
 
 /* project intro */
@@ -304,7 +332,6 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font:5
         <img src="assets/box.webp" width="817" height="820" alt="A cardboard box covered in Mercy Nubi stickers: Portfolio 2026, product, motion, brand and code" fetchpriority="high" class="closed">
         <img class="open" src="https://d2ol7oe51mr4n9.cloudfront.net/user_33VtlYlqjGIvKMOQUyo0ROrS1d1/aefd5fda-08ea-4397-894a-c79b0463815f.webp" width="1000" height="956" alt="" aria-hidden="true" loading="eager">
         <span class="boxhint" id="boxHint">Tap the box to open it</span>
-        <div class="openbar" id="openbar"><button type="button" id="closeBox">Close the box</button><a href="#contents">See my work ↓</a></div>
       </div>
       <a class="float folder fl1" href="#product"><svg viewBox="0 0 64 50" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4-4h16l6 6h30a4 4 0 0 1 4 4v30a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#5B8DEF" stroke="#111014" stroke-width="2"/><path d="M2 16h60v28a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#7AA6FF" stroke="#111014" stroke-width="2"/></svg>product</a>
       <a class="float folder fl3" href="#brand"><svg viewBox="0 0 64 50" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4-4h16l6 6h30a4 4 0 0 1 4 4v30a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#E0287D" stroke="#111014" stroke-width="2"/><path d="M2 16h60v28a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" fill="#FF6BB0" stroke="#111014" stroke-width="2"/></svg>brand</a>
@@ -313,8 +340,6 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font:5
       <span class="float icon fl5" aria-hidden="true"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M20 34C8 25 2 18 2 11 2 5.5 6.5 2 11 2c4 0 7 2.5 9 6 2-3.5 5-6 9-6 4.5 0 9 3.5 9 9 0 7-6 14-18 23z" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><circle cx="14" cy="14" r="3" fill="#fff"/><circle cx="26" cy="14" r="3" fill="#fff"/><circle cx="14.6" cy="14.6" r="1.4" fill="#111014"/><circle cx="26.6" cy="14.6" r="1.4" fill="#111014"/></svg></span>
       <span class="float icon fl6" aria-hidden="true"><svg viewBox="0 0 44 42" aria-hidden="true"><path d="M22 2l6 13 14 2-10 10 2.5 14L22 34l-12.5 7L12 27 2 17l14-2z" fill="#3B4CCA" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 22c2 3 8 3 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="18" r="1.8" fill="#fff"/><circle cx="26" cy="18" r="1.8" fill="#fff"/></svg></span>
       <span class="float icon fl7" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2c2 10 8 16 18 18-10 2-16 8-18 18-2-10-8-16-18-18 10-2 16-8 18-18z" fill="#FFD43B" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/></svg></span>
-      <div class="toolfly" id="toolfly" aria-live="polite"></div>
-      <p class="toolcap" id="toolcap">What’s in the box: my toolkit</p>
       <span class="float icon fl8" aria-hidden="true"><svg viewBox="0 0 44 36" aria-hidden="true"><rect x="2" y="2" width="40" height="32" rx="9" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><path d="M18 11l11 7-11 7z" fill="#fff"/></svg></span>
     </div>
     <div class="sub">
@@ -322,6 +347,27 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font:5
       <a class="links-one hire" href="#contents">What’s inside ↓</a>
     </div>
     <div class="tape bottom" aria-hidden="true"><div class="tape-track"><span class="stk p" style="--r:-2deg">Born to design</span><span class="ico"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M20 34C8 25 2 18 2 11 2 5.5 6.5 2 11 2c4 0 7 2.5 9 6 2-3.5 5-6 9-6 4.5 0 9 3.5 9 9 0 7-6 14-18 23z" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><circle cx="14" cy="14" r="3" fill="#fff"/><circle cx="26" cy="14" r="3" fill="#fff"/><circle cx="14.6" cy="14.6" r="1.4" fill="#111014"/><circle cx="26.6" cy="14.6" r="1.4" fill="#111014"/></svg></span><span class="stk i" style="--r:2deg">Raised by deadlines</span><span class="ico"><svg viewBox="0 0 44 42" aria-hidden="true"><path d="M22 2l6 13 14 2-10 10 2.5 14L22 34l-12.5 7L12 27 2 17l14-2z" fill="#3B4CCA" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 22c2 3 8 3 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="18" r="1.8" fill="#fff"/><circle cx="26" cy="18" r="1.8" fill="#fff"/></svg></span><span class="stk y" style="--r:-1deg">Product · Brand · Motion · Code</span><span class="ico"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2c2 10 8 16 18 18-10 2-16 8-18 18-2-10-8-16-18-18 10-2 16-8 18-18z" fill="#FFD43B" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/></svg></span><span class="stk w" style="--r:2deg">Mercy Nubi ✦ Portfolio 2026</span><span class="ico"><svg viewBox="0 0 44 36" aria-hidden="true"><rect x="2" y="2" width="40" height="32" rx="9" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><path d="M18 11l11 7-11 7z" fill="#fff"/></svg></span><span class="stk p" style="--r:1deg">Lagos, Nigeria</span><span class="ico"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M20 34C8 25 2 18 2 11 2 5.5 6.5 2 11 2c4 0 7 2.5 9 6 2-3.5 5-6 9-6 4.5 0 9 3.5 9 9 0 7-6 14-18 23z" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><circle cx="14" cy="14" r="3" fill="#fff"/><circle cx="26" cy="14" r="3" fill="#fff"/><circle cx="14.6" cy="14.6" r="1.4" fill="#111014"/><circle cx="26.6" cy="14.6" r="1.4" fill="#111014"/></svg></span><span class="stk i" style="--r:-2deg">Open to work</span><span class="ico"><svg viewBox="0 0 44 42" aria-hidden="true"><path d="M22 2l6 13 14 2-10 10 2.5 14L22 34l-12.5 7L12 27 2 17l14-2z" fill="#3B4CCA" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 22c2 3 8 3 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="18" r="1.8" fill="#fff"/><circle cx="26" cy="18" r="1.8" fill="#fff"/></svg></span><span class="stk p" style="--r:-2deg">Born to design</span><span class="ico"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M20 34C8 25 2 18 2 11 2 5.5 6.5 2 11 2c4 0 7 2.5 9 6 2-3.5 5-6 9-6 4.5 0 9 3.5 9 9 0 7-6 14-18 23z" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><circle cx="14" cy="14" r="3" fill="#fff"/><circle cx="26" cy="14" r="3" fill="#fff"/><circle cx="14.6" cy="14.6" r="1.4" fill="#111014"/><circle cx="26.6" cy="14.6" r="1.4" fill="#111014"/></svg></span><span class="stk i" style="--r:2deg">Raised by deadlines</span><span class="ico"><svg viewBox="0 0 44 42" aria-hidden="true"><path d="M22 2l6 13 14 2-10 10 2.5 14L22 34l-12.5 7L12 27 2 17l14-2z" fill="#3B4CCA" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 22c2 3 8 3 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="18" r="1.8" fill="#fff"/><circle cx="26" cy="18" r="1.8" fill="#fff"/></svg></span><span class="stk y" style="--r:-1deg">Product · Brand · Motion · Code</span><span class="ico"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2c2 10 8 16 18 18-10 2-16 8-18 18-2-10-8-16-18-18 10-2 16-8 18-18z" fill="#FFD43B" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/></svg></span><span class="stk w" style="--r:2deg">Mercy Nubi ✦ Portfolio 2026</span><span class="ico"><svg viewBox="0 0 44 36" aria-hidden="true"><rect x="2" y="2" width="40" height="32" rx="9" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><path d="M18 11l11 7-11 7z" fill="#fff"/></svg></span><span class="stk p" style="--r:1deg">Lagos, Nigeria</span><span class="ico"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M20 34C8 25 2 18 2 11 2 5.5 6.5 2 11 2c4 0 7 2.5 9 6 2-3.5 5-6 9-6 4.5 0 9 3.5 9 9 0 7-6 14-18 23z" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><circle cx="14" cy="14" r="3" fill="#fff"/><circle cx="26" cy="14" r="3" fill="#fff"/><circle cx="14.6" cy="14.6" r="1.4" fill="#111014"/><circle cx="26.6" cy="14.6" r="1.4" fill="#111014"/></svg></span><span class="stk i" style="--r:-2deg">Open to work</span><span class="ico"><svg viewBox="0 0 44 42" aria-hidden="true"><path d="M22 2l6 13 14 2-10 10 2.5 14L22 34l-12.5 7L12 27 2 17l14-2z" fill="#3B4CCA" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 22c2 3 8 3 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="18" r="1.8" fill="#fff"/><circle cx="26" cy="18" r="1.8" fill="#fff"/></svg></span><span class="stk p" style="--r:-2deg">Born to design</span><span class="ico"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M20 34C8 25 2 18 2 11 2 5.5 6.5 2 11 2c4 0 7 2.5 9 6 2-3.5 5-6 9-6 4.5 0 9 3.5 9 9 0 7-6 14-18 23z" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><circle cx="14" cy="14" r="3" fill="#fff"/><circle cx="26" cy="14" r="3" fill="#fff"/><circle cx="14.6" cy="14.6" r="1.4" fill="#111014"/><circle cx="26.6" cy="14.6" r="1.4" fill="#111014"/></svg></span><span class="stk i" style="--r:2deg">Raised by deadlines</span><span class="ico"><svg viewBox="0 0 44 42" aria-hidden="true"><path d="M22 2l6 13 14 2-10 10 2.5 14L22 34l-12.5 7L12 27 2 17l14-2z" fill="#3B4CCA" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 22c2 3 8 3 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="18" r="1.8" fill="#fff"/><circle cx="26" cy="18" r="1.8" fill="#fff"/></svg></span><span class="stk y" style="--r:-1deg">Product · Brand · Motion · Code</span><span class="ico"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2c2 10 8 16 18 18-10 2-16 8-18 18-2-10-8-16-18-18 10-2 16-8 18-18z" fill="#FFD43B" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/></svg></span><span class="stk w" style="--r:2deg">Mercy Nubi ✦ Portfolio 2026</span><span class="ico"><svg viewBox="0 0 44 36" aria-hidden="true"><rect x="2" y="2" width="40" height="32" rx="9" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><path d="M18 11l11 7-11 7z" fill="#fff"/></svg></span><span class="stk p" style="--r:1deg">Lagos, Nigeria</span><span class="ico"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M20 34C8 25 2 18 2 11 2 5.5 6.5 2 11 2c4 0 7 2.5 9 6 2-3.5 5-6 9-6 4.5 0 9 3.5 9 9 0 7-6 14-18 23z" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><circle cx="14" cy="14" r="3" fill="#fff"/><circle cx="26" cy="14" r="3" fill="#fff"/><circle cx="14.6" cy="14.6" r="1.4" fill="#111014"/><circle cx="26.6" cy="14.6" r="1.4" fill="#111014"/></svg></span><span class="stk i" style="--r:-2deg">Open to work</span><span class="ico"><svg viewBox="0 0 44 42" aria-hidden="true"><path d="M22 2l6 13 14 2-10 10 2.5 14L22 34l-12.5 7L12 27 2 17l14-2z" fill="#3B4CCA" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 22c2 3 8 3 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="18" r="1.8" fill="#fff"/><circle cx="26" cy="18" r="1.8" fill="#fff"/></svg></span></div></div>
+  
+    <div class="inside" id="inside" aria-hidden="true">
+      <div class="wall t"></div><div class="wall b"></div><div class="wall lw"></div><div class="wall rw"></div>
+      <div class="back">
+        <div class="tags"><span class="lbl">Product Designer</span><span class="lbl i">Motion Designer &amp; Frontend</span></div>
+        <div class="ptitle">PORTFOLIO<span>.</span></div>
+        <span class="bst b1"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M20 34C8 25 2 18 2 11 2 5.5 6.5 2 11 2c4 0 7 2.5 9 6 2-3.5 5-6 9-6 4.5 0 9 3.5 9 9 0 7-6 14-18 23z" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><circle cx="14" cy="14" r="3" fill="#fff"/><circle cx="26" cy="14" r="3" fill="#fff"/><circle cx="14.6" cy="14.6" r="1.4" fill="#111014"/><circle cx="26.6" cy="14.6" r="1.4" fill="#111014"/></svg></span><span class="bst b2"><svg viewBox="0 0 44 42" aria-hidden="true"><path d="M22 2l6 13 14 2-10 10 2.5 14L22 34l-12.5 7L12 27 2 17l14-2z" fill="#3B4CCA" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 22c2 3 8 3 10 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="18" r="1.8" fill="#fff"/><circle cx="26" cy="18" r="1.8" fill="#fff"/></svg></span><span class="bst b3"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2c2 10 8 16 18 18-10 2-16 8-18 18-2-10-8-16-18-18 10-2 16-8 18-18z" fill="#FFD43B" stroke="#111014" stroke-width="2.5" stroke-linejoin="round"/></svg></span><span class="bst b4"><svg viewBox="0 0 44 36" aria-hidden="true"><rect x="2" y="2" width="40" height="32" rx="9" fill="#E0287D" stroke="#111014" stroke-width="2.5"/><path d="M18 11l11 7-11 7z" fill="#fff"/></svg></span>
+        <span class="nm">MERCY NUBI</span>
+        <div class="peek" id="peek"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_33VtlYlqjGIvKMOQUyo0ROrS1d1/a19858f2-ccad-42ed-a0c0-5bb41c7e6baa.webp" width="900" height="880" alt="Mercy Nubi peeking out of the box"></div>
+      </div>
+      <div class="wl wl1"><span class="lbl">Born to design,</span><span class="lbl i">raised by deadlines</span></div>
+      <div class="wl wl2"><span class="lbl w">With a heart full of</span><span class="lbl">pixels &amp; keyframes</span></div>
+      <div class="wl wl3"><span class="lbl i">Where design</span><span class="lbl">meets motion</span></div>
+      <div class="yr">20<span>26</span></div>
+      <span class="whisper wh1">welcome to my portfolio</span>
+      <span class="whisper wh2">(mercy nubi)</span>
+      <span class="whisper wh3">mercynubii@gmail.com</span>
+      <span class="whisper wh4">product · motion · brand · code</span>
+      <div class="wrap-sheen"></div>
+      <div class="inbar"><button type="button" id="closeBox">Close the box</button><a href="#contents">See my work ↓</a></div>
+    </div>
   </section>
 
   <!-- 02 HELLO -->
@@ -657,86 +703,74 @@ if (reduce) { /* show everything still */ } else {
   scroll(animate(stage, { y: [0, -60], scale: [1, 0.92], opacity: [1, 0.5] }, { ease: 'linear' }), { target: cover, offset: ['start start', 'end start'] });
 }
 
-// 7. tap the box: it opens and the toolkit flies out
+// 7. tap the box: it pops open and we dive inside it
 const imgs = [...box.querySelectorAll('img')];
 const closedImg = box.querySelector('img.closed'), openImg = box.querySelector('img.open');
-const glow = document.getElementById('boxGlow'), hint = document.getElementById('boxHint');
-const fly = document.getElementById('toolfly'), cap = document.getElementById('toolcap'), bar = document.getElementById('openbar');
-const arcEl = cover.querySelector('.arc');
-const TOOLS = [...document.querySelectorAll('#tools .tool')].map(t => ({ ico: t.querySelector('i').outerHTML, name: t.querySelector('b').firstChild.textContent.trim(), kind: t.querySelector('small')?.textContent || '' }));
-const chips = TOOLS.map(t => { const c = document.createElement('div'); c.className = 'chip'; c.innerHTML = t.ico + `<span><b>${t.name}</b><small>${t.kind}</small></span>`; fly.appendChild(c); return c; });
+const glow = document.getElementById('boxGlow');
+const inside = document.getElementById('inside'), peek = document.getElementById('peek');
+const backEl = inside.querySelector('.back');
+const pops = [...inside.querySelectorAll('.lbl, .yr, .bst, .nm, .ptitle')];
+const fades = [...inside.querySelectorAll('.whisper, .inbar')];
+const TOOLS = [...document.querySelectorAll('#tools .tool')].map(t => ({ ico: t.querySelector('i').outerHTML, name: t.querySelector('b').firstChild.textContent.trim() }));
+const chips = TOOLS.map(t => { const c = document.createElement('div'); c.className = 'tchip'; c.innerHTML = t.ico + `<b>${t.name}</b>`; inside.insertBefore(c, inside.querySelector('.wrap-sheen')); return c; });
 let opened = false, busy = false;
 
-function layout() {
-  const S = stage.getBoundingClientRect(), B = closedImg.getBoundingClientRect();
-  const narrow = S.width < 700, cols = narrow ? 3 : 6, rows = Math.ceil(chips.length / cols);
-  const mouthX = B.left - S.left + B.width / 2, mouthY = B.top - S.top + B.height * 0.18;
-  const top = narrow ? 50 : 56, gapX = narrow ? 8 : 14, gapY = narrow ? 10 : 14;
-  const cw = Math.min(narrow ? 112 : 168, (S.width - 32 - gapX * (cols - 1)) / cols), ch = narrow ? 40 : 50;
-  const gridW = cols * cw + (cols - 1) * gapX, x0 = (S.width - gridW) / 2;
+// tools stick to the left and right walls of the box
+function wallSpots() {
+  const W = inside.clientWidth, H = inside.clientHeight, narrow = W < 700;
+  const half = Math.ceil(chips.length / 2), y0 = H * (narrow ? 0.30 : 0.28), y1 = H * (narrow ? 0.66 : 0.72);
   return chips.map((c, i) => {
-    const col = i % cols, row = Math.floor(i / cols);
-    c.style.width = cw + 'px';
-    return { fromX: mouthX - cw / 2, fromY: mouthY - ch / 2, x: x0 + col * (cw + gapX), y: top + row * (ch + gapY), rot: ((i * 37) % 9) - 4, rows, ch, gapY, top };
+    const left = i < half, k = left ? i : i - half, n = left ? half : chips.length - half;
+    const y = y0 + (y1 - y0) * (k / Math.max(1, n - 1));
+    const cw = c.offsetWidth || 40, wallW = W * (narrow ? 0.14 : 0.24);
+    const x = left ? Math.max(6, wallW * 0.5 - cw / 2 - 6) : W - Math.max(6, wallW * 0.5 - cw / 2 - 6) - cw;
+    return { x, y, rot: left ? 6 - (k % 3) * 3 : -6 + (k % 3) * 3 };
   });
 }
 
 async function openBox() {
-  if (busy) return; busy = true;
-  if (opened) { await closeBox(); busy = false; return; }
-  opened = true;
-  floats.forEach(f => f.style.pointerEvents = 'none');
-  hint.style.opacity = 0;
-  const pos = layout(), g = pos[0], toolsBottom = g.top + g.rows * (g.ch + g.gapY);
-  const B = closedImg.getBoundingClientRect(), S = stage.getBoundingClientRect();
-  const dropBy = Math.max(0, toolsBottom + 30 - (B.top - S.top));
+  if (busy || opened) return; busy = true; opened = true;
+  inside.classList.add('on'); inside.setAttribute('aria-hidden', 'false');
+  const spots = wallSpots(), W = inside.clientWidth, H = inside.clientHeight;
   if (reduce) {
-    closedImg.style.opacity = 0; openImg.style.opacity = 1; arcEl.style.opacity = 0; floats.forEach(f => f.style.opacity = 0);
-    chips.forEach((c, i) => { c.style.opacity = 1; c.style.transform = `translate(${pos[i].x}px,${pos[i].y}px)`; });
-    cap.style.opacity = 1; bar.style.opacity = 1; bar.classList.add('on'); busy = false; return;
+    chips.forEach((c, i) => { c.style.opacity = 1; c.style.transform = `translate(${spots[i].x}px,${spots[i].y}px) rotate(${spots[i].rot}deg)`; });
+    peek.style.transform = 'translate(-50%, 24%)'; busy = false; document.getElementById('closeBox').focus(); return;
   }
-  // shake, then pop open
+  inside.style.opacity = 0; chips.forEach(c => c.style.opacity = 0); pops.forEach(p => p.style.opacity = 0); fades.forEach(p => p.style.opacity = 0);
+  // shake, pop the flaps open, then zoom into the box
   await animate(closedImg, { rotate: [0, -6, 6, -4, 3, 0], y: [0, -6, 0] }, { duration: 0.45 });
-  animate(arcEl, { opacity: 0, y: -20 }, { duration: 0.3 });
-  animate(floats, { opacity: 0, scale: 0.6 }, { duration: 0.3 });
-  animate(box, { y: dropBy * 0.55, scale: 0.86, rotate: 0 }, { type: spring, stiffness: 160, damping: 18 });
   animate(closedImg, { opacity: 0 }, { duration: 0.15 });
-  animate(openImg, { opacity: [0, 1], scale: [0.92, 1.04, 1] }, { duration: 0.45 });
-  animate(glow, { opacity: [0, 1], scale: [0.2, 1.1] }, { duration: 0.6 });
-  // tools burst out of the box and land in a neat grid
-  chips.forEach((c, i) => {
-    const p = pos[i];
-    animate(c, { x: [p.fromX, p.x], y: [p.fromY + 20, p.y], scale: [0.2, 1], rotate: [p.rot * 6, p.rot], opacity: [0, 1] },
-      { type: spring, stiffness: 140, damping: 15, delay: 0.12 + i * 0.05 });
-  });
-  animate(cap, { opacity: [0, 1], y: [-8, 0] }, { duration: 0.4, delay: 0.6 });
-  animate(bar, { opacity: [0, 1], y: [10, 0] }, { duration: 0.4, delay: 0.9 }); bar.classList.add('on');
-  setTimeout(() => { busy = false; }, 900);
+  animate(openImg, { opacity: [0, 1], scale: [0.92, 1.05, 1] }, { duration: 0.4 });
+  await animate(glow, { opacity: [0, 1], scale: [0.2, 1.1] }, { duration: 0.4 });
+  animate(box, { scale: 3.2, y: 40, opacity: 0 }, { duration: 0.7, ease: [0.7, 0, 0.3, 1] });
+  await animate(inside, { opacity: [0, 1], scale: [1.35, 1] }, { duration: 0.75, ease: [0.2, 0.8, 0.2, 1], delay: 0.15 });
+  // you pop up from behind the edge
+  animate(peek, { y: ['62%', '24%'], x: '-50%', rotate: [-6, 0] }, { type: spring, stiffness: 120, damping: 11 });
+  animate(pops, { opacity: [0, 1], scale: [0.6, 1] }, { type: spring, stiffness: 260, damping: 16, delay: stagger(0.04, { startDelay: 0.15 }) });
+  animate(fades, { opacity: [0, 1] }, { duration: 0.5, delay: 0.4 });
+  chips.forEach((c, i) => animate(c, { x: [W / 2 - 20, spots[i].x], y: [H * 0.5, spots[i].y], scale: [0.2, 1], rotate: [0, spots[i].rot], opacity: [0, 1] }, { type: spring, stiffness: 140, damping: 15, delay: 0.35 + i * 0.05 }));
+  setTimeout(() => { busy = false; document.getElementById('closeBox').focus({ preventScroll: true }); }, 900);
 }
 
 async function closeBox() {
-  opened = false; hint.style.opacity = 1;
-  bar.classList.remove('on');
-  const pos = layout();
-  if (reduce) {
-    closedImg.style.opacity = 1; openImg.style.opacity = 0; arcEl.style.opacity = 1; floats.forEach(f => { f.style.opacity = 1; f.style.pointerEvents = ''; });
-    chips.forEach(c => c.style.opacity = 0); cap.style.opacity = 0; bar.style.opacity = 0; return;
-  }
-  animate([cap, bar], { opacity: 0 }, { duration: 0.2 });
-  await Promise.all(chips.map((c, i) => animate(c, { x: pos[i].fromX, y: pos[i].fromY + 20, scale: 0.2, opacity: 0, rotate: 0 }, { duration: 0.35, delay: (chips.length - i) * 0.025, ease: [0.5, 0, 0.75, 0] })));
-  animate(glow, { opacity: 0, scale: 0.2 }, { duration: 0.3 });
+  if (busy || !opened) return; busy = true; opened = false;
+  inside.setAttribute('aria-hidden', 'true');
+  if (reduce) { inside.classList.remove('on'); busy = false; box.focus({ preventScroll: true }); return; }
+  animate(peek, { y: '62%', x: '-50%' }, { duration: 0.3 });
+  await animate(inside, { opacity: 0, scale: 1.2 }, { duration: 0.45, ease: [0.7, 0, 0.3, 1] });
+  inside.classList.remove('on');
+  animate(glow, { opacity: 0, scale: 0.2 }, { duration: 0.2 });
   animate(openImg, { opacity: 0 }, { duration: 0.2 });
-  animate(closedImg, { opacity: 1, scale: [0.94, 1] }, { type: spring, stiffness: 300, damping: 14 });
-  animate(box, { y: 0, scale: 1, rotate: 0 }, { type: spring, stiffness: 160, damping: 18 }).then(idle);
-  animate(arcEl, { opacity: 1, y: 0 }, { duration: 0.4 });
-  animate(floats, { opacity: 1, scale: 1 }, { type: spring, stiffness: 220, damping: 14 });
-  floats.forEach(f => f.style.pointerEvents = '');
+  animate(closedImg, { opacity: 1 }, { duration: 0.2 });
+  await animate(box, { scale: [0.6, 1], y: 0, opacity: [0, 1], rotate: 0 }, { type: spring, stiffness: 200, damping: 14 });
+  idle(); busy = false; box.focus({ preventScroll: true });
 }
 box.addEventListener('click', openBox);
 box.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openBox(); } });
-document.getElementById('openbar').addEventListener('click', e => e.stopPropagation());
-document.getElementById('closeBox').addEventListener('click', () => { if (!busy && opened) { busy = true; closeBox().then(() => busy = false); } });
-addEventListener('resize', () => { if (opened) { const pos = layout(); chips.forEach((c, i) => animate(c, { x: pos[i].x, y: pos[i].y }, { duration: 0.2 })); } });
+document.getElementById('closeBox').addEventListener('click', closeBox);
+inside.querySelector('.inbar a').addEventListener('click', () => setTimeout(closeBox, 600));
+addEventListener('keydown', e => { if (e.key === 'Escape' && opened) closeBox(); });
+addEventListener('resize', () => { if (opened) { const sp = wallSpots(); chips.forEach((c, i) => animate(c, { x: sp[i].x, y: sp[i].y }, { duration: 0.2 })); } });
 </script>
 </body>
 </html>
